@@ -78,7 +78,7 @@ Status legend: `[x]` verified in this curated tree, `[ ]` pending, `BLOCKED` req
 
 ## Final manual review
 
-- [x] Clone the private GitHub repository into a clean directory at commit `94a6050`.
+- [x] Clone the private GitHub repository into a clean directory at commit `0b18742`; verify the public-demo entry point and all committed site hashes.
 - [ ] Follow README commands exactly without relying on the private archive.
 - [ ] Open every HTML report and verify images, labels, and relative links.
 - [ ] Validate representative JSON against documented semantics.

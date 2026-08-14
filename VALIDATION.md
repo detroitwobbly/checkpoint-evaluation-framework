@@ -20,7 +20,7 @@ The suite covers manifest/model handling, request generation, checkpoint-hash se
 
 A wheel was built from `pyproject.toml` with no dependency resolution and installed into a new virtual environment.
 
-The private GitHub repository was also cloned into a separate temporary directory at commit `94a6050`. A new virtual environment installed the clone in editable mode using standard PEP 517 build isolation, and the installed `cef-eval` entry point started successfully. This verifies that the tracked remote tree does not rely on untracked workspace files.
+The private GitHub repository was cloned into separate temporary directories during release preparation. The latest clean-clone verification used commit `0b18742`, installed the `reporting` extra using standard PEP 517 build isolation, started the installed `cef-public-demo` entry point, and verified every committed site image/evidence hash. This confirms that the tracked remote tree does not rely on untracked workspace files.
 
 Verified installed entry points:
 

@@ -107,6 +107,7 @@ Generated run folders are ignored by default. Publication must be an explicit cu
 - [Evaluation methodology](docs/EVALUATION_METHODOLOGY.md)
 - [Resumability and artifact integrity](docs/RESUMABILITY_AND_INTEGRITY.md)
 - [Artifact contract](docs/ARTIFACT_CONTRACT.md)
+- [PNG metadata and publication model](docs/PNG_METADATA_AND_PUBLICATION.md)
 - [Safe demo protocol](examples/safe_demo/README.md)
 - [Provenance and licensing decisions](docs/PROVENANCE_AND_LICENSING.md)
 - [Limitations](docs/LIMITATIONS.md)
