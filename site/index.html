@@ -1,0 +1,887 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Controlled Materials, Lighting, and Count Demo - CEF Report</title>
+  <style>
+    :root {
+      --bg: #f7f7f4;
+      --ink: #1f2523;
+      --muted: #68716d;
+      --line: #d8ddd7;
+      --panel: #ffffff;
+      --accent: #2f6f67;
+      --accent-deep: #173f3a;
+      --accent-soft: #e2eeea;
+      --warn: #9a5b00;
+      --fail: #a43737;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Segoe UI, system-ui, sans-serif;
+      background: linear-gradient(180deg, #edf3f0 0, var(--bg) 260px);
+      color: var(--ink);
+    }
+    header {
+      padding: 34px clamp(18px, 4vw, 48px) 30px;
+      border-bottom: 4px solid #71a79e;
+      background: linear-gradient(120deg, #102e2b, var(--accent-deep));
+      color: #fff;
+    }
+    h1 {
+      margin: 0 0 10px;
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+    h2 {
+      margin: 0 0 14px;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+    main {
+      padding: 22px clamp(18px, 4vw, 48px) 40px;
+      display: grid;
+      gap: 22px;
+    }
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 12px;
+    }
+    .metric, .section, .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: 0 8px 24px rgba(18, 45, 40, 0.055);
+    }
+    .metric {
+      padding: 14px 16px;
+    }
+    .metric span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+    .metric strong {
+      display: block;
+      margin-top: 6px;
+      font-size: 24px;
+      color: var(--accent-deep);
+    }
+    .section {
+      padding: 16px;
+      overflow-x: auto;
+    }
+    .overview {
+      border-top: 5px solid var(--accent);
+      background: linear-gradient(135deg, #ffffff, #f2f8f5);
+      padding: clamp(18px, 3vw, 28px);
+    }
+    .overview p {
+      max-width: 1000px;
+      line-height: 1.55;
+    }
+    .overview .boundary {
+      padding: 12px 14px;
+      border-radius: 6px;
+      background: var(--accent-soft);
+    }
+    .contact-sheet {
+      display: block;
+      width: min(100%, 1100px);
+      height: auto;
+      margin: 12px auto 4px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .human-pass { color: #226f4a; font-weight: 700; }
+    .human-fail { color: var(--fail); font-weight: 700; }
+    .agreement-no { color: var(--warn); font-weight: 700; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 420px;
+    }
+    th, td {
+      padding: 10px 8px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    .cards {
+      display: grid;
+      gap: 16px;
+    }
+    .card {
+      display: grid;
+      grid-template-columns: minmax(180px, 280px) 1fr;
+      gap: 16px;
+      padding: 14px;
+    }
+    .thumb {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 6px;
+      border: 1px solid var(--line);
+      background: #e5e8e4;
+    }
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 17px;
+      letter-spacing: 0;
+    }
+    .meta {
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+    .score {
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 8px 0;
+    }
+    .personality-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+    .personality-axis {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      background: #fbfcfb;
+    }
+    .personality-axis h3 {
+      margin: 0 0 8px;
+      font-size: 14px;
+      letter-spacing: 0;
+    }
+    .personality-axis ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 6px;
+    }
+    .personality-axis li {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .personality-axis li strong {
+      color: var(--ink);
+      font-weight: 600;
+    }
+    .executive-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 10px;
+    }
+    .executive-item {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 10px 12px;
+      background: #fbfcfb;
+    }
+    .executive-item span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+    .executive-item strong {
+      display: block;
+      font-size: 15px;
+      line-height: 1.35;
+    }
+    .chip {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 4px 8px;
+      font-size: 12px;
+      color: var(--muted);
+      background: #fafafa;
+    }
+    .criterion {
+      margin: 8px 0;
+      padding: 8px 10px;
+      border-left: 3px solid var(--accent);
+      background: #f8faf8;
+    }
+    .wildcard {
+      margin: 8px 0;
+      padding: 8px 10px;
+      border-left: 3px solid var(--warn);
+      background: #fffaf0;
+    }
+    .semantic {
+      margin: 8px 0;
+      padding: 8px 10px;
+      border-left: 3px solid var(--fail);
+      background: #fff5f5;
+    }
+    .criterion strong {
+      display: block;
+      margin-bottom: 3px;
+    }
+    .wildcard strong {
+      display: block;
+      margin-bottom: 3px;
+      color: var(--warn);
+    }
+    .semantic strong {
+      display: block;
+      margin-bottom: 3px;
+      color: var(--fail);
+    }
+    .issues {
+      color: var(--fail);
+    }
+    a { color: var(--accent); }
+    @media (max-width: 760px) {
+      .card {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Controlled Materials, Lighting, and Count Demo</h1>
+    <div class="meta">CEF report &middot; materials_and_light_v1</div>
+  </header>
+  <main>
+    <section class="section overview">
+      <h2>Experiment at a Glance</h2>
+      <p><strong>Question:</strong> How reliably do two SDXL checkpoints follow controlled changes to material, image-relative light direction, and object count?</p>
+      <p><strong>Design:</strong> 2 checkpoints &times; 6 predeclared tests = 12 generated images; fixed-seed controlled counterfactuals.</p>
+      <p><strong>Scope:</strong> portfolio demonstration.</p>
+      <p class="boundary"><strong>Interpretation boundary:</strong> Scores and pass/fail labels below are machine observations, not ground truth. Human adjudication is a required publication gate.</p>
+      <ul><li>Image-left/image-right judgments require human review because vision-language models may use directional terminology or spatial evidence inconsistently.</li></ul>
+    </section>
+    <section class="metrics">
+      <div class="metric"><span>Generated</span><strong>12</strong></div>
+      <div class="metric"><span>Analyzed</span><strong>12</strong></div>
+      <div class="metric"><span>Avg Score</span><strong>8.04</strong></div>
+      <div class="metric"><span>Wildcard</span><strong>0</strong></div>
+      <div class="metric"><span>Semantic</span><strong>1</strong></div>
+      <div class="metric"><span>Intent Fails</span><strong>3</strong></div>
+      <div class="metric"><span>Eval Conf</span><strong>0.98</strong></div>
+      <div class="metric"><span>Reference Assisted</span><strong>0</strong></div>
+      <div class="metric"><span>Reference Delta</span><strong>None</strong></div>
+    </section>
+    <section class="section">
+      <h2>Controlled Manifold: 12 Generated Images</h2>
+      <div class="meta">Open the contact sheet to inspect the paired checkpoint and counterfactual results at full size.</div>
+      <a href="report_assets/contact_sheet.jpg"><img class="contact-sheet" src="report_assets/contact_sheet.jpg" alt="Contact sheet of all generated demo images and machine scores"></a>
+    </section>
+    <section class="section">
+      <h2>Human Adjudication</h2>
+      <p><strong>6 pass / 6 fail.</strong> Machine agreement: 9 of 12 records.</p>
+      <div class="meta">Approved by Alex Led on 2026-08-14T16:35:36-04:00. Human findings supersede machine pass/fail labels where they disagree.</div>
+      <table><thead><tr><th>Checkpoint</th><th>Test</th><th>Machine</th><th>Human</th><th>Agreement</th><th>Human observation</th></tr></thead><tbody><tr><td>checkpoint_a</td><td>MAT_01_CHROME</td><td>fail</td><td class="human-fail">fail</td><td class="">yes</td><td>The base and stem are reflective chrome, but the glowing cream globe is not chrome; the central material instruction is contradicted.</td></tr><tr><td>checkpoint_a</td><td>MAT_02_WOOD</td><td>pass</td><td class="human-fail">fail</td><td class="agreement-no">no</td><td>The support and base read as pale wood, but the large glowing globe reads as glass or plastic rather than unfinished wood. Qwen overlooked this contradiction on retry.</td></tr><tr><td>checkpoint_a</td><td>LIGHT_01_LEFT</td><td>pass</td><td class="human-pass">pass</td><td class="">yes</td><td>The vase is brighter on image-left and casts its dominant shadow toward image-right.</td></tr><tr><td>checkpoint_a</td><td>LIGHT_02_RIGHT</td><td>pass</td><td class="human-fail">fail</td><td class="agreement-no">no</td><td>The result remains brighter on image-left with a rightward shadow and is nearly identical to LIGHT_01_LEFT; the requested reversal is absent.</td></tr><tr><td>checkpoint_a</td><td>COUNT_01_ONE</td><td>pass</td><td class="human-pass">pass</td><td class="">yes</td><td>Exactly one distinct translucent blue cube is visible. Minor edge and internal-refraction artifacts do not create a second object.</td></tr><tr><td>checkpoint_a</td><td>COUNT_02_THREE</td><td>pass</td><td class="human-pass">pass</td><td class="">yes</td><td>Exactly three distinct cubes are visible. Overlapping top faces initially look ambiguous in the contact sheet but resolve as three objects at full resolution.</td></tr><tr><td>checkpoint_b</td><td>MAT_01_CHROME</td><td>fail</td><td class="human-fail">fail</td><td class="">yes</td><td>The frame and base are reflective chrome, but the cream shade is not chrome; the central material instruction is contradicted.</td></tr><tr><td>checkpoint_b</td><td>MAT_02_WOOD</td><td>fail</td><td class="human-fail">fail</td><td class="">yes</td><td>The base and supports read as pale wood, but the cylindrical fabric shade is not wood; the central material instruction is contradicted.</td></tr><tr><td>checkpoint_b</td><td>LIGHT_01_LEFT</td><td>pass</td><td class="human-pass">pass</td><td class="">yes</td><td>The vase is brighter on image-left and casts its dominant shadow toward image-right.</td></tr><tr><td>checkpoint_b</td><td>LIGHT_02_RIGHT</td><td>pass</td><td class="human-fail">fail</td><td class="agreement-no">no</td><td>The result remains brighter on image-left with a rightward shadow and is nearly identical to LIGHT_01_LEFT; the requested reversal is absent.</td></tr><tr><td>checkpoint_b</td><td>COUNT_01_ONE</td><td>pass</td><td class="human-pass">pass</td><td class="">yes</td><td>Exactly one distinct translucent blue cube is visible. The faint tabletop veining and dark vertical glass streaks are minor artifacts.</td></tr><tr><td>checkpoint_b</td><td>COUNT_02_THREE</td><td>pass</td><td class="human-pass">pass</td><td class="">yes</td><td>Exactly three distinct translucent blue cubes are visible on a clean neutral surface.</td></tr></tbody></table>
+    </section>
+    <section class="section">
+      <h2>Executive Summary</h2>
+      <div class="executive-grid">
+        <div class="executive-item"><span>Checkpoint</span><strong>Stable Diffusion XL Base 1.0 vs RealVisXL V5.0 FP16 (baked VAE)</strong></div><div class="executive-item"><span>Overall</span><strong>8.04 / 10</strong></div><div class="executive-item"><span>Reliability</span><strong>Mixed</strong></div><div class="executive-item"><span>Photorealism</span><strong>Not targeted</strong></div><div class="executive-item"><span>Anatomy</span><strong>Not targeted</strong></div><div class="executive-item"><span>Animal Priors</span><strong>Not targeted</strong></div><div class="executive-item"><span>Environmental Realism</span><strong>Not targeted</strong></div><div class="executive-item"><span>Creativity</span><strong>Not targeted</strong></div><div class="executive-item"><span>Dominant Latent Attractors</span><strong>object or artifact, portrait, documentary, ominous, photography</strong></div><div class="executive-item"><span>Failure Personality</span><strong>Lowest-scoring behavior centers on mat 01 chrome.</strong></div><div class="executive-item"><span>Recommended Use</span><strong>Review detailed results before relying on this checkpoint.</strong></div><div class="executive-item"><span>Caution</span><strong>Image-left/image-right judgments require human review because vision-language models may use directional terminology or spatial evidence inconsistently.</strong></div>
+      </div>
+    </section>
+    <section class="section">
+      <h2>Checkpoint Provenance</h2>
+      <table><thead><tr><th>Checkpoint</th><th>Creator</th><th>Declared license</th><th>SHA-256</th><th>Source</th></tr></thead><tbody><tr><td>Stable Diffusion XL Base 1.0</td><td>Stability AI</td><td>CreativeML Open RAIL++-M</td><td><code>31e35c80fc4829d14f90153f4c74cd59c90b779f6afe05a74cd6120b893f7e5b</code></td><td><a href="https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0">model documentation</a></td></tr><tr><td>RealVisXL V5.0 FP16 (baked VAE)</td><td>SG161222</td><td>OpenRAIL++ (as declared by the creator model card)</td><td><code>6a35a7855770ae9820a3c931d4964c3817b6d9e3c6f9c4dabb5b3a94e5643b80</code></td><td><a href="https://huggingface.co/SG161222/RealVisXL_V5.0">model documentation</a></td></tr></tbody></table>
+    </section>
+
+    <section class="section">
+      <h2>Evaluator Provenance</h2>
+      <table><thead><tr><th>Field</th><th>Recorded value</th></tr></thead><tbody><tr><td>Model</td><td><code>cef-qwen3-vl-8b</code></td></tr>
+<tr><td>Client</td><td><code>QwenEvaluationClient</code></td></tr>
+<tr><td>Temperature</td><td><code>0.1</code></td></tr>
+<tr><td>Max tokens</td><td><code>3000</code></td></tr>
+<tr><td>Response mode</td><td><code>json</code></td></tr>
+<tr><td>Structured response</td><td><code>True</code></td></tr>
+<tr><td>Directive</td><td><code>safe_demo_evaluator.txt</code></td></tr>
+<tr><td>Directive SHA-256</td><td><code>1a62099c51af5c69bd786aa0390e26693a018392917a84037c3c310935c5c2df</code></td></tr></tbody></table>
+      <p class="meta">Credentials are never written to evaluator provenance.</p>
+    </section>
+
+    <section class="section">
+      <h2>Checkpoint Personality</h2>
+      <div class="meta">Derived from 12 analyzed images; conceptual/hallucination records: 0.</div>
+      <div class="personality-grid">
+        <div class="personality-axis">
+          <h3>Default Subject</h3>
+          <ul><li><strong>object or artifact</strong><span>10</span></li><li><strong>portrait</strong><span>8</span></li></ul>
+        </div>
+        <div class="personality-axis">
+          <h3>Default Mood</h3>
+          <ul><li><strong>documentary</strong><span>11</span></li><li><strong>ominous</strong><span>3</span></li></ul>
+        </div>
+        <div class="personality-axis">
+          <h3>Default Visual Language</h3>
+          <ul><li><strong>photography</strong><span>12</span></li><li><strong>text/poster</strong><span>7</span></li></ul>
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <h2>By Checkpoint</h2>
+      <table><thead><tr><th>Checkpoint</th><th>Average Score</th><th>Images</th></tr></thead><tbody><tr><td>checkpoint_a</td><td>8.0</td><td>6</td></tr>
+<tr><td>checkpoint_b</td><td>8.08</td><td>6</td></tr></tbody></table>
+    </section>
+    <section class="section">
+      <h2>By Test</h2>
+      <table><thead><tr><th>Test</th><th>Average Score</th><th>Images</th></tr></thead><tbody><tr><td>COUNT_01_ONE</td><td>9.0</td><td>2</td></tr>
+<tr><td>COUNT_02_THREE</td><td>9.25</td><td>2</td></tr>
+<tr><td>LIGHT_01_LEFT</td><td>9.0</td><td>2</td></tr>
+<tr><td>LIGHT_02_RIGHT</td><td>9.0</td><td>2</td></tr>
+<tr><td>MAT_01_CHROME</td><td>5.0</td><td>2</td></tr>
+<tr><td>MAT_02_WOOD</td><td>7.0</td><td>2</td></tr></tbody></table>
+    </section>
+    <section class="section">
+      <h2>Rubric Averages</h2>
+      <table><thead><tr><th>Rubric Field</th><th>Average Score</th><th>Images</th></tr></thead><tbody><tr><td>anatomy</td><td>10.0</td><td>10</td></tr>
+<tr><td>artifact_severity</td><td>0.56</td><td>12</td></tr>
+<tr><td>composition</td><td>9.42</td><td>12</td></tr>
+<tr><td>environment_quality</td><td>9.38</td><td>12</td></tr>
+<tr><td>identity_retention</td><td>10.0</td><td>4</td></tr>
+<tr><td>lora_integration</td><td>10.0</td><td>4</td></tr>
+<tr><td>object_interaction</td><td>9.61</td><td>9</td></tr>
+<tr><td>prompt_adherence</td><td>8.67</td><td>12</td></tr>
+<tr><td>style_adherence</td><td>9.12</td><td>12</td></tr></tbody></table>
+    </section>
+    <section class="section">
+      <h2>Wildcard Observations</h2>
+      <table><thead><tr><th>Category</th><th>Count</th></tr></thead><tbody><tr><td colspan="2">No wildcard category counts yet.</td></tr></tbody></table>
+      <table><thead><tr><th>Severity</th><th>Count</th></tr></thead><tbody><tr><td colspan="2">No wildcard severity counts yet.</td></tr></tbody></table>
+      <h2>Suggested Criteria</h2>
+      <table><thead><tr><th>Test</th><th>Category</th><th>Suggested Criterion</th></tr></thead><tbody><tr><td colspan="3">No suggested criteria yet.</td></tr></tbody></table>
+    </section>
+    <section class="section">
+      <h2>Semantic Observations</h2>
+      <table><thead><tr><th>Category</th><th>Count</th></tr></thead><tbody><tr><td>intent_conflict</td><td>1</td></tr></tbody></table>
+      <table><thead><tr><th>Severity</th><th>Count</th></tr></thead><tbody><tr><td>minor</td><td>1</td></tr></tbody></table>
+      <h2>Major Semantic Issues</h2>
+      <table><thead><tr><th>Test</th><th>Category</th><th>Severity</th><th>Observation</th><th>Evidence</th></tr></thead><tbody><tr><td colspan="5">No major issues yet.</td></tr></tbody></table>
+      <h2>Semantic Suggested Criteria</h2>
+      <table><thead><tr><th>Test</th><th>Category</th><th>Suggested Criterion</th></tr></thead><tbody><tr><td>COUNT_01_ONE</td><td>intent_conflict</td><td>The top surface should exhibit natural light diffusion and refraction consistent with translucent glass material.</td></tr></tbody></table>
+    </section>
+    <section class="section">
+      <h2>Intent Failure Check</h2>
+      <table><thead><tr><th>Failure Mode</th><th>Count</th></tr></thead><tbody><tr><td>intent_conflict</td><td>5</td></tr>
+<tr><td>prompt_literalism</td><td>3</td></tr></tbody></table>
+      <h2>Intent Failures</h2>
+      <table><thead><tr><th>Test</th><th>Confidence</th><th>Failure Modes</th><th>Explanation</th></tr></thead><tbody><tr><td>MAT_01_CHROME</td><td>0.95</td><td>prompt_literalism, intent_conflict</td><td>The prompt explicitly requires the lamp to be &#x27;made entirely of polished chrome&#x27;. The presence of a non-chrome, translucent lampshade constitutes a direct contradiction. While the metal components are convincing, this single failure prevents full compliance with the test&#x27;s core requirement.</td></tr>
+<tr><td>MAT_01_CHROME</td><td>0.98</td><td>prompt_literalism, intent_conflict</td><td>The prompt requires &#x27;entirely of polished chrome,&#x27; which is impossible for a lampshade that emits light and diffuses it — unless the shade is transparent or translucent. The image renders an opaque white shade, which cannot be chrome. This is not an aesthetic failure but a logical contradiction in material specification.</td></tr>
+<tr><td>MAT_02_WOOD</td><td>0.98</td><td>prompt_literalism, intent_conflict</td><td>The prompt explicitly requires the lamp to be &#x27;made entirely of unfinished pale wood&#x27;. The presence of a fabric shade constitutes a material contradiction, even if the wooden base is accurate. This violates the literal intent of the prompt.</td></tr></tbody></table>
+    </section>
+    <section>
+      <h2>Images</h2>
+      <div class="cards"><article class="card">
+  <div><img class="thumb" src="report_assets/thumbnails/assets/images/checkpoint_a__none__MAT_01_CHROME.jpg" alt="MAT_01_CHROME"></div>
+  <div>
+    <h3>Polished Chrome Material</h3>
+    <div class="meta">
+      checkpoint_a / none / MAT_01_CHROME
+      &middot; <span class="score">Score 5</span>
+      &middot; confidence 0.97
+    </div>
+    <div class="criterion">
+  <strong>the lamp reads as polished reflective chrome rather than wood, ceramic, or matte plastic: 6</strong>
+  <div>The metal base, stem, and arm exhibit strong specular highlights and clear reflections consistent with polished chrome. However, the lampshade is a translucent, diffused white material (likely frosted glass or plastic), which contradicts &#x27;entirely of polished chrome&#x27;. The chrome components are visually convincing.</div>
+</div>
+<div class="criterion">
+  <strong>exactly one primary lamp is present: 10</strong>
+  <div>Only a single desk lamp is visible in the frame, with no duplicates or extraneous objects.</div>
+</div>
+<div class="criterion">
+  <strong>the lamp is centered against a plain studio background: 8</strong>
+  <div>The lamp is positioned near the center of the frame, with a uniform gray studio background and a light-colored surface beneath it. The composition is balanced.</div>
+</div>
+<div class="criterion">
+  <strong>reflections remain coherent and do not fragment the object: 7</strong>
+  <div>Reflections on the chrome surfaces are generally coherent, showing smooth transitions and clear highlights. However, some areas of the curved arm show slight distortion or softening in reflection continuity, suggesting minor rendering artifacts.</div>
+</div>
+    <div class="chips"><span class="chip">pass_fail: fail</span><span class="chip">anatomy: None</span><span class="chip">artifact_severity: 0.2</span><span class="chip">composition: 8</span><span class="chip">environment_quality: 8</span><span class="chip">face_quality: None</span><span class="chip">foot_quality: None</span><span class="chip">hand_quality: None</span><span class="chip">identity_retention: None</span><span class="chip">lora_integration: None</span><span class="chip">object_interaction: None</span><span class="chip">prompt_adherence: 6</span><span class="chip">style_adherence: 7</span></div>
+
+
+    <div class="intent-fail">
+  <strong>fails human intent / confidence 0.95</strong>
+  <div>The prompt explicitly requires the lamp to be &#x27;made entirely of polished chrome&#x27;. The presence of a non-chrome, translucent lampshade constitutes a direct contradiction. While the metal components are convincing, this single failure prevents full compliance with the test&#x27;s core requirement.</div>
+  <div class="meta">prompt_literalism, intent_conflict</div>
+</div>
+
+
+    <div class="chips issues"><span class="chip">Lampshade material contradicts prompt (not chrome)</span></div>
+    <div class="chips "><span class="chip">The lampshade is a non-chrome material, which may be an artifact of the model&#x27;s interpretation or a failure to fully respect the prompt.</span></div>
+    <div class="meta"><a href="evidence/checkpoint_a__none__MAT_01_CHROME.json">analysis.json</a></div>
+  </div>
+</article>
+<article class="card">
+  <div><img class="thumb" src="report_assets/thumbnails/assets/images/checkpoint_a__none__MAT_02_WOOD.jpg" alt="MAT_02_WOOD"></div>
+  <div>
+    <h3>Unfinished Wood Material</h3>
+    <div class="meta">
+      checkpoint_a / none / MAT_02_WOOD
+      &middot; <span class="score">Score 7</span>
+      &middot; confidence 0.98
+    </div>
+    <div class="criterion">
+  <strong>the lamp reads as unfinished pale wood with visible grain rather than metal or ceramic: 8</strong>
+  <div>The base and arm are clearly rendered in light-colored, unfinished wood with discernible vertical grain patterns consistent with pale wood. The material does not appear metallic or ceramic.</div>
+</div>
+<div class="criterion">
+  <strong>exactly one primary lamp is present: 10</strong>
+  <div>There is only a single, complete desk lamp visible in the frame with no duplicates or partial objects.</div>
+</div>
+<div class="criterion">
+  <strong>the lamp is centered against a plain studio background: 8</strong>
+  <div>The lamp is positioned near the center of the frame, with a uniform gray gradient background and a neutral white surface beneath it.</div>
+</div>
+<div class="criterion">
+  <strong>wood grain follows the object surfaces coherently: 6</strong>
+  <div>Wood grain is visible on the base and arm, but appears somewhat inconsistent or artificially mapped in areas where curvature should break it (e.g., along the curved arm). The grain does not flow naturally around the spherical lampshade.</div>
+</div>
+    <div class="chips"><span class="chip">pass_fail: pass</span><span class="chip">anatomy: 10</span><span class="chip">artifact_severity: 3</span><span class="chip">composition: 8</span><span class="chip">environment_quality: 9</span><span class="chip">face_quality: None</span><span class="chip">foot_quality: None</span><span class="chip">hand_quality: None</span><span class="chip">identity_retention: None</span><span class="chip">lora_integration: None</span><span class="chip">object_interaction: 8</span><span class="chip">prompt_adherence: 9</span><span class="chip">style_adherence: 7</span></div>
+
+
+    <div class="intent-pass">
+  <strong>passes human intent / confidence 0.98</strong>
+  <div>The prompt asks for an unfinished pale wood lamp, which is visually satisfied except for the grain’s incoherence on curved surfaces. This does not contradict the core intent but represents a minor generative artifact.</div>
+  <div class="meta">intent_conflict</div>
+</div>
+
+
+    <div class="chips issues"><span class="chip">Wood grain does not follow curved surfaces coherently, suggesting an artifact in texture mapping.</span></div>
+    <div class="chips "><span class="chip">The wood grain on the curved arm appears artificially applied rather than naturally flowing with the object’s geometry. This may be a generative artifact, not an intentional design choice.</span></div>
+    <div class="meta"><a href="evidence/checkpoint_a__none__MAT_02_WOOD.json">analysis.json</a></div>
+  </div>
+</article>
+<article class="card">
+  <div><img class="thumb" src="report_assets/thumbnails/assets/images/checkpoint_a__none__LIGHT_01_LEFT.jpg" alt="LIGHT_01_LEFT"></div>
+  <div>
+    <h3>Directional Light from Left</h3>
+    <div class="meta">
+      checkpoint_a / none / LIGHT_01_LEFT
+      &middot; <span class="score">Score 9</span>
+      &middot; confidence 1.0
+    </div>
+    <div class="criterion">
+  <strong>the dominant illumination originates from image-left: 10</strong>
+  <div>The vase exhibits a clear, soft gradient of light on its left side and a corresponding shadowed right side. The highlight is brightest on the upper-left curve, consistent with a single hard light source from the left.</div>
+</div>
+<div class="criterion">
+  <strong>the main cast shadow extends toward image-right: 10</strong>
+  <div>A distinct, soft-edged shadow is visible on the tabletop directly beneath and to the right of the vase’s base, extending horizontally toward the image-right edge.</div>
+</div>
+<div class="criterion">
+  <strong>exactly one primary vase is present: 10</strong>
+  <div>Only a single, centrally located vase is visible in the frame. No duplicates, partial objects, or background elements are present that could be mistaken for additional vases.</div>
+</div>
+<div class="criterion">
+  <strong>the vase reads as matte white ceramic: 9</strong>
+  <div>The vase is uniformly white with a non-reflective, diffuse surface that lacks specular highlights or glossiness consistent with matte ceramic. However, the texture appears slightly too smooth and uniform for real ceramic; there are no visible pores, glaze variations, or subtle imperfections typical of handmade ceramic.</div>
+</div>
+    <div class="chips"><span class="chip">pass_fail: pass</span><span class="chip">anatomy: 10</span><span class="chip">artifact_severity: 0</span><span class="chip">composition: 10</span><span class="chip">environment_quality: 10</span><span class="chip">face_quality: None</span><span class="chip">foot_quality: None</span><span class="chip">hand_quality: None</span><span class="chip">identity_retention: None</span><span class="chip">lora_integration: None</span><span class="chip">object_interaction: 10</span><span class="chip">prompt_adherence: 9</span><span class="chip">style_adherence: 9.5</span></div>
+
+
+    <div class="intent-pass">
+  <strong>passes human intent / confidence 0.95</strong>
+  <div>The image satisfies the prompt’s core requirements: directional lighting, shadow direction, single object, and matte white appearance. The material realism is slightly stylized but does not contradict the prompt&#x27;s intent to depict a clean product photograph.</div>
+  <div class="meta"></div>
+</div>
+
+
+
+
+    <div class="meta"><a href="evidence/checkpoint_a__none__LIGHT_01_LEFT.json">analysis.json</a></div>
+  </div>
+</article>
+<article class="card">
+  <div><img class="thumb" src="report_assets/thumbnails/assets/images/checkpoint_a__none__LIGHT_02_RIGHT.jpg" alt="LIGHT_02_RIGHT"></div>
+  <div>
+    <h3>Directional Light from Right</h3>
+    <div class="meta">
+      checkpoint_a / none / LIGHT_02_RIGHT
+      &middot; <span class="score">Score 9</span>
+      &middot; confidence 0.98
+    </div>
+    <div class="criterion">
+  <strong>the dominant illumination originates from image-right: 10</strong>
+  <div>The vase exhibits a clear, soft gradient of light across its surface: the right side is brightest and most evenly lit, while the left side transitions into shadow. The highlight on the upper rim and the gradual falloff toward the base indicate a single directional source from the right.</div>
+</div>
+<div class="criterion">
+  <strong>the main cast shadow extends toward image-left: 10</strong>
+  <div>A distinct, soft-edged shadow is visible on the tabletop directly beneath and to the left of the vase’s base. The shadow&#x27;s direction aligns with a light source positioned to the right.</div>
+</div>
+<div class="criterion">
+  <strong>exactly one primary vase is present: 10</strong>
+  <div>Only one vase is visible in the frame, centered on the tabletop with no duplicates or other objects.</div>
+</div>
+<div class="criterion">
+  <strong>the vase reads as matte white ceramic: 9</strong>
+  <div>The vase is uniformly white with a non-reflective, diffuse surface that lacks specular highlights, consistent with matte finish. The texture appears smooth and slightly grainy under close inspection, which may suggest ceramic or a similar material. However, the absence of visible glaze lines or typical ceramic microstructure makes absolute identification ambiguous.</div>
+</div>
+    <div class="chips"><span class="chip">pass_fail: pass</span><span class="chip">anatomy: 10</span><span class="chip">artifact_severity: 0</span><span class="chip">composition: 10</span><span class="chip">environment_quality: 10</span><span class="chip">face_quality: None</span><span class="chip">foot_quality: None</span><span class="chip">hand_quality: None</span><span class="chip">identity_retention: None</span><span class="chip">lora_integration: None</span><span class="chip">object_interaction: 10</span><span class="chip">prompt_adherence: 10</span><span class="chip">style_adherence: 10</span></div>
+
+
+    <div class="intent-pass">
+  <strong>passes human intent / confidence 1.0</strong>
+  <div>The prompt requested a matte white ceramic vase under right-side lighting with leftward shadow — all are visually present and consistent. The only ambiguity is material texture, which does not contradict the intent.</div>
+  <div class="meta"></div>
+</div>
+
+
+
+    <div class="chips "><span class="chip">Material identification is ambiguous; the surface texture lacks definitive ceramic characteristics (e.g., glaze or pore structure).</span></div>
+    <div class="meta"><a href="evidence/checkpoint_a__none__LIGHT_02_RIGHT.json">analysis.json</a></div>
+  </div>
+</article>
+<article class="card">
+  <div><img class="thumb" src="report_assets/thumbnails/assets/images/checkpoint_a__none__COUNT_01_ONE.jpg" alt="COUNT_01_ONE"></div>
+  <div>
+    <h3>One Object</h3>
+    <div class="meta">
+      checkpoint_a / none / COUNT_01_ONE
+      &middot; <span class="score">Score 9</span>
+      &middot; confidence 0.98
+    </div>
+    <div class="criterion">
+  <strong>exactly one cube is visible: 10</strong>
+  <div>A single, clearly defined cube occupies the center of the frame with no other objects or fragments visible in any part of the image.</div>
+</div>
+<div class="criterion">
+  <strong>the cube reads as translucent blue glass: 9</strong>
+  <div>The cube exhibits strong translucency with visible internal color gradients from deep blue to lighter cyan, and its surface reflects light in a way consistent with polished glass. However, the top edge appears slightly unnaturally sharp and uniformly colored, suggesting minor rendering artifact.</div>
+</div>
+<div class="criterion">
+  <strong>no fragments or secondary objects resemble additional cubes: 10</strong>
+  <div>No fragments, shadows, reflections, or partial shapes suggest the presence of any other cube. The background and tabletop are uniformly clean with no hidden elements.</div>
+</div>
+<div class="criterion">
+  <strong>the tabletop and background remain clean and neutral: 10</strong>
+  <div>The tabletop is a uniform white surface with clear reflections from the cube. The background is a smooth, gradient gray that transitions to white at the horizon line, free of any text, logos, or distracting elements.</div>
+</div>
+    <div class="chips"><span class="chip">pass_fail: pass</span><span class="chip">anatomy: 10</span><span class="chip">artifact_severity: 0.2</span><span class="chip">composition: 10</span><span class="chip">environment_quality: 10</span><span class="chip">face_quality: None</span><span class="chip">foot_quality: None</span><span class="chip">hand_quality: None</span><span class="chip">identity_retention: 10</span><span class="chip">lora_integration: 10</span><span class="chip">object_interaction: 9.5</span><span class="chip">prompt_adherence: 10</span><span class="chip">style_adherence: 10</span></div>
+
+
+    <div class="intent-pass">
+  <strong>passes human intent / confidence 0.98</strong>
+  <div>The image fulfills the prompt’s intent to show a single, clean product shot of a translucent blue glass cube on a white surface with no distractions.</div>
+  <div class="meta"></div>
+</div>
+
+    <div class="semantic">
+  <strong>semantic:intent_conflict / minor</strong>
+  <div>The cube’s top edge is unnaturally sharp and uniformly colored, which may indicate a rendering artifact rather than true glass behavior.</div>
+  <div class="meta">Top edge of the cube shows no visible refraction or light diffusion typical of real glass; it appears as a flat, solid blue line against the background.</div>
+</div>
+    <div class="chips issues"><span class="chip">Minor top-edge artifact on the cube (possibly a rendering limit) slightly reduces material realism score to 9/10.</span></div>
+
+    <div class="meta"><a href="evidence/checkpoint_a__none__COUNT_01_ONE.json">analysis.json</a></div>
+  </div>
+</article>
+<article class="card">
+  <div><img class="thumb" src="report_assets/thumbnails/assets/images/checkpoint_a__none__COUNT_02_THREE.jpg" alt="COUNT_02_THREE"></div>
+  <div>
+    <h3>Three Objects</h3>
+    <div class="meta">
+      checkpoint_a / none / COUNT_02_THREE
+      &middot; <span class="score">Score 9</span>
+      &middot; confidence 0.98
+    </div>
+    <div class="criterion">
+  <strong>exactly three cubes are visible: 10</strong>
+  <div>Three distinct cube-shaped objects are clearly visible, arranged in a row with no additional or missing cubes.</div>
+</div>
+<div class="criterion">
+  <strong>all three cubes read as translucent blue glass: 9</strong>
+  <div>All three objects are blue and exhibit translucency with visible internal reflections and refractions consistent with glass. However, the top surfaces of all three cubes show a distinct white or light-gray sheen that does not match typical glass material behavior under this lighting.</div>
+</div>
+<div class="criterion">
+  <strong>the cubes are distinct and are not fused together: 10</strong>
+  <div>The three cubes are clearly separated by visible gaps between them, with no shared edges or merged surfaces.</div>
+</div>
+<div class="criterion">
+  <strong>the tabletop and background remain clean and neutral: 10</strong>
+  <div>The surface is a uniform, reflective white material with no visible texture or debris. The background is a plain, gradient white wall with no objects, logos, text, or distracting elements.</div>
+</div>
+    <div class="chips"><span class="chip">pass_fail: pass</span><span class="chip">anatomy: 10</span><span class="chip">artifact_severity: 2</span><span class="chip">composition: 10</span><span class="chip">environment_quality: 10</span><span class="chip">face_quality: None</span><span class="chip">foot_quality: None</span><span class="chip">hand_quality: None</span><span class="chip">identity_retention: None</span><span class="chip">lora_integration: None</span><span class="chip">object_interaction: 10</span><span class="chip">prompt_adherence: 9</span><span class="chip">style_adherence: 10</span></div>
+
+
+    <div class="intent-pass">
+  <strong>passes human intent / confidence 0.95</strong>
+  <div>The image successfully fulfills the prompt&#x27;s core requirements: three distinct cubes, clean background, and arrangement on a white surface. The only deviation is the material appearance of the top surfaces, which may be an artifact or misinterpretation rather than a failure to meet intent.</div>
+  <div class="meta">intent_conflict</div>
+</div>
+
+
+    <div class="chips issues"><span class="chip">Top surfaces of cubes exhibit unnatural white sheen inconsistent with typical glass material under this lighting, suggesting a rendering artifact or misinterpretation.</span></div>
+    <div class="chips "><span class="chip">The top surfaces of the cubes have an unnatural white sheen that may be an artifact. This does not contradict the prompt but could indicate a material rendering error.</span></div>
+    <div class="meta"><a href="evidence/checkpoint_a__none__COUNT_02_THREE.json">analysis.json</a></div>
+  </div>
+</article>
+<article class="card">
+  <div><img class="thumb" src="report_assets/thumbnails/assets/images/checkpoint_b__none__MAT_01_CHROME.jpg" alt="MAT_01_CHROME"></div>
+  <div>
+    <h3>Polished Chrome Material</h3>
+    <div class="meta">
+      checkpoint_b / none / MAT_01_CHROME
+      &middot; <span class="score">Score 5</span>
+      &middot; confidence 0.98
+    </div>
+    <div class="criterion">
+  <strong>the lamp reads as polished reflective chrome rather than wood, ceramic, or matte plastic: 3</strong>
+  <div>The base, stem, and joint are clearly rendered with a high-gloss, mirror-like chrome finish that reflects the environment. However, the lampshade is opaque, diffused white (or off-white), which appears to be ceramic or frosted glass — not chrome. The prompt requires &#x27;entirely of polished chrome,&#x27; so this material mismatch constitutes a failure.</div>
+</div>
+<div class="criterion">
+  <strong>exactly one primary lamp is present: 10</strong>
+  <div>There is precisely one desk lamp visible in the image, with no duplicates or extraneous objects.</div>
+</div>
+<div class="criterion">
+  <strong>the lamp is centered against a plain studio background: 8</strong>
+  <div>The lamp is positioned near the center of the frame, with a uniform gray studio background and a neutral surface beneath it. The composition is balanced but slightly off-center due to the lamp’s angled orientation.</div>
+</div>
+<div class="criterion">
+  <strong>reflections remain coherent and do not fragment the object: 9</strong>
+  <div>Reflections on the chrome surfaces are smooth, continuous, and coherent — no visible fragmentation or distortion. The only minor artifact is a slight softness in the reflection of the lampshade’s edge due to its diffuse material.</div>
+</div>
+    <div class="chips"><span class="chip">pass_fail: fail</span><span class="chip">anatomy: 10</span><span class="chip">artifact_severity: 1</span><span class="chip">composition: 8</span><span class="chip">environment_quality: 8</span><span class="chip">face_quality: None</span><span class="chip">foot_quality: None</span><span class="chip">hand_quality: None</span><span class="chip">identity_retention: None</span><span class="chip">lora_integration: None</span><span class="chip">object_interaction: 9</span><span class="chip">prompt_adherence: 5</span><span class="chip">style_adherence: 9</span></div>
+
+
+    <div class="intent-fail">
+  <strong>fails human intent / confidence 0.98</strong>
+  <div>The prompt requires &#x27;entirely of polished chrome,&#x27; which is impossible for a lampshade that emits light and diffuses it — unless the shade is transparent or translucent. The image renders an opaque white shade, which cannot be chrome. This is not an aesthetic failure but a logical contradiction in material specification.</div>
+  <div class="meta">prompt_literalism, intent_conflict</div>
+</div>
+
+
+    <div class="chips issues"><span class="chip">Lampshade is opaque white (ceramic/glass), not polished chrome — violates &#x27;entirely of polished chrome&#x27; requirement.</span></div>
+    <div class="chips "><span class="chip">The lampshade’s material contradicts the prompt. This is a structural failure, as it renders an object that cannot be made entirely of chrome while functioning as described.</span></div>
+    <div class="meta"><a href="evidence/checkpoint_b__none__MAT_01_CHROME.json">analysis.json</a></div>
+  </div>
+</article>
+<article class="card">
+  <div><img class="thumb" src="report_assets/thumbnails/assets/images/checkpoint_b__none__MAT_02_WOOD.jpg" alt="MAT_02_WOOD"></div>
+  <div>
+    <h3>Unfinished Wood Material</h3>
+    <div class="meta">
+      checkpoint_b / none / MAT_02_WOOD
+      &middot; <span class="score">Score 7</span>
+      &middot; confidence 0.98
+    </div>
+    <div class="criterion">
+  <strong>the lamp reads as unfinished pale wood with visible grain rather than metal or ceramic: 8</strong>
+  <div>The base and support structure are clearly rendered as light-colored, unfinished wood with visible grain patterns. The cylindrical shade is fabric-like (off-white, matte), not wood. This contradicts the prompt&#x27;s requirement that &#x27;the lamp&#x27; be made entirely of wood.</div>
+</div>
+<div class="criterion">
+  <strong>exactly one primary lamp is present: 10</strong>
+  <div>There is exactly one lamp assembly visible in the image, including its base and shade.</div>
+</div>
+<div class="criterion">
+  <strong>the lamp is centered against a plain studio background: 9</strong>
+  <div>The lamp is positioned near the center of the frame, with a uniform gray studio background and a light-colored surface beneath it.</div>
+</div>
+<div class="criterion">
+  <strong>wood grain follows the object surfaces coherently: 7</strong>
+  <div>Wood grain is visible on the base and support blocks, following their planar surfaces. However, the grain pattern appears somewhat artificial or stylized in places (especially on the vertical supports), lacking natural continuity across all faces.</div>
+</div>
+    <div class="chips"><span class="chip">pass_fail: fail</span><span class="chip">anatomy: None</span><span class="chip">artifact_severity: 0.2</span><span class="chip">composition: 9</span><span class="chip">environment_quality: 9</span><span class="chip">face_quality: None</span><span class="chip">foot_quality: None</span><span class="chip">hand_quality: None</span><span class="chip">identity_retention: None</span><span class="chip">lora_integration: None</span><span class="chip">object_interaction: None</span><span class="chip">prompt_adherence: 7</span><span class="chip">style_adherence: 8</span></div>
+
+
+    <div class="intent-fail">
+  <strong>fails human intent / confidence 0.98</strong>
+  <div>The prompt explicitly requires the lamp to be &#x27;made entirely of unfinished pale wood&#x27;. The presence of a fabric shade constitutes a material contradiction, even if the wooden base is accurate. This violates the literal intent of the prompt.</div>
+  <div class="meta">prompt_literalism, intent_conflict</div>
+</div>
+
+
+    <div class="chips issues"><span class="chip">Shade material contradicts prompt (&#x27;entirely of unfinished pale wood&#x27;)</span><span class="chip">Wood grain coherence is inconsistent in some areas</span></div>
+    <div class="chips "><span class="chip">The shade appears to be fabric, not wood. This is a direct contradiction of the prompt’s material requirement.</span></div>
+    <div class="meta"><a href="evidence/checkpoint_b__none__MAT_02_WOOD.json">analysis.json</a></div>
+  </div>
+</article>
+<article class="card">
+  <div><img class="thumb" src="report_assets/thumbnails/assets/images/checkpoint_b__none__LIGHT_01_LEFT.jpg" alt="LIGHT_01_LEFT"></div>
+  <div>
+    <h3>Directional Light from Left</h3>
+    <div class="meta">
+      checkpoint_b / none / LIGHT_01_LEFT
+      &middot; <span class="score">Score 9</span>
+      &middot; confidence 0.98
+    </div>
+    <div class="criterion">
+  <strong>the dominant illumination originates from image-left: 10</strong>
+  <div>The vase exhibits a clear gradient of light intensity: the left side is brightest, transitioning to mid-tone on the right, with the darkest area being the shadowed right flank and base. The highlight edge runs vertically along the left shoulder, consistent with a single hard light source from the left.</div>
+</div>
+<div class="criterion">
+  <strong>the main cast shadow extends toward image-right: 10</strong>
+  <div>A distinct, soft-edged shadow is visible on the tabletop directly beneath and to the right of the vase’s base. The shadow falls radially outward from the vase’s right side, confirming a light source positioned to the left.</div>
+</div>
+<div class="criterion">
+  <strong>exactly one primary vase is present: 10</strong>
+  <div>Only one vase is visible in the frame, centered on the tabletop with no duplicates or partial objects. The background and foreground are uncluttered.</div>
+</div>
+<div class="criterion">
+  <strong>the vase reads as matte white ceramic: 9</strong>
+  <div>The surface is uniformly white with a non-reflective, diffuse finish consistent with matte ceramic. Subtle texture variations are visible under the light, suggesting a porous or unglazed material. However, the exact material composition (ceramic vs. painted plastic) cannot be definitively confirmed visually without tactile or spectral data.</div>
+</div>
+    <div class="chips"><span class="chip">pass_fail: pass</span><span class="chip">anatomy: 10</span><span class="chip">artifact_severity: 0</span><span class="chip">composition: 10</span><span class="chip">environment_quality: 10</span><span class="chip">face_quality: None</span><span class="chip">foot_quality: None</span><span class="chip">hand_quality: None</span><span class="chip">identity_retention: 10</span><span class="chip">lora_integration: 10</span><span class="chip">object_interaction: 10</span><span class="chip">prompt_adherence: 10</span><span class="chip">style_adherence: 10</span></div>
+
+
+    <div class="intent-pass">
+  <strong>passes human intent / confidence 1.0</strong>
+  <div>The image satisfies all criteria with high confidence, except for the material verification which is visually plausible but not conclusively provable without additional data.</div>
+  <div class="meta"></div>
+</div>
+
+
+
+    <div class="chips "><span class="chip">Material identification is visually plausible but not definitively verifiable without additional context or sensor data.</span></div>
+    <div class="meta"><a href="evidence/checkpoint_b__none__LIGHT_01_LEFT.json">analysis.json</a></div>
+  </div>
+</article>
+<article class="card">
+  <div><img class="thumb" src="report_assets/thumbnails/assets/images/checkpoint_b__none__LIGHT_02_RIGHT.jpg" alt="LIGHT_02_RIGHT"></div>
+  <div>
+    <h3>Directional Light from Right</h3>
+    <div class="meta">
+      checkpoint_b / none / LIGHT_02_RIGHT
+      &middot; <span class="score">Score 9</span>
+      &middot; confidence 0.98
+    </div>
+    <div class="criterion">
+  <strong>the dominant illumination originates from image-right: 10</strong>
+  <div>The vase&#x27;s right side is brightly lit with a distinct highlight, while the left side transitions into shadow. The gradient of light across the curved surface indicates a single strong source positioned to the right.</div>
+</div>
+<div class="criterion">
+  <strong>the main cast shadow extends toward image-left: 10</strong>
+  <div>A soft but clearly defined shadow is cast by the vase onto the tabletop, extending from its base to the left side of the frame. The shadow’s direction matches the light source’s position.</div>
+</div>
+<div class="criterion">
+  <strong>exactly one primary vase is present: 10</strong>
+  <div>Only a single, centrally positioned vase is visible in the frame. No duplicates, reflections, or other objects are present.</div>
+</div>
+<div class="criterion">
+  <strong>the vase reads as matte white ceramic: 9</strong>
+  <div>The vase is uniformly white with a non-reflective, diffuse surface that suggests matte finish. The texture appears slightly granular or porous, consistent with unglazed ceramic. However, the exact material composition cannot be visually confirmed without tactile or microscopic evidence.</div>
+</div>
+    <div class="chips"><span class="chip">pass_fail: pass</span><span class="chip">anatomy: 10</span><span class="chip">artifact_severity: 0</span><span class="chip">composition: 10</span><span class="chip">environment_quality: 10</span><span class="chip">face_quality: None</span><span class="chip">foot_quality: None</span><span class="chip">hand_quality: None</span><span class="chip">identity_retention: 10</span><span class="chip">lora_integration: 10</span><span class="chip">object_interaction: 10</span><span class="chip">prompt_adherence: 10</span><span class="chip">style_adherence: 10</span></div>
+
+
+    <div class="intent-pass">
+  <strong>passes human intent / confidence 1.0</strong>
+  <div>The image meets all criteria with high confidence. The lighting direction, shadow placement, object count, and material appearance are all visually consistent with the prompt. The only minor uncertainty is in definitively confirming ceramic as a material based solely on visual texture.</div>
+  <div class="meta"></div>
+</div>
+
+
+
+    <div class="chips "><span class="chip">Material identification (ceramic) is visually plausible but not definitively verifiable without additional context or texture analysis.</span></div>
+    <div class="meta"><a href="evidence/checkpoint_b__none__LIGHT_02_RIGHT.json">analysis.json</a></div>
+  </div>
+</article>
+<article class="card">
+  <div><img class="thumb" src="report_assets/thumbnails/assets/images/checkpoint_b__none__COUNT_01_ONE.jpg" alt="COUNT_01_ONE"></div>
+  <div>
+    <h3>One Object</h3>
+    <div class="meta">
+      checkpoint_b / none / COUNT_01_ONE
+      &middot; <span class="score">Score 9</span>
+      &middot; confidence 0.97
+    </div>
+    <div class="criterion">
+  <strong>exactly one cube is visible: 10</strong>
+  <div>A single, clearly defined blue cube occupies the center of the frame with no other objects or fragments visible.</div>
+</div>
+<div class="criterion">
+  <strong>the cube reads as translucent blue glass: 9</strong>
+  <div>The cube exhibits translucency with light passing through its sides, showing internal reflections and refractions consistent with glass. Its color is a uniform blue. However, the surface has dark vertical streaks that may be manufacturing artifacts or lighting effects, not inherent to ideal glass.</div>
+</div>
+<div class="criterion">
+  <strong>no fragments or secondary objects resemble additional cubes: 10</strong>
+  <div>No fragments, shadows of other cubes, or visual cues suggesting multiple cubes are present. The cube’s shadow is consistent with a single object.</div>
+</div>
+<div class="criterion">
+  <strong>the tabletop and background remain clean and neutral: 8</strong>
+  <div>The tabletop is predominantly white but shows faint, natural-looking veining (marble texture) which may be considered a minor deviation from &#x27;clean&#x27; as specified. The background is uniformly light gray and free of other objects or text.</div>
+</div>
+    <div class="chips"><span class="chip">pass_fail: pass</span><span class="chip">anatomy: 10</span><span class="chip">artifact_severity: 0.1</span><span class="chip">composition: 10</span><span class="chip">environment_quality: 8.5</span><span class="chip">face_quality: None</span><span class="chip">foot_quality: None</span><span class="chip">hand_quality: None</span><span class="chip">identity_retention: None</span><span class="chip">lora_integration: None</span><span class="chip">object_interaction: None</span><span class="chip">prompt_adherence: 9</span><span class="chip">style_adherence: 9</span></div>
+
+
+    <div class="intent-pass">
+  <strong>passes human intent / confidence 0.98</strong>
+  <div>The image meets the core intent of the prompt: a single translucent blue glass cube on a clean white surface with no other objects. The minor deviations (veining, streaks) do not contradict the primary request and are visually acceptable within product photography standards.</div>
+  <div class="meta"></div>
+</div>
+
+
+    <div class="chips issues"><span class="chip">Tabletop has faint veining (minor deviation from &#x27;clean&#x27;)</span><span class="chip">Dark vertical streaks on cube surface may not be ideal glass texture</span></div>
+    <div class="chips "><span class="chip">The dark vertical streaks on the cube’s sides are ambiguous and could indicate a rendering artifact or material imperfection.</span></div>
+    <div class="meta"><a href="evidence/checkpoint_b__none__COUNT_01_ONE.json">analysis.json</a></div>
+  </div>
+</article>
+<article class="card">
+  <div><img class="thumb" src="report_assets/thumbnails/assets/images/checkpoint_b__none__COUNT_02_THREE.jpg" alt="COUNT_02_THREE"></div>
+  <div>
+    <h3>Three Objects</h3>
+    <div class="meta">
+      checkpoint_b / none / COUNT_02_THREE
+      &middot; <span class="score">Score 9.5</span>
+      &middot; confidence 1.0
+    </div>
+    <div class="criterion">
+  <strong>exactly three cubes are visible: 10</strong>
+  <div>Three distinct cube-shaped objects are clearly visible, arranged in a row from left to right. No additional or missing cubes are present.</div>
+</div>
+<div class="criterion">
+  <strong>all three cubes read as translucent blue glass: 10</strong>
+  <div>All three objects exhibit a consistent translucent blue coloration with visible internal refraction and surface reflections characteristic of glass. The edges show slight thickness variation typical of molded or blown glass.</div>
+</div>
+<div class="criterion">
+  <strong>the cubes are distinct and are not fused together: 10</strong>
+  <div>The three cubes maintain clear, unambiguous boundaries with no visible fusion or merging of edges. Each cube casts a separate shadow on the surface, confirming their individuality.</div>
+</div>
+<div class="criterion">
+  <strong>the tabletop and background remain clean and neutral: 10</strong>
+  <div>The entire scene is set on a uniformly white, reflective surface with no visible clutter or distracting elements. The background is plain white, consistent with a studio product shot.</div>
+</div>
+    <div class="chips"><span class="chip">pass_fail: pass</span><span class="chip">anatomy: 10</span><span class="chip">artifact_severity: 0</span><span class="chip">composition: 10</span><span class="chip">environment_quality: 10</span><span class="chip">face_quality: None</span><span class="chip">foot_quality: None</span><span class="chip">hand_quality: None</span><span class="chip">identity_retention: 10</span><span class="chip">lora_integration: 10</span><span class="chip">object_interaction: 10</span><span class="chip">prompt_adherence: 10</span><span class="chip">style_adherence: 10</span></div>
+
+
+    <div class="intent-pass">
+  <strong>passes human intent / confidence 1.0</strong>
+  <div>The image satisfies the literal, visual requirements of the prompt without ambiguity or contradiction.</div>
+  <div class="meta"></div>
+</div>
+
+
+
+
+    <div class="meta"><a href="evidence/checkpoint_b__none__COUNT_02_THREE.json">analysis.json</a></div>
+  </div>
+</article></div>
+    </section>
+  </main>
+</body>
+</html>

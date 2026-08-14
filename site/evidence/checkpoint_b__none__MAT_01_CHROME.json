@@ -1,0 +1,126 @@
+{
+  "artifact_type": "cef_public_image_evidence",
+  "cell_id": "checkpoint_b__none__MAT_01_CHROME",
+  "checkpoint": {
+    "display_name": "RealVisXL V5.0 FP16 (baked VAE)",
+    "id": "checkpoint_b",
+    "sha256": "6a35a7855770ae9820a3c931d4964c3817b6d9e3c6f9c4dabb5b3a94e5643b80"
+  },
+  "generation": {
+    "forge_model_hash": "6a35a78557",
+    "request": {
+      "batch_size": 1,
+      "cfg_scale": 5.0,
+      "height": 768,
+      "n_iter": 1,
+      "negative_prompt": "people, person, face, hands, text, logo, watermark, duplicate object, blurry, low quality",
+      "prompt": "one simple geometric desk lamp made entirely of polished chrome, centered on a plain gray studio surface, soft neutral product photography",
+      "sampler_name": "DPM++ 2M",
+      "save_images": false,
+      "scheduler": "Karras",
+      "seed": 41001,
+      "steps": 28,
+      "width": 768
+    },
+    "settings": {
+      "batch_size": 1,
+      "cfg_scale": 5.0,
+      "height": 768,
+      "n_iter": 1,
+      "negative_prompt": "people, person, face, hands, text, logo, watermark, duplicate object, blurry, low quality",
+      "sampler_name": "DPM++ 2M",
+      "scheduler": "Karras",
+      "seed": 41001,
+      "steps": 28,
+      "width": 768
+    }
+  },
+  "human_adjudication": {
+    "agreement": true,
+    "machine_outcome": "fail",
+    "observation": "The frame and base are reflective chrome, but the cream shade is not chrome; the central material instruction is contradicted.",
+    "outcome": "fail",
+    "safety_or_rights_flags": []
+  },
+  "machine_evaluation": {
+    "criteria_scores": [
+      {
+        "confidence": 0.95,
+        "criterion": "the lamp reads as polished reflective chrome rather than wood, ceramic, or matte plastic",
+        "criterion_id": "material",
+        "evidence": "The base, stem, and joint are clearly rendered with a high-gloss, mirror-like chrome finish that reflects the environment. However, the lampshade is opaque, diffused white (or off-white), which appears to be ceramic or frosted glass \u2014 not chrome. The prompt requires 'entirely of polished chrome,' so this material mismatch constitutes a failure.",
+        "score": 3
+      },
+      {
+        "confidence": 1.0,
+        "criterion": "exactly one primary lamp is present",
+        "criterion_id": "object_count",
+        "evidence": "There is precisely one desk lamp visible in the image, with no duplicates or extraneous objects.",
+        "score": 10
+      },
+      {
+        "confidence": 0.95,
+        "criterion": "the lamp is centered against a plain studio background",
+        "criterion_id": "composition",
+        "evidence": "The lamp is positioned near the center of the frame, with a uniform gray studio background and a neutral surface beneath it. The composition is balanced but slightly off-center due to the lamp\u2019s angled orientation.",
+        "score": 8
+      },
+      {
+        "confidence": 0.98,
+        "criterion": "reflections remain coherent and do not fragment the object",
+        "criterion_id": "artifact_check",
+        "evidence": "Reflections on the chrome surfaces are smooth, continuous, and coherent \u2014 no visible fragmentation or distortion. The only minor artifact is a slight softness in the reflection of the lampshade\u2019s edge due to its diffuse material.",
+        "score": 9
+      }
+    ],
+    "evaluator_confidence": 0.98,
+    "failures": [
+      "Lampshade is opaque white (ceramic/glass), not polished chrome \u2014 violates 'entirely of polished chrome' requirement."
+    ],
+    "intent_failure_check": {
+      "confidence": 0.98,
+      "explanation": "The prompt requires 'entirely of polished chrome,' which is impossible for a lampshade that emits light and diffuses it \u2014 unless the shade is transparent or translucent. The image renders an opaque white shade, which cannot be chrome. This is not an aesthetic failure but a logical contradiction in material specification.",
+      "failure_modes": [
+        "prompt_literalism",
+        "intent_conflict"
+      ],
+      "passes_human_intent": false
+    },
+    "overall_score": 5,
+    "pass_fail": "fail",
+    "prompt_adherence": "The image fails to meet the core requirement that the lamp be made entirely of polished chrome. While most parts are correctly rendered as chrome, the lampshade\u2019s material is fundamentally incorrect \u2014 it cannot be chrome and still emit light with this appearance without being translucent or transparent. This is a critical failure mode for the prompt.",
+    "rubric_scores": {
+      "anatomy": 10,
+      "artifact_severity": 1,
+      "composition": 8,
+      "environment_quality": 8,
+      "face_quality": null,
+      "foot_quality": null,
+      "hand_quality": null,
+      "identity_retention": null,
+      "lora_integration": null,
+      "object_interaction": 9,
+      "prompt_adherence": 5,
+      "style_adherence": 9
+    },
+    "semantic_observations": [],
+    "visual_summary": "The image shows one desk lamp with a chrome base and stem, but the lampshade is not chrome \u2014 it is opaque white, which contradicts the prompt's requirement for 'entirely of polished chrome.' The composition is centered, reflections are coherent, and no other objects appear. This constitutes a partial failure due to material inaccuracy.",
+    "warnings": [
+      "The lampshade\u2019s material contradicts the prompt. This is a structural failure, as it renders an object that cannot be made entirely of chrome while functioning as described."
+    ],
+    "wildcard_observations": []
+  },
+  "private_artifact_anchors": {
+    "generation_json_sha256": "06ed3a784bed1aa9de87f639876040b711e988d49bce1a803a7ad9b19655c74d",
+    "original_png_sha256": "3f0e17ca3113dec011bf0f99d03b8bab307495d365b6fcab03c0d4f1468d8a1b",
+    "request_json_sha256": "ff4ccb5ba3f68de893167d6f4ef136bb14e93f8e7d621d99e406cdcf72574a90",
+    "run_manifest_sha256": "fc904fc44ce28a50dadc8157e51d12cd312a8a12fe2851d8545fc78d6343fc83"
+  },
+  "publication_profile": "sanitized-v1",
+  "run_id": "materials_and_light_v1",
+  "schema_version": "1.0",
+  "test": {
+    "id": "MAT_01_CHROME",
+    "name": "Polished Chrome Material"
+  }
+}

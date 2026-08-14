@@ -1,0 +1,1460 @@
+{
+  "analyzed_images": 12,
+  "checkpoint_personality": {
+    "conceptual_record_count": 0,
+    "default_mood": [
+      {
+        "count": 11,
+        "label": "documentary"
+      },
+      {
+        "count": 3,
+        "label": "ominous"
+      }
+    ],
+    "default_subject": [
+      {
+        "count": 10,
+        "label": "object or artifact"
+      },
+      {
+        "count": 8,
+        "label": "portrait"
+      }
+    ],
+    "default_visual_language": [
+      {
+        "count": 12,
+        "label": "photography"
+      },
+      {
+        "count": 7,
+        "label": "text/poster"
+      }
+    ],
+    "source_record_count": 12
+  },
+  "checkpoint_summary": {
+    "checkpoint_a": {
+      "average_score": 8.0,
+      "count": 6
+    },
+    "checkpoint_b": {
+      "average_score": 8.08,
+      "count": 6
+    }
+  },
+  "contact_sheet": "report_assets/contact_sheet.jpg",
+  "directive": {
+    "name": "safe_demo_evaluator.txt",
+    "sha256": "1a62099c51af5c69bd786aa0390e26693a018392917a84037c3c310935c5c2df"
+  },
+  "evaluator": {
+    "client": "QwenEvaluationClient",
+    "max_tokens": 3000,
+    "model": "cef-qwen3-vl-8b",
+    "response_mode": "json",
+    "structured_response_requested": true,
+    "temperature": 0.1,
+    "timeout_seconds": 600
+  },
+  "evaluator_confidence_summary": {
+    "average_confidence": 0.98,
+    "count": 12,
+    "high_confidence_low_scores": []
+  },
+  "executive_summary": {
+    "anatomy": "Not targeted",
+    "animal_priors": "Not targeted",
+    "caution": "Image-left/image-right judgments require human review because vision-language models may use directional terminology or spatial evidence inconsistently.",
+    "checkpoint": "Stable Diffusion XL Base 1.0 vs RealVisXL V5.0 FP16 (baked VAE)",
+    "creativity": "Not targeted",
+    "dominant_latent_attractors": "object or artifact, portrait, documentary, ominous, photography",
+    "environmental_realism": "Not targeted",
+    "failure_personality": "Lowest-scoring behavior centers on mat 01 chrome.",
+    "overall": "8.04 / 10",
+    "photorealism": "Not targeted",
+    "recommended_use": "Review detailed results before relying on this checkpoint.",
+    "reliability": "Mixed"
+  },
+  "generated_images": 12,
+  "human_adjudication": {
+    "approval_statement": "That's the read.",
+    "approved_at": "2026-08-14T16:35:36-04:00",
+    "approved_by": "Alex Led",
+    "artifact_type": "human_adjudication",
+    "lighting_pair_diagnostics": [
+      {
+        "checkpoint_id": "checkpoint_a",
+        "interpretation": "Both prompts remain strongly brighter on image-left and the pair is nearly unchanged; the requested reversal is not visibly expressed.",
+        "left_prompt_object_left_minus_right_luminance": 72.73,
+        "pair_mean_absolute_pixel_difference_0_to_255": 1.33,
+        "right_prompt_object_left_minus_right_luminance": 73.05
+      },
+      {
+        "checkpoint_id": "checkpoint_b",
+        "interpretation": "Both prompts remain strongly brighter on image-left and the pair is nearly unchanged; the requested reversal is not visibly expressed.",
+        "left_prompt_object_left_minus_right_luminance": 81.14,
+        "pair_mean_absolute_pixel_difference_0_to_255": 1.65,
+        "right_prompt_object_left_minus_right_luminance": 79.31
+      }
+    ],
+    "method": {
+      "image_review": "All 12 images were inspected at full resolution after contact-sheet review.",
+      "lighting_diagnostic": "Approximate grayscale measurements compare left/right object regions and mean absolute difference between each fixed-seed lighting pair. These measurements corroborate visual review but are not a substitute for it.",
+      "machine_comparison": "Draft outcomes were compared with the preserved Qwen3-VL 8B structured records."
+    },
+    "prepared_at": "2026-08-14T16:18:00-04:00",
+    "prepared_by": "Codex-assisted full-resolution visual review",
+    "records": [
+      {
+        "agreement": true,
+        "checkpoint_id": "checkpoint_a",
+        "draft_outcome": "fail",
+        "machine_outcome": "fail",
+        "machine_score": 5.0,
+        "observation": "The base and stem are reflective chrome, but the glowing cream globe is not chrome; the central material instruction is contradicted.",
+        "safety_or_rights_flags": [],
+        "test_id": "MAT_01_CHROME"
+      },
+      {
+        "agreement": false,
+        "checkpoint_id": "checkpoint_a",
+        "draft_outcome": "fail",
+        "machine_outcome": "pass",
+        "machine_score": 7.0,
+        "observation": "The support and base read as pale wood, but the large glowing globe reads as glass or plastic rather than unfinished wood. Qwen overlooked this contradiction on retry.",
+        "safety_or_rights_flags": [],
+        "test_id": "MAT_02_WOOD"
+      },
+      {
+        "agreement": true,
+        "checkpoint_id": "checkpoint_a",
+        "draft_outcome": "pass",
+        "machine_outcome": "pass",
+        "machine_score": 9.0,
+        "observation": "The vase is brighter on image-left and casts its dominant shadow toward image-right.",
+        "safety_or_rights_flags": [],
+        "test_id": "LIGHT_01_LEFT"
+      },
+      {
+        "agreement": false,
+        "checkpoint_id": "checkpoint_a",
+        "draft_outcome": "fail",
+        "machine_outcome": "pass",
+        "machine_score": 9.0,
+        "observation": "The result remains brighter on image-left with a rightward shadow and is nearly identical to LIGHT_01_LEFT; the requested reversal is absent.",
+        "safety_or_rights_flags": [],
+        "test_id": "LIGHT_02_RIGHT"
+      },
+      {
+        "agreement": true,
+        "checkpoint_id": "checkpoint_a",
+        "draft_outcome": "pass",
+        "machine_outcome": "pass",
+        "machine_score": 9.0,
+        "observation": "Exactly one distinct translucent blue cube is visible. Minor edge and internal-refraction artifacts do not create a second object.",
+        "safety_or_rights_flags": [],
+        "test_id": "COUNT_01_ONE"
+      },
+      {
+        "agreement": true,
+        "checkpoint_id": "checkpoint_a",
+        "draft_outcome": "pass",
+        "machine_outcome": "pass",
+        "machine_score": 9.0,
+        "observation": "Exactly three distinct cubes are visible. Overlapping top faces initially look ambiguous in the contact sheet but resolve as three objects at full resolution.",
+        "safety_or_rights_flags": [],
+        "test_id": "COUNT_02_THREE"
+      },
+      {
+        "agreement": true,
+        "checkpoint_id": "checkpoint_b",
+        "draft_outcome": "fail",
+        "machine_outcome": "fail",
+        "machine_score": 5.0,
+        "observation": "The frame and base are reflective chrome, but the cream shade is not chrome; the central material instruction is contradicted.",
+        "safety_or_rights_flags": [],
+        "test_id": "MAT_01_CHROME"
+      },
+      {
+        "agreement": true,
+        "checkpoint_id": "checkpoint_b",
+        "draft_outcome": "fail",
+        "machine_outcome": "fail",
+        "machine_score": 7.0,
+        "observation": "The base and supports read as pale wood, but the cylindrical fabric shade is not wood; the central material instruction is contradicted.",
+        "safety_or_rights_flags": [],
+        "test_id": "MAT_02_WOOD"
+      },
+      {
+        "agreement": true,
+        "checkpoint_id": "checkpoint_b",
+        "draft_outcome": "pass",
+        "machine_outcome": "pass",
+        "machine_score": 9.0,
+        "observation": "The vase is brighter on image-left and casts its dominant shadow toward image-right.",
+        "safety_or_rights_flags": [],
+        "test_id": "LIGHT_01_LEFT"
+      },
+      {
+        "agreement": false,
+        "checkpoint_id": "checkpoint_b",
+        "draft_outcome": "fail",
+        "machine_outcome": "pass",
+        "machine_score": 9.0,
+        "observation": "The result remains brighter on image-left with a rightward shadow and is nearly identical to LIGHT_01_LEFT; the requested reversal is absent.",
+        "safety_or_rights_flags": [],
+        "test_id": "LIGHT_02_RIGHT"
+      },
+      {
+        "agreement": true,
+        "checkpoint_id": "checkpoint_b",
+        "draft_outcome": "pass",
+        "machine_outcome": "pass",
+        "machine_score": 9.0,
+        "observation": "Exactly one distinct translucent blue cube is visible. The faint tabletop veining and dark vertical glass streaks are minor artifacts.",
+        "safety_or_rights_flags": [],
+        "test_id": "COUNT_01_ONE"
+      },
+      {
+        "agreement": true,
+        "checkpoint_id": "checkpoint_b",
+        "draft_outcome": "pass",
+        "machine_outcome": "pass",
+        "machine_score": 9.5,
+        "observation": "Exactly three distinct translucent blue cubes are visible on a clean neutral surface.",
+        "safety_or_rights_flags": [],
+        "test_id": "COUNT_02_THREE"
+      }
+    ],
+    "reviewer_note": "Alex approved the proposed 6-pass/6-fail reading and the documented three machine disagreements. This approval does not decide raw-metadata publication or the final code license.",
+    "schema_version": "1.0",
+    "status": "approved",
+    "summary": {
+      "human_fail": 6,
+      "human_pass": 6,
+      "machine_agreements": 9,
+      "machine_disagreements": 3,
+      "publication_status": "approved_for_private_candidate_pending_metadata_and_license_decisions",
+      "records": 12,
+      "rights_or_trademark_flags": 0,
+      "unsafe_content_flags": 0
+    }
+  },
+  "intent_failure_summary": {
+    "failed_intent_count": 3,
+    "failed_records": [
+      {
+        "confidence": 0.95,
+        "explanation": "The prompt explicitly requires the lamp to be 'made entirely of polished chrome'. The presence of a non-chrome, translucent lampshade constitutes a direct contradiction. While the metal components are convincing, this single failure prevents full compliance with the test's core requirement.",
+        "failure_modes": [
+          "prompt_literalism",
+          "intent_conflict"
+        ],
+        "test_id": "MAT_01_CHROME"
+      },
+      {
+        "confidence": 0.98,
+        "explanation": "The prompt requires 'entirely of polished chrome,' which is impossible for a lampshade that emits light and diffuses it \u2014 unless the shade is transparent or translucent. The image renders an opaque white shade, which cannot be chrome. This is not an aesthetic failure but a logical contradiction in material specification.",
+        "failure_modes": [
+          "prompt_literalism",
+          "intent_conflict"
+        ],
+        "test_id": "MAT_01_CHROME"
+      },
+      {
+        "confidence": 0.98,
+        "explanation": "The prompt explicitly requires the lamp to be 'made entirely of unfinished pale wood'. The presence of a fabric shade constitutes a material contradiction, even if the wooden base is accurate. This violates the literal intent of the prompt.",
+        "failure_modes": [
+          "prompt_literalism",
+          "intent_conflict"
+        ],
+        "test_id": "MAT_02_WOOD"
+      }
+    ],
+    "failure_modes": {
+      "intent_conflict": 5,
+      "prompt_literalism": 3
+    },
+    "passed_intent_count": 9
+  },
+  "publication_profile": "sanitized-v1",
+  "records": [
+    {
+      "analysis_path": "evidence/checkpoint_a__none__MAT_01_CHROME.json",
+      "checkpoint_id": "checkpoint_a",
+      "checkpoint_title": "Stable Diffusion XL Base 1.0",
+      "criteria_scores": [
+        {
+          "confidence": 0.8,
+          "criterion": "the lamp reads as polished reflective chrome rather than wood, ceramic, or matte plastic",
+          "criterion_id": "material",
+          "evidence": "The metal base, stem, and arm exhibit strong specular highlights and clear reflections consistent with polished chrome. However, the lampshade is a translucent, diffused white material (likely frosted glass or plastic), which contradicts 'entirely of polished chrome'. The chrome components are visually convincing.",
+          "score": 6
+        },
+        {
+          "confidence": 1.0,
+          "criterion": "exactly one primary lamp is present",
+          "criterion_id": "object_count",
+          "evidence": "Only a single desk lamp is visible in the frame, with no duplicates or extraneous objects.",
+          "score": 10
+        },
+        {
+          "confidence": 0.9,
+          "criterion": "the lamp is centered against a plain studio background",
+          "criterion_id": "composition",
+          "evidence": "The lamp is positioned near the center of the frame, with a uniform gray studio background and a light-colored surface beneath it. The composition is balanced.",
+          "score": 8
+        },
+        {
+          "confidence": 0.85,
+          "criterion": "reflections remain coherent and do not fragment the object",
+          "criterion_id": "artifact_check",
+          "evidence": "Reflections on the chrome surfaces are generally coherent, showing smooth transitions and clear highlights. However, some areas of the curved arm show slight distortion or softening in reflection continuity, suggesting minor rendering artifacts.",
+          "score": 7
+        }
+      ],
+      "evaluator_confidence": 0.97,
+      "failures": [
+        "Lampshade material contradicts prompt (not chrome)"
+      ],
+      "image_path": "assets/images/checkpoint_a__none__MAT_01_CHROME.png",
+      "intent_failure_check": {
+        "confidence": 0.95,
+        "explanation": "The prompt explicitly requires the lamp to be 'made entirely of polished chrome'. The presence of a non-chrome, translucent lampshade constitutes a direct contradiction. While the metal components are convincing, this single failure prevents full compliance with the test's core requirement.",
+        "failure_modes": [
+          "prompt_literalism",
+          "intent_conflict"
+        ],
+        "passes_human_intent": false
+      },
+      "lora_profile_id": "none",
+      "overall_score": 5,
+      "pass_fail": "fail",
+      "prompt_adherence": "The image satisfies most criteria except for material fidelity: it contains one lamp, is well-composed, and has largely coherent reflections. However, the lampshade is not chrome, which violates the 'entirely of polished chrome' requirement.",
+      "recommended_tags": [
+        "chrome",
+        "lamp",
+        "studio",
+        "product_photo"
+      ],
+      "reference_assisted": false,
+      "reference_comparison": {},
+      "reference_ids": [],
+      "reference_images": [],
+      "reference_used": false,
+      "rubric_scores": {
+        "anatomy": null,
+        "artifact_severity": 0.2,
+        "composition": 8,
+        "environment_quality": 8,
+        "face_quality": null,
+        "foot_quality": null,
+        "hand_quality": null,
+        "identity_retention": null,
+        "lora_integration": null,
+        "object_interaction": null,
+        "prompt_adherence": 6,
+        "style_adherence": 7
+      },
+      "semantic_observations": [],
+      "style_notes": [],
+      "test_id": "MAT_01_CHROME",
+      "test_name": "Polished Chrome Material",
+      "unexpected_priors": [],
+      "visual_summary": "The image shows a single desk lamp with a polished chrome base and stem against a plain gray background. The lampshade is translucent white, which contradicts the prompt's requirement for 'entirely of polished chrome'. Reflections on the metal are mostly coherent but show minor artifacts. The composition is centered.",
+      "warnings": [
+        "The lampshade is a non-chrome material, which may be an artifact of the model's interpretation or a failure to fully respect the prompt."
+      ],
+      "wildcard_observations": []
+    },
+    {
+      "analysis_path": "evidence/checkpoint_a__none__MAT_02_WOOD.json",
+      "checkpoint_id": "checkpoint_a",
+      "checkpoint_title": "Stable Diffusion XL Base 1.0",
+      "criteria_scores": [
+        {
+          "confidence": 0.95,
+          "criterion": "the lamp reads as unfinished pale wood with visible grain rather than metal or ceramic",
+          "criterion_id": "material",
+          "evidence": "The base and arm are clearly rendered in light-colored, unfinished wood with discernible vertical grain patterns consistent with pale wood. The material does not appear metallic or ceramic.",
+          "score": 8
+        },
+        {
+          "confidence": 1.0,
+          "criterion": "exactly one primary lamp is present",
+          "criterion_id": "object_count",
+          "evidence": "There is only a single, complete desk lamp visible in the frame with no duplicates or partial objects.",
+          "score": 10
+        },
+        {
+          "confidence": 0.95,
+          "criterion": "the lamp is centered against a plain studio background",
+          "criterion_id": "composition",
+          "evidence": "The lamp is positioned near the center of the frame, with a uniform gray gradient background and a neutral white surface beneath it.",
+          "score": 8
+        },
+        {
+          "confidence": 0.85,
+          "criterion": "wood grain follows the object surfaces coherently",
+          "criterion_id": "artifact_check",
+          "evidence": "Wood grain is visible on the base and arm, but appears somewhat inconsistent or artificially mapped in areas where curvature should break it (e.g., along the curved arm). The grain does not flow naturally around the spherical lampshade.",
+          "score": 6
+        }
+      ],
+      "evaluator_confidence": 0.98,
+      "failures": [
+        "Wood grain does not follow curved surfaces coherently, suggesting an artifact in texture mapping."
+      ],
+      "image_path": "assets/images/checkpoint_a__none__MAT_02_WOOD.png",
+      "intent_failure_check": {
+        "confidence": 0.98,
+        "explanation": "The prompt asks for an unfinished pale wood lamp, which is visually satisfied except for the grain\u2019s incoherence on curved surfaces. This does not contradict the core intent but represents a minor generative artifact.",
+        "failure_modes": [
+          "intent_conflict"
+        ],
+        "passes_human_intent": true
+      },
+      "lora_profile_id": "none",
+      "overall_score": 7,
+      "pass_fail": "pass",
+      "prompt_adherence": "The prompt requests an unfinished pale wood lamp; this is largely met except for minor inconsistencies in how the wood grain follows curved geometry. The negative prompts are respected: no faces, hands, text, or watermarks are visible.",
+      "recommended_tags": [
+        "wood",
+        "unfinished",
+        "pale wood",
+        "desk lamp",
+        "studio photography"
+      ],
+      "reference_assisted": false,
+      "reference_comparison": {},
+      "reference_ids": [],
+      "reference_images": [],
+      "reference_used": false,
+      "rubric_scores": {
+        "anatomy": 10,
+        "artifact_severity": 3,
+        "composition": 8,
+        "environment_quality": 9,
+        "face_quality": null,
+        "foot_quality": null,
+        "hand_quality": null,
+        "identity_retention": null,
+        "lora_integration": null,
+        "object_interaction": 8,
+        "prompt_adherence": 9,
+        "style_adherence": 7
+      },
+      "semantic_observations": [],
+      "style_notes": [],
+      "test_id": "MAT_02_WOOD",
+      "test_name": "Unfinished Wood Material",
+      "unexpected_priors": [],
+      "visual_summary": "The image displays a single desk lamp with an unfinished pale wood base and arm. The material is convincingly rendered as wood with visible grain, though the grain\u2019s coherence on curved surfaces is questionable. The composition centers the object against a plain studio background. No people, text, or logos are present.",
+      "warnings": [
+        "The wood grain on the curved arm appears artificially applied rather than naturally flowing with the object\u2019s geometry. This may be a generative artifact, not an intentional design choice."
+      ],
+      "wildcard_observations": []
+    },
+    {
+      "analysis_path": "evidence/checkpoint_a__none__LIGHT_01_LEFT.json",
+      "checkpoint_id": "checkpoint_a",
+      "checkpoint_title": "Stable Diffusion XL Base 1.0",
+      "criteria_scores": [
+        {
+          "confidence": 1.0,
+          "criterion": "the dominant illumination originates from image-left",
+          "criterion_id": "light_direction",
+          "evidence": "The vase exhibits a clear, soft gradient of light on its left side and a corresponding shadowed right side. The highlight is brightest on the upper-left curve, consistent with a single hard light source from the left.",
+          "score": 10
+        },
+        {
+          "confidence": 1.0,
+          "criterion": "the main cast shadow extends toward image-right",
+          "criterion_id": "shadow_direction",
+          "evidence": "A distinct, soft-edged shadow is visible on the tabletop directly beneath and to the right of the vase\u2019s base, extending horizontally toward the image-right edge.",
+          "score": 10
+        },
+        {
+          "confidence": 1.0,
+          "criterion": "exactly one primary vase is present",
+          "criterion_id": "object_count",
+          "evidence": "Only a single, centrally located vase is visible in the frame. No duplicates, partial objects, or background elements are present that could be mistaken for additional vases.",
+          "score": 10
+        },
+        {
+          "confidence": 0.85,
+          "criterion": "the vase reads as matte white ceramic",
+          "criterion_id": "material",
+          "evidence": "The vase is uniformly white with a non-reflective, diffuse surface that lacks specular highlights or glossiness consistent with matte ceramic. However, the texture appears slightly too smooth and uniform for real ceramic; there are no visible pores, glaze variations, or subtle imperfections typical of handmade ceramic.",
+          "score": 9
+        }
+      ],
+      "evaluator_confidence": 1.0,
+      "failures": [],
+      "image_path": "assets/images/checkpoint_a__none__LIGHT_01_LEFT.png",
+      "intent_failure_check": {
+        "confidence": 0.95,
+        "explanation": "The image satisfies the prompt\u2019s core requirements: directional lighting, shadow direction, single object, and matte white appearance. The material realism is slightly stylized but does not contradict the prompt's intent to depict a clean product photograph.",
+        "failure_modes": [],
+        "passes_human_intent": true
+      },
+      "lora_profile_id": "none",
+      "overall_score": 9,
+      "pass_fail": "pass",
+      "prompt_adherence": "Highly compliant with prompt requirements for light direction and object count. Minor deviation in material realism.",
+      "recommended_tags": [
+        "product_photo",
+        "studio_lighting",
+        "matte_ceramic",
+        "single_object"
+      ],
+      "reference_assisted": false,
+      "reference_comparison": {},
+      "reference_ids": [],
+      "reference_images": [],
+      "reference_used": false,
+      "rubric_scores": {
+        "anatomy": 10,
+        "artifact_severity": 0,
+        "composition": 10,
+        "environment_quality": 10,
+        "face_quality": null,
+        "foot_quality": null,
+        "hand_quality": null,
+        "identity_retention": null,
+        "lora_integration": null,
+        "object_interaction": 10,
+        "prompt_adherence": 9,
+        "style_adherence": 9.5
+      },
+      "semantic_observations": [],
+      "style_notes": [],
+      "test_id": "LIGHT_01_LEFT",
+      "test_name": "Directional Light from Left",
+      "unexpected_priors": [],
+      "visual_summary": "The image shows a single white vase on a neutral surface under directional lighting from the left, casting a shadow to the right. The material appears matte but lacks realistic ceramic texture. No artifacts, text, logos, or people are present.",
+      "warnings": [],
+      "wildcard_observations": []
+    },
+    {
+      "analysis_path": "evidence/checkpoint_a__none__LIGHT_02_RIGHT.json",
+      "checkpoint_id": "checkpoint_a",
+      "checkpoint_title": "Stable Diffusion XL Base 1.0",
+      "criteria_scores": [
+        {
+          "confidence": 1.0,
+          "criterion": "the dominant illumination originates from image-right",
+          "criterion_id": "light_direction",
+          "evidence": "The vase exhibits a clear, soft gradient of light across its surface: the right side is brightest and most evenly lit, while the left side transitions into shadow. The highlight on the upper rim and the gradual falloff toward the base indicate a single directional source from the right.",
+          "score": 10
+        },
+        {
+          "confidence": 1.0,
+          "criterion": "the main cast shadow extends toward image-left",
+          "criterion_id": "shadow_direction",
+          "evidence": "A distinct, soft-edged shadow is visible on the tabletop directly beneath and to the left of the vase\u2019s base. The shadow's direction aligns with a light source positioned to the right.",
+          "score": 10
+        },
+        {
+          "confidence": 1.0,
+          "criterion": "exactly one primary vase is present",
+          "criterion_id": "object_count",
+          "evidence": "Only one vase is visible in the frame, centered on the tabletop with no duplicates or other objects.",
+          "score": 10
+        },
+        {
+          "confidence": 0.85,
+          "criterion": "the vase reads as matte white ceramic",
+          "criterion_id": "material",
+          "evidence": "The vase is uniformly white with a non-reflective, diffuse surface that lacks specular highlights, consistent with matte finish. The texture appears smooth and slightly grainy under close inspection, which may suggest ceramic or a similar material. However, the absence of visible glaze lines or typical ceramic microstructure makes absolute identification ambiguous.",
+          "score": 9
+        }
+      ],
+      "evaluator_confidence": 0.98,
+      "failures": [],
+      "image_path": "assets/images/checkpoint_a__none__LIGHT_02_RIGHT.png",
+      "intent_failure_check": {
+        "confidence": 1.0,
+        "explanation": "The prompt requested a matte white ceramic vase under right-side lighting with leftward shadow \u2014 all are visually present and consistent. The only ambiguity is material texture, which does not contradict the intent.",
+        "failure_modes": [],
+        "passes_human_intent": true
+      },
+      "lora_profile_id": "none",
+      "overall_score": 9,
+      "pass_fail": "pass",
+      "prompt_adherence": "Highly compliant: all requested elements (light direction, shadow, single vase) are visually confirmed. Material is plausible but not definitively verifiable as ceramic.",
+      "recommended_tags": [
+        "product",
+        "studio",
+        "vase",
+        "matte",
+        "ceramic",
+        "lighting",
+        "shadow",
+        "right_light",
+        "left_shadow",
+        "single_object"
+      ],
+      "reference_assisted": false,
+      "reference_comparison": {},
+      "reference_ids": [],
+      "reference_images": [],
+      "reference_used": false,
+      "rubric_scores": {
+        "anatomy": 10,
+        "artifact_severity": 0,
+        "composition": 10,
+        "environment_quality": 10,
+        "face_quality": null,
+        "foot_quality": null,
+        "hand_quality": null,
+        "identity_retention": null,
+        "lora_integration": null,
+        "object_interaction": 10,
+        "prompt_adherence": 10,
+        "style_adherence": 10
+      },
+      "semantic_observations": [],
+      "style_notes": [
+        "The image is minimalist and clean, consistent with a studio product shot. The lighting is soft enough to avoid harshness while still indicating directionality."
+      ],
+      "test_id": "LIGHT_02_RIGHT",
+      "test_name": "Directional Light from Right",
+      "unexpected_priors": [],
+      "visual_summary": "The image presents a single white vase on a neutral surface with directional lighting from the right casting a shadow to the left. The light direction and shadow are clearly consistent. Material appears matte but lacks definitive ceramic texture cues. No artifacts, duplicates, or text are present.",
+      "warnings": [
+        "Material identification is ambiguous; the surface texture lacks definitive ceramic characteristics (e.g., glaze or pore structure)."
+      ],
+      "wildcard_observations": []
+    },
+    {
+      "analysis_path": "evidence/checkpoint_a__none__COUNT_01_ONE.json",
+      "checkpoint_id": "checkpoint_a",
+      "checkpoint_title": "Stable Diffusion XL Base 1.0",
+      "criteria_scores": [
+        {
+          "confidence": 1.0,
+          "criterion": "exactly one cube is visible",
+          "criterion_id": "count",
+          "evidence": "A single, clearly defined cube occupies the center of the frame with no other objects or fragments visible in any part of the image.",
+          "score": 10
+        },
+        {
+          "confidence": 0.85,
+          "criterion": "the cube reads as translucent blue glass",
+          "criterion_id": "material",
+          "evidence": "The cube exhibits strong translucency with visible internal color gradients from deep blue to lighter cyan, and its surface reflects light in a way consistent with polished glass. However, the top edge appears slightly unnaturally sharp and uniformly colored, suggesting minor rendering artifact.",
+          "score": 9
+        },
+        {
+          "confidence": 1.0,
+          "criterion": "no fragments or secondary objects resemble additional cubes",
+          "criterion_id": "separation",
+          "evidence": "No fragments, shadows, reflections, or partial shapes suggest the presence of any other cube. The background and tabletop are uniformly clean with no hidden elements.",
+          "score": 10
+        },
+        {
+          "confidence": 1.0,
+          "criterion": "the tabletop and background remain clean and neutral",
+          "criterion_id": "background",
+          "evidence": "The tabletop is a uniform white surface with clear reflections from the cube. The background is a smooth, gradient gray that transitions to white at the horizon line, free of any text, logos, or distracting elements.",
+          "score": 10
+        }
+      ],
+      "evaluator_confidence": 0.98,
+      "failures": [
+        "Minor top-edge artifact on the cube (possibly a rendering limit) slightly reduces material realism score to 9/10."
+      ],
+      "image_path": "assets/images/checkpoint_a__none__COUNT_01_ONE.png",
+      "intent_failure_check": {
+        "confidence": 0.98,
+        "explanation": "The image fulfills the prompt\u2019s intent to show a single, clean product shot of a translucent blue glass cube on a white surface with no distractions.",
+        "failure_modes": [],
+        "passes_human_intent": true
+      },
+      "lora_profile_id": "none",
+      "overall_score": 9,
+      "pass_fail": "pass",
+      "prompt_adherence": "The image satisfies all criteria of the prompt: one object, translucent blue glass appearance, clean background, no secondary objects. The only deviation is a subtle artifact on the cube\u2019s top edge, which does not contradict any core requirement.",
+      "recommended_tags": [
+        "product photography",
+        "translucent glass cube",
+        "clean white background",
+        "centered composition",
+        "high detail rendering"
+      ],
+      "reference_assisted": false,
+      "reference_comparison": {},
+      "reference_ids": [],
+      "reference_images": [],
+      "reference_used": false,
+      "rubric_scores": {
+        "anatomy": 10,
+        "artifact_severity": 0.2,
+        "composition": 10,
+        "environment_quality": 10,
+        "face_quality": null,
+        "foot_quality": null,
+        "hand_quality": null,
+        "identity_retention": 10,
+        "lora_integration": 10,
+        "object_interaction": 9.5,
+        "prompt_adherence": 10,
+        "style_adherence": 10
+      },
+      "semantic_observations": [
+        {
+          "category": "intent_conflict",
+          "confidence": 0.9,
+          "evidence": "Top edge of the cube shows no visible refraction or light diffusion typical of real glass; it appears as a flat, solid blue line against the background.",
+          "observation": "The cube\u2019s top edge is unnaturally sharp and uniformly colored, which may indicate a rendering artifact rather than true glass behavior.",
+          "severity": "minor",
+          "suggested_new_criterion": "The top surface should exhibit natural light diffusion and refraction consistent with translucent glass material."
+        }
+      ],
+      "style_notes": [],
+      "test_id": "COUNT_01_ONE",
+      "test_name": "One Object",
+      "unexpected_priors": [],
+      "visual_summary": "A single translucent blue glass cube is centered on a clean white tabletop against a neutral gray-to-white gradient background. The cube\u2019s material properties are well-rendered with realistic reflections and refraction, though its top edge shows minor rendering artifacts that slightly reduce the material realism score.",
+      "warnings": [],
+      "wildcard_observations": []
+    },
+    {
+      "analysis_path": "evidence/checkpoint_a__none__COUNT_02_THREE.json",
+      "checkpoint_id": "checkpoint_a",
+      "checkpoint_title": "Stable Diffusion XL Base 1.0",
+      "criteria_scores": [
+        {
+          "confidence": 1.0,
+          "criterion": "exactly three cubes are visible",
+          "criterion_id": "count",
+          "evidence": "Three distinct cube-shaped objects are clearly visible, arranged in a row with no additional or missing cubes.",
+          "score": 10
+        },
+        {
+          "confidence": 0.85,
+          "criterion": "all three cubes read as translucent blue glass",
+          "criterion_id": "material",
+          "evidence": "All three objects are blue and exhibit translucency with visible internal reflections and refractions consistent with glass. However, the top surfaces of all three cubes show a distinct white or light-gray sheen that does not match typical glass material behavior under this lighting.",
+          "score": 9
+        },
+        {
+          "confidence": 1.0,
+          "criterion": "the cubes are distinct and are not fused together",
+          "criterion_id": "separation",
+          "evidence": "The three cubes are clearly separated by visible gaps between them, with no shared edges or merged surfaces.",
+          "score": 10
+        },
+        {
+          "confidence": 1.0,
+          "criterion": "the tabletop and background remain clean and neutral",
+          "criterion_id": "background",
+          "evidence": "The surface is a uniform, reflective white material with no visible texture or debris. The background is a plain, gradient white wall with no objects, logos, text, or distracting elements.",
+          "score": 10
+        }
+      ],
+      "evaluator_confidence": 0.98,
+      "failures": [
+        "Top surfaces of cubes exhibit unnatural white sheen inconsistent with typical glass material under this lighting, suggesting a rendering artifact or misinterpretation."
+      ],
+      "image_path": "assets/images/checkpoint_a__none__COUNT_02_THREE.png",
+      "intent_failure_check": {
+        "confidence": 0.95,
+        "explanation": "The image successfully fulfills the prompt's core requirements: three distinct cubes, clean background, and arrangement on a white surface. The only deviation is the material appearance of the top surfaces, which may be an artifact or misinterpretation rather than a failure to meet intent.",
+        "failure_modes": [
+          "intent_conflict"
+        ],
+        "passes_human_intent": true
+      },
+      "lora_profile_id": "none",
+      "overall_score": 9,
+      "pass_fail": "pass",
+      "prompt_adherence": "The image satisfies the core request for three translucent blue glass cubes on a clean white surface. Minor deviation exists in the material appearance due to the anomalous white sheen, which does not contradict the prompt but may indicate an artifact or misinterpretation by the model.",
+      "recommended_tags": [
+        "product_photography",
+        "studio_lighting",
+        "glass_material",
+        "clean_background"
+      ],
+      "reference_assisted": false,
+      "reference_comparison": {},
+      "reference_ids": [],
+      "reference_images": [],
+      "reference_used": false,
+      "rubric_scores": {
+        "anatomy": 10,
+        "artifact_severity": 2,
+        "composition": 10,
+        "environment_quality": 10,
+        "face_quality": null,
+        "foot_quality": null,
+        "hand_quality": null,
+        "identity_retention": null,
+        "lora_integration": null,
+        "object_interaction": 10,
+        "prompt_adherence": 9,
+        "style_adherence": 10
+      },
+      "semantic_observations": [],
+      "style_notes": [],
+      "test_id": "COUNT_02_THREE",
+      "test_name": "Three Objects",
+      "unexpected_priors": [],
+      "visual_summary": "Three translucent blue cubes are arranged in a row on a clean white tabletop under studio lighting. All cubes appear distinct and separate. The material appears glass-like but has an unnatural white sheen on top surfaces that may indicate rendering artifacts or material misinterpretation. Background is neutral and free of distractions.",
+      "warnings": [
+        "The top surfaces of the cubes have an unnatural white sheen that may be an artifact. This does not contradict the prompt but could indicate a material rendering error."
+      ],
+      "wildcard_observations": []
+    },
+    {
+      "analysis_path": "evidence/checkpoint_b__none__MAT_01_CHROME.json",
+      "checkpoint_id": "checkpoint_b",
+      "checkpoint_title": "RealVisXL V5.0 FP16 (baked VAE)",
+      "criteria_scores": [
+        {
+          "confidence": 0.95,
+          "criterion": "the lamp reads as polished reflective chrome rather than wood, ceramic, or matte plastic",
+          "criterion_id": "material",
+          "evidence": "The base, stem, and joint are clearly rendered with a high-gloss, mirror-like chrome finish that reflects the environment. However, the lampshade is opaque, diffused white (or off-white), which appears to be ceramic or frosted glass \u2014 not chrome. The prompt requires 'entirely of polished chrome,' so this material mismatch constitutes a failure.",
+          "score": 3
+        },
+        {
+          "confidence": 1.0,
+          "criterion": "exactly one primary lamp is present",
+          "criterion_id": "object_count",
+          "evidence": "There is precisely one desk lamp visible in the image, with no duplicates or extraneous objects.",
+          "score": 10
+        },
+        {
+          "confidence": 0.95,
+          "criterion": "the lamp is centered against a plain studio background",
+          "criterion_id": "composition",
+          "evidence": "The lamp is positioned near the center of the frame, with a uniform gray studio background and a neutral surface beneath it. The composition is balanced but slightly off-center due to the lamp\u2019s angled orientation.",
+          "score": 8
+        },
+        {
+          "confidence": 0.98,
+          "criterion": "reflections remain coherent and do not fragment the object",
+          "criterion_id": "artifact_check",
+          "evidence": "Reflections on the chrome surfaces are smooth, continuous, and coherent \u2014 no visible fragmentation or distortion. The only minor artifact is a slight softness in the reflection of the lampshade\u2019s edge due to its diffuse material.",
+          "score": 9
+        }
+      ],
+      "evaluator_confidence": 0.98,
+      "failures": [
+        "Lampshade is opaque white (ceramic/glass), not polished chrome \u2014 violates 'entirely of polished chrome' requirement."
+      ],
+      "image_path": "assets/images/checkpoint_b__none__MAT_01_CHROME.png",
+      "intent_failure_check": {
+        "confidence": 0.98,
+        "explanation": "The prompt requires 'entirely of polished chrome,' which is impossible for a lampshade that emits light and diffuses it \u2014 unless the shade is transparent or translucent. The image renders an opaque white shade, which cannot be chrome. This is not an aesthetic failure but a logical contradiction in material specification.",
+        "failure_modes": [
+          "prompt_literalism",
+          "intent_conflict"
+        ],
+        "passes_human_intent": false
+      },
+      "lora_profile_id": "none",
+      "overall_score": 5,
+      "pass_fail": "fail",
+      "prompt_adherence": "The image fails to meet the core requirement that the lamp be made entirely of polished chrome. While most parts are correctly rendered as chrome, the lampshade\u2019s material is fundamentally incorrect \u2014 it cannot be chrome and still emit light with this appearance without being translucent or transparent. This is a critical failure mode for the prompt.",
+      "recommended_tags": [
+        "chrome",
+        "lamp",
+        "studio",
+        "product_photo"
+      ],
+      "reference_assisted": false,
+      "reference_comparison": {},
+      "reference_ids": [],
+      "reference_images": [],
+      "reference_used": false,
+      "rubric_scores": {
+        "anatomy": 10,
+        "artifact_severity": 1,
+        "composition": 8,
+        "environment_quality": 8,
+        "face_quality": null,
+        "foot_quality": null,
+        "hand_quality": null,
+        "identity_retention": null,
+        "lora_integration": null,
+        "object_interaction": 9,
+        "prompt_adherence": 5,
+        "style_adherence": 9
+      },
+      "semantic_observations": [],
+      "style_notes": [],
+      "test_id": "MAT_01_CHROME",
+      "test_name": "Polished Chrome Material",
+      "unexpected_priors": [],
+      "visual_summary": "The image shows one desk lamp with a chrome base and stem, but the lampshade is not chrome \u2014 it is opaque white, which contradicts the prompt's requirement for 'entirely of polished chrome.' The composition is centered, reflections are coherent, and no other objects appear. This constitutes a partial failure due to material inaccuracy.",
+      "warnings": [
+        "The lampshade\u2019s material contradicts the prompt. This is a structural failure, as it renders an object that cannot be made entirely of chrome while functioning as described."
+      ],
+      "wildcard_observations": []
+    },
+    {
+      "analysis_path": "evidence/checkpoint_b__none__MAT_02_WOOD.json",
+      "checkpoint_id": "checkpoint_b",
+      "checkpoint_title": "RealVisXL V5.0 FP16 (baked VAE)",
+      "criteria_scores": [
+        {
+          "confidence": 0.95,
+          "criterion": "the lamp reads as unfinished pale wood with visible grain rather than metal or ceramic",
+          "criterion_id": "material",
+          "evidence": "The base and support structure are clearly rendered as light-colored, unfinished wood with visible grain patterns. The cylindrical shade is fabric-like (off-white, matte), not wood. This contradicts the prompt's requirement that 'the lamp' be made entirely of wood.",
+          "score": 8
+        },
+        {
+          "confidence": 1.0,
+          "criterion": "exactly one primary lamp is present",
+          "criterion_id": "object_count",
+          "evidence": "There is exactly one lamp assembly visible in the image, including its base and shade.",
+          "score": 10
+        },
+        {
+          "confidence": 0.98,
+          "criterion": "the lamp is centered against a plain studio background",
+          "criterion_id": "composition",
+          "evidence": "The lamp is positioned near the center of the frame, with a uniform gray studio background and a light-colored surface beneath it.",
+          "score": 9
+        },
+        {
+          "confidence": 0.85,
+          "criterion": "wood grain follows the object surfaces coherently",
+          "criterion_id": "artifact_check",
+          "evidence": "Wood grain is visible on the base and support blocks, following their planar surfaces. However, the grain pattern appears somewhat artificial or stylized in places (especially on the vertical supports), lacking natural continuity across all faces.",
+          "score": 7
+        }
+      ],
+      "evaluator_confidence": 0.98,
+      "failures": [
+        "Shade material contradicts prompt ('entirely of unfinished pale wood')",
+        "Wood grain coherence is inconsistent in some areas"
+      ],
+      "image_path": "assets/images/checkpoint_b__none__MAT_02_WOOD.png",
+      "intent_failure_check": {
+        "confidence": 0.98,
+        "explanation": "The prompt explicitly requires the lamp to be 'made entirely of unfinished pale wood'. The presence of a fabric shade constitutes a material contradiction, even if the wooden base is accurate. This violates the literal intent of the prompt.",
+        "failure_modes": [
+          "prompt_literalism",
+          "intent_conflict"
+        ],
+        "passes_human_intent": false
+      },
+      "lora_profile_id": "none",
+      "overall_score": 7,
+      "pass_fail": "fail",
+      "prompt_adherence": "Partially compliant: The lamp\u2019s structure is correctly rendered as wood, and composition is accurate. However, the shade violates the 'entirely wood' specification.",
+      "recommended_tags": [
+        "wooden_lamp",
+        "fabric_shade",
+        "studio_photography",
+        "product_shot"
+      ],
+      "reference_assisted": false,
+      "reference_comparison": {},
+      "reference_ids": [],
+      "reference_images": [],
+      "reference_used": false,
+      "rubric_scores": {
+        "anatomy": null,
+        "artifact_severity": 0.2,
+        "composition": 9,
+        "environment_quality": 9,
+        "face_quality": null,
+        "foot_quality": null,
+        "hand_quality": null,
+        "identity_retention": null,
+        "lora_integration": null,
+        "object_interaction": null,
+        "prompt_adherence": 7,
+        "style_adherence": 8
+      },
+      "semantic_observations": [],
+      "style_notes": [],
+      "test_id": "MAT_02_WOOD",
+      "test_name": "Unfinished Wood Material",
+      "unexpected_priors": [],
+      "visual_summary": "The image shows a single lamp with a fabric shade and wooden base/supports against a plain gray background. The wood material is visually convincing but not fully consistent with the prompt's 'entirely of unfinished pale wood' requirement due to the non-wood shade.",
+      "warnings": [
+        "The shade appears to be fabric, not wood. This is a direct contradiction of the prompt\u2019s material requirement."
+      ],
+      "wildcard_observations": []
+    },
+    {
+      "analysis_path": "evidence/checkpoint_b__none__LIGHT_01_LEFT.json",
+      "checkpoint_id": "checkpoint_b",
+      "checkpoint_title": "RealVisXL V5.0 FP16 (baked VAE)",
+      "criteria_scores": [
+        {
+          "confidence": 1.0,
+          "criterion": "the dominant illumination originates from image-left",
+          "criterion_id": "light_direction",
+          "evidence": "The vase exhibits a clear gradient of light intensity: the left side is brightest, transitioning to mid-tone on the right, with the darkest area being the shadowed right flank and base. The highlight edge runs vertically along the left shoulder, consistent with a single hard light source from the left.",
+          "score": 10
+        },
+        {
+          "confidence": 1.0,
+          "criterion": "the main cast shadow extends toward image-right",
+          "criterion_id": "shadow_direction",
+          "evidence": "A distinct, soft-edged shadow is visible on the tabletop directly beneath and to the right of the vase\u2019s base. The shadow falls radially outward from the vase\u2019s right side, confirming a light source positioned to the left.",
+          "score": 10
+        },
+        {
+          "confidence": 1.0,
+          "criterion": "exactly one primary vase is present",
+          "criterion_id": "object_count",
+          "evidence": "Only one vase is visible in the frame, centered on the tabletop with no duplicates or partial objects. The background and foreground are uncluttered.",
+          "score": 10
+        },
+        {
+          "confidence": 0.85,
+          "criterion": "the vase reads as matte white ceramic",
+          "criterion_id": "material",
+          "evidence": "The surface is uniformly white with a non-reflective, diffuse finish consistent with matte ceramic. Subtle texture variations are visible under the light, suggesting a porous or unglazed material. However, the exact material composition (ceramic vs. painted plastic) cannot be definitively confirmed visually without tactile or spectral data.",
+          "score": 9
+        }
+      ],
+      "evaluator_confidence": 0.98,
+      "failures": [],
+      "image_path": "assets/images/checkpoint_b__none__LIGHT_01_LEFT.png",
+      "intent_failure_check": {
+        "confidence": 1.0,
+        "explanation": "The image satisfies all criteria with high confidence, except for the material verification which is visually plausible but not conclusively provable without additional data.",
+        "failure_modes": [],
+        "passes_human_intent": true
+      },
+      "lora_profile_id": "none",
+      "overall_score": 9,
+      "pass_fail": "pass",
+      "prompt_adherence": "All requested elements (vase, light direction, shadow direction) are clearly rendered. The negative prompt constraints (no people, text, duplicates) are satisfied. The only minor deviation is the inability to conclusively verify ceramic material without additional data.",
+      "recommended_tags": [
+        "product_photography",
+        "studio_lighting",
+        "matte_surface",
+        "ceramic_vase",
+        "directional_light"
+      ],
+      "reference_assisted": false,
+      "reference_comparison": {},
+      "reference_ids": [],
+      "reference_images": [],
+      "reference_used": false,
+      "rubric_scores": {
+        "anatomy": 10,
+        "artifact_severity": 0,
+        "composition": 10,
+        "environment_quality": 10,
+        "face_quality": null,
+        "foot_quality": null,
+        "hand_quality": null,
+        "identity_retention": 10,
+        "lora_integration": 10,
+        "object_interaction": 10,
+        "prompt_adherence": 10,
+        "style_adherence": 10
+      },
+      "semantic_observations": [],
+      "style_notes": [],
+      "test_id": "LIGHT_01_LEFT",
+      "test_name": "Directional Light from Left",
+      "unexpected_priors": [],
+      "visual_summary": "The image presents a single white vase on a dark surface with clear left-side illumination and rightward shadowing. The material appears matte and ceramic-like but lacks definitive proof of its exact composition. No artifacts, text, logos, or extraneous objects are present.",
+      "warnings": [
+        "Material identification is visually plausible but not definitively verifiable without additional context or sensor data."
+      ],
+      "wildcard_observations": []
+    },
+    {
+      "analysis_path": "evidence/checkpoint_b__none__LIGHT_02_RIGHT.json",
+      "checkpoint_id": "checkpoint_b",
+      "checkpoint_title": "RealVisXL V5.0 FP16 (baked VAE)",
+      "criteria_scores": [
+        {
+          "confidence": 1.0,
+          "criterion": "the dominant illumination originates from image-right",
+          "criterion_id": "light_direction",
+          "evidence": "The vase's right side is brightly lit with a distinct highlight, while the left side transitions into shadow. The gradient of light across the curved surface indicates a single strong source positioned to the right.",
+          "score": 10
+        },
+        {
+          "confidence": 1.0,
+          "criterion": "the main cast shadow extends toward image-left",
+          "criterion_id": "shadow_direction",
+          "evidence": "A soft but clearly defined shadow is cast by the vase onto the tabletop, extending from its base to the left side of the frame. The shadow\u2019s direction matches the light source\u2019s position.",
+          "score": 10
+        },
+        {
+          "confidence": 1.0,
+          "criterion": "exactly one primary vase is present",
+          "criterion_id": "object_count",
+          "evidence": "Only a single, centrally positioned vase is visible in the frame. No duplicates, reflections, or other objects are present.",
+          "score": 10
+        },
+        {
+          "confidence": 0.85,
+          "criterion": "the vase reads as matte white ceramic",
+          "criterion_id": "material",
+          "evidence": "The vase is uniformly white with a non-reflective, diffuse surface that suggests matte finish. The texture appears slightly granular or porous, consistent with unglazed ceramic. However, the exact material composition cannot be visually confirmed without tactile or microscopic evidence.",
+          "score": 9
+        }
+      ],
+      "evaluator_confidence": 0.98,
+      "failures": [],
+      "image_path": "assets/images/checkpoint_b__none__LIGHT_02_RIGHT.png",
+      "intent_failure_check": {
+        "confidence": 1.0,
+        "explanation": "The image meets all criteria with high confidence. The lighting direction, shadow placement, object count, and material appearance are all visually consistent with the prompt. The only minor uncertainty is in definitively confirming ceramic as a material based solely on visual texture.",
+        "failure_modes": [],
+        "passes_human_intent": true
+      },
+      "lora_profile_id": "none",
+      "overall_score": 9,
+      "pass_fail": "pass",
+      "prompt_adherence": "The image satisfies all prompt requirements: single vase, matte white ceramic appearance, directional right-side lighting, and a cast shadow to the left. The negative prompts (people, text, etc.) are absent.",
+      "recommended_tags": [
+        "product_photo",
+        "studio_lighting",
+        "matte_ceramic",
+        "directional_light",
+        "shadow_direction"
+      ],
+      "reference_assisted": false,
+      "reference_comparison": {},
+      "reference_ids": [],
+      "reference_images": [],
+      "reference_used": false,
+      "rubric_scores": {
+        "anatomy": 10,
+        "artifact_severity": 0,
+        "composition": 10,
+        "environment_quality": 10,
+        "face_quality": null,
+        "foot_quality": null,
+        "hand_quality": null,
+        "identity_retention": 10,
+        "lora_integration": 10,
+        "object_interaction": 10,
+        "prompt_adherence": 10,
+        "style_adherence": 10
+      },
+      "semantic_observations": [],
+      "style_notes": [
+        "The image is clean and minimalist, consistent with a product photograph."
+      ],
+      "test_id": "LIGHT_02_RIGHT",
+      "test_name": "Directional Light from Right",
+      "unexpected_priors": [],
+      "visual_summary": "A single matte white vase sits on a dark tabletop under directional lighting from the right, casting a clear shadow to the left. The surface texture and coloration are consistent with ceramic. All requested elements are present and correctly oriented, though material identification is visually plausible but not definitive.",
+      "warnings": [
+        "Material identification (ceramic) is visually plausible but not definitively verifiable without additional context or texture analysis."
+      ],
+      "wildcard_observations": []
+    },
+    {
+      "analysis_path": "evidence/checkpoint_b__none__COUNT_01_ONE.json",
+      "checkpoint_id": "checkpoint_b",
+      "checkpoint_title": "RealVisXL V5.0 FP16 (baked VAE)",
+      "criteria_scores": [
+        {
+          "confidence": 1.0,
+          "criterion": "exactly one cube is visible",
+          "criterion_id": "count",
+          "evidence": "A single, clearly defined blue cube occupies the center of the frame with no other objects or fragments visible.",
+          "score": 10
+        },
+        {
+          "confidence": 0.85,
+          "criterion": "the cube reads as translucent blue glass",
+          "criterion_id": "material",
+          "evidence": "The cube exhibits translucency with light passing through its sides, showing internal reflections and refractions consistent with glass. Its color is a uniform blue. However, the surface has dark vertical streaks that may be manufacturing artifacts or lighting effects, not inherent to ideal glass.",
+          "score": 9
+        },
+        {
+          "confidence": 1.0,
+          "criterion": "no fragments or secondary objects resemble additional cubes",
+          "criterion_id": "separation",
+          "evidence": "No fragments, shadows of other cubes, or visual cues suggesting multiple cubes are present. The cube\u2019s shadow is consistent with a single object.",
+          "score": 10
+        },
+        {
+          "confidence": 0.95,
+          "criterion": "the tabletop and background remain clean and neutral",
+          "criterion_id": "background",
+          "evidence": "The tabletop is predominantly white but shows faint, natural-looking veining (marble texture) which may be considered a minor deviation from 'clean' as specified. The background is uniformly light gray and free of other objects or text.",
+          "score": 8
+        }
+      ],
+      "evaluator_confidence": 0.97,
+      "failures": [
+        "Tabletop has faint veining (minor deviation from 'clean')",
+        "Dark vertical streaks on cube surface may not be ideal glass texture"
+      ],
+      "image_path": "assets/images/checkpoint_b__none__COUNT_01_ONE.png",
+      "intent_failure_check": {
+        "confidence": 0.98,
+        "explanation": "The image meets the core intent of the prompt: a single translucent blue glass cube on a clean white surface with no other objects. The minor deviations (veining, streaks) do not contradict the primary request and are visually acceptable within product photography standards.",
+        "failure_modes": [],
+        "passes_human_intent": true
+      },
+      "lora_profile_id": "none",
+      "overall_score": 9,
+      "pass_fail": "pass",
+      "prompt_adherence": "The image satisfies all prompt requirements with minor deviations: the cube is correctly rendered as translucent blue glass (with artifacts), no other objects are present, and the background is clean except for subtle veining on the tabletop. The negative prompt elements (people, text, logos) are absent.",
+      "recommended_tags": [
+        "product_photography",
+        "glass_cube",
+        "translucent_blue",
+        "white_tabletop",
+        "minimalist"
+      ],
+      "reference_assisted": false,
+      "reference_comparison": {},
+      "reference_ids": [],
+      "reference_images": [],
+      "reference_used": false,
+      "rubric_scores": {
+        "anatomy": 10,
+        "artifact_severity": 0.1,
+        "composition": 10,
+        "environment_quality": 8.5,
+        "face_quality": null,
+        "foot_quality": null,
+        "hand_quality": null,
+        "identity_retention": null,
+        "lora_integration": null,
+        "object_interaction": null,
+        "prompt_adherence": 9,
+        "style_adherence": 9
+      },
+      "semantic_observations": [],
+      "style_notes": [],
+      "test_id": "COUNT_01_ONE",
+      "test_name": "One Object",
+      "unexpected_priors": [],
+      "visual_summary": "A single blue cube with glass-like translucency sits on a white surface against a neutral background. No secondary objects are visible, but the tabletop has subtle veining that slightly violates the 'clean' requirement. The material appears mostly correct except for dark vertical streaks on its sides.",
+      "warnings": [
+        "The dark vertical streaks on the cube\u2019s sides are ambiguous and could indicate a rendering artifact or material imperfection."
+      ],
+      "wildcard_observations": []
+    },
+    {
+      "analysis_path": "evidence/checkpoint_b__none__COUNT_02_THREE.json",
+      "checkpoint_id": "checkpoint_b",
+      "checkpoint_title": "RealVisXL V5.0 FP16 (baked VAE)",
+      "criteria_scores": [
+        {
+          "confidence": 1.0,
+          "criterion": "exactly three cubes are visible",
+          "criterion_id": "count",
+          "evidence": "Three distinct cube-shaped objects are clearly visible, arranged in a row from left to right. No additional or missing cubes are present.",
+          "score": 10
+        },
+        {
+          "confidence": 1.0,
+          "criterion": "all three cubes read as translucent blue glass",
+          "criterion_id": "material",
+          "evidence": "All three objects exhibit a consistent translucent blue coloration with visible internal refraction and surface reflections characteristic of glass. The edges show slight thickness variation typical of molded or blown glass.",
+          "score": 10
+        },
+        {
+          "confidence": 1.0,
+          "criterion": "the cubes are distinct and are not fused together",
+          "criterion_id": "separation",
+          "evidence": "The three cubes maintain clear, unambiguous boundaries with no visible fusion or merging of edges. Each cube casts a separate shadow on the surface, confirming their individuality.",
+          "score": 10
+        },
+        {
+          "confidence": 1.0,
+          "criterion": "the tabletop and background remain clean and neutral",
+          "criterion_id": "background",
+          "evidence": "The entire scene is set on a uniformly white, reflective surface with no visible clutter or distracting elements. The background is plain white, consistent with a studio product shot.",
+          "score": 10
+        }
+      ],
+      "evaluator_confidence": 1.0,
+      "failures": [],
+      "image_path": "assets/images/checkpoint_b__none__COUNT_02_THREE.png",
+      "intent_failure_check": {
+        "confidence": 1.0,
+        "explanation": "The image satisfies the literal, visual requirements of the prompt without ambiguity or contradiction.",
+        "failure_modes": [],
+        "passes_human_intent": true
+      },
+      "lora_profile_id": "none",
+      "overall_score": 9.5,
+      "pass_fail": "pass",
+      "prompt_adherence": "Fully compliant. The prompt's core requirements \u2014 count, material, separation, and background \u2014 are all visually satisfied with no evidence of failure modes such as fused objects, text, logos, or extraneous elements.",
+      "recommended_tags": [
+        "product_photo",
+        "studio_shot",
+        "glass_cubes",
+        "translucent",
+        "blue",
+        "white_background",
+        "clean_surface",
+        "three_objects"
+      ],
+      "reference_assisted": false,
+      "reference_comparison": {},
+      "reference_ids": [],
+      "reference_images": [],
+      "reference_used": false,
+      "rubric_scores": {
+        "anatomy": 10,
+        "artifact_severity": 0,
+        "composition": 10,
+        "environment_quality": 10,
+        "face_quality": null,
+        "foot_quality": null,
+        "hand_quality": null,
+        "identity_retention": 10,
+        "lora_integration": 10,
+        "object_interaction": 10,
+        "prompt_adherence": 10,
+        "style_adherence": 10
+      },
+      "semantic_observations": [],
+      "style_notes": [
+        "The image is a high-quality product photograph with professional lighting and composition."
+      ],
+      "test_id": "COUNT_02_THREE",
+      "test_name": "Three Objects",
+      "unexpected_priors": [],
+      "visual_summary": "The image displays three distinct translucent blue glass cubes arranged in a row on a clean white tabletop. All requested properties are clearly and accurately rendered without contradiction or artifact.",
+      "warnings": [],
+      "wildcard_observations": []
+    }
+  ],
+  "reference_assisted_summary": {
+    "assisted_image_count": 0,
+    "assisted_test_ids": [],
+    "average_score_delta": null,
+    "by_reference": {},
+    "comparison_count": 0
+  },
+  "rubric_summary": {
+    "anatomy": {
+      "average_score": 10.0,
+      "count": 10
+    },
+    "artifact_severity": {
+      "average_score": 0.56,
+      "count": 12
+    },
+    "composition": {
+      "average_score": 9.42,
+      "count": 12
+    },
+    "environment_quality": {
+      "average_score": 9.38,
+      "count": 12
+    },
+    "identity_retention": {
+      "average_score": 10.0,
+      "count": 4
+    },
+    "lora_integration": {
+      "average_score": 10.0,
+      "count": 4
+    },
+    "object_interaction": {
+      "average_score": 9.61,
+      "count": 9
+    },
+    "prompt_adherence": {
+      "average_score": 8.67,
+      "count": 12
+    },
+    "style_adherence": {
+      "average_score": 9.12,
+      "count": 12
+    }
+  },
+  "run_id": "materials_and_light_v1",
+  "semantic_summary": {
+    "by_category": {
+      "intent_conflict": 1
+    },
+    "by_severity": {
+      "minor": 1
+    },
+    "major_issues": [],
+    "suggested_new_criteria": [
+      {
+        "category": "intent_conflict",
+        "suggested_new_criterion": "The top surface should exhibit natural light diffusion and refraction consistent with translucent glass material.",
+        "test_id": "COUNT_01_ONE"
+      }
+    ],
+    "total_observations": 1
+  },
+  "suite_id": "CONTROLLED_MATERIALS_AND_LIGHT_V1",
+  "suite_metadata": {
+    "checkpoint_provenance": [
+      {
+        "creator": "Stability AI",
+        "display_name": "Stable Diffusion XL Base 1.0",
+        "id": "checkpoint_a",
+        "license": "CreativeML Open RAIL++-M",
+        "sha256": "31e35c80fc4829d14f90153f4c74cd59c90b779f6afe05a74cd6120b893f7e5b",
+        "source": "https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0"
+      },
+      {
+        "creator": "SG161222",
+        "display_name": "RealVisXL V5.0 FP16 (baked VAE)",
+        "id": "checkpoint_b",
+        "license": "OpenRAIL++ (as declared by the creator model card)",
+        "sha256": "6a35a7855770ae9820a3c931d4964c3817b6d9e3c6f9c4dabb5b3a94e5643b80",
+        "source": "https://huggingface.co/SG161222/RealVisXL_V5.0"
+      }
+    ],
+    "evaluation_cautions": [
+      "Image-left/image-right judgments require human review because vision-language models may use directional terminology or spatial evidence inconsistently."
+    ],
+    "intended_scope": "portfolio demonstration",
+    "method": "fixed-seed controlled counterfactuals",
+    "notes": "Checkpoint titles and hashes were verified against Forge-Neo and the downloaded files on 2026-08-14. Generated artifacts still require human review before publication.",
+    "public_safe": true,
+    "research_question": "How reliably do two SDXL checkpoints follow controlled changes to material, image-relative light direction, and object count?"
+  },
+  "suite_name": "Controlled Materials, Lighting, and Count Demo",
+  "test_summary": {
+    "COUNT_01_ONE": {
+      "average_score": 9.0,
+      "count": 2
+    },
+    "COUNT_02_THREE": {
+      "average_score": 9.25,
+      "count": 2
+    },
+    "LIGHT_01_LEFT": {
+      "average_score": 9.0,
+      "count": 2
+    },
+    "LIGHT_02_RIGHT": {
+      "average_score": 9.0,
+      "count": 2
+    },
+    "MAT_01_CHROME": {
+      "average_score": 5.0,
+      "count": 2
+    },
+    "MAT_02_WOOD": {
+      "average_score": 7.0,
+      "count": 2
+    }
+  },
+  "wildcard_summary": {
+    "by_category": {},
+    "by_severity": {},
+    "major_issues": [],
+    "suggested_new_criteria": [],
+    "total_observations": 0
+  }
+}

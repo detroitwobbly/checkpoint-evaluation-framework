@@ -119,7 +119,7 @@ Generated run folders are ignored by default. Publication must be an explicit cu
 
 This is a curated release candidate extracted from a larger private research archive. The reusable core and tests are present; private runs, local paths, personal datasets, model files, explicit demo material, and artist-specific investigations are intentionally excluded.
 
-No public demo images are bundled yet. Checkpoint selection and generated-output publication remain blocked on explicit provenance and licensing decisions.
+A sanitized public-demo candidate has been prepared from the approved private run. Raw Forge/A1111 PNG metadata remains private; public copies use a minimal CEF identity-and-hash envelope and a transformation index. Public hosting remains gated on final bundle review.
 
 ## License
 

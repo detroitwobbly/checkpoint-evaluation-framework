@@ -1,0 +1,125 @@
+{
+  "artifact_type": "cef_public_image_evidence",
+  "cell_id": "checkpoint_a__none__COUNT_02_THREE",
+  "checkpoint": {
+    "display_name": "Stable Diffusion XL Base 1.0",
+    "id": "checkpoint_a",
+    "sha256": "31e35c80fc4829d14f90153f4c74cd59c90b779f6afe05a74cd6120b893f7e5b"
+  },
+  "generation": {
+    "forge_model_hash": "31e35c80fc",
+    "request": {
+      "batch_size": 1,
+      "cfg_scale": 5.0,
+      "height": 768,
+      "n_iter": 1,
+      "negative_prompt": "people, person, face, hands, text, logo, watermark, duplicate object, blurry, low quality",
+      "prompt": "exactly three separate translucent blue glass cubes arranged in a row on a clean white tabletop, centered product photograph, no other objects",
+      "sampler_name": "DPM++ 2M",
+      "save_images": false,
+      "scheduler": "Karras",
+      "seed": 41003,
+      "steps": 28,
+      "width": 768
+    },
+    "settings": {
+      "batch_size": 1,
+      "cfg_scale": 5.0,
+      "height": 768,
+      "n_iter": 1,
+      "negative_prompt": "people, person, face, hands, text, logo, watermark, duplicate object, blurry, low quality",
+      "sampler_name": "DPM++ 2M",
+      "scheduler": "Karras",
+      "seed": 41003,
+      "steps": 28,
+      "width": 768
+    }
+  },
+  "human_adjudication": {
+    "agreement": true,
+    "machine_outcome": "pass",
+    "observation": "Exactly three distinct cubes are visible. Overlapping top faces initially look ambiguous in the contact sheet but resolve as three objects at full resolution.",
+    "outcome": "pass",
+    "safety_or_rights_flags": []
+  },
+  "machine_evaluation": {
+    "criteria_scores": [
+      {
+        "confidence": 1.0,
+        "criterion": "exactly three cubes are visible",
+        "criterion_id": "count",
+        "evidence": "Three distinct cube-shaped objects are clearly visible, arranged in a row with no additional or missing cubes.",
+        "score": 10
+      },
+      {
+        "confidence": 0.85,
+        "criterion": "all three cubes read as translucent blue glass",
+        "criterion_id": "material",
+        "evidence": "All three objects are blue and exhibit translucency with visible internal reflections and refractions consistent with glass. However, the top surfaces of all three cubes show a distinct white or light-gray sheen that does not match typical glass material behavior under this lighting.",
+        "score": 9
+      },
+      {
+        "confidence": 1.0,
+        "criterion": "the cubes are distinct and are not fused together",
+        "criterion_id": "separation",
+        "evidence": "The three cubes are clearly separated by visible gaps between them, with no shared edges or merged surfaces.",
+        "score": 10
+      },
+      {
+        "confidence": 1.0,
+        "criterion": "the tabletop and background remain clean and neutral",
+        "criterion_id": "background",
+        "evidence": "The surface is a uniform, reflective white material with no visible texture or debris. The background is a plain, gradient white wall with no objects, logos, text, or distracting elements.",
+        "score": 10
+      }
+    ],
+    "evaluator_confidence": 0.98,
+    "failures": [
+      "Top surfaces of cubes exhibit unnatural white sheen inconsistent with typical glass material under this lighting, suggesting a rendering artifact or misinterpretation."
+    ],
+    "intent_failure_check": {
+      "confidence": 0.95,
+      "explanation": "The image successfully fulfills the prompt's core requirements: three distinct cubes, clean background, and arrangement on a white surface. The only deviation is the material appearance of the top surfaces, which may be an artifact or misinterpretation rather than a failure to meet intent.",
+      "failure_modes": [
+        "intent_conflict"
+      ],
+      "passes_human_intent": true
+    },
+    "overall_score": 9,
+    "pass_fail": "pass",
+    "prompt_adherence": "The image satisfies the core request for three translucent blue glass cubes on a clean white surface. Minor deviation exists in the material appearance due to the anomalous white sheen, which does not contradict the prompt but may indicate an artifact or misinterpretation by the model.",
+    "rubric_scores": {
+      "anatomy": 10,
+      "artifact_severity": 2,
+      "composition": 10,
+      "environment_quality": 10,
+      "face_quality": null,
+      "foot_quality": null,
+      "hand_quality": null,
+      "identity_retention": null,
+      "lora_integration": null,
+      "object_interaction": 10,
+      "prompt_adherence": 9,
+      "style_adherence": 10
+    },
+    "semantic_observations": [],
+    "visual_summary": "Three translucent blue cubes are arranged in a row on a clean white tabletop under studio lighting. All cubes appear distinct and separate. The material appears glass-like but has an unnatural white sheen on top surfaces that may indicate rendering artifacts or material misinterpretation. Background is neutral and free of distractions.",
+    "warnings": [
+      "The top surfaces of the cubes have an unnatural white sheen that may be an artifact. This does not contradict the prompt but could indicate a material rendering error."
+    ],
+    "wildcard_observations": []
+  },
+  "private_artifact_anchors": {
+    "generation_json_sha256": "78f3942685352165609f890650e31879752e927e040986113dda3e7cbae53768",
+    "original_png_sha256": "67dbb2ff7e5ecbfca9a8dcbf214cd218ed8e51d27461ea1747a721a40c0e2e04",
+    "request_json_sha256": "e3a5a9b1b941af25c035d60256132b15653e7c506d0a1f1174dd06f432d1293d",
+    "run_manifest_sha256": "fc904fc44ce28a50dadc8157e51d12cd312a8a12fe2851d8545fc78d6343fc83"
+  },
+  "publication_profile": "sanitized-v1",
+  "run_id": "materials_and_light_v1",
+  "schema_version": "1.0",
+  "test": {
+    "id": "COUNT_02_THREE",
+    "name": "Three Objects"
+  }
+}

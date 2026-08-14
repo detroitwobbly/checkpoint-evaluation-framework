@@ -40,6 +40,24 @@ Per-image analysis records preserve normalized analysis plus raw response materi
 
 Backend inventories are point-in-time observations, not cryptographic attestations. PNG provenance extraction retains raw parameter text because extension metadata and future backend fields may exceed the parser’s current vocabulary.
 
+## Public PNG publication profile
+
+Private generated PNGs are immutable backend artifacts. CEF writes the decoded Forge response bytes directly and retains their raw PNG metadata and SHA-256 in the private run.
+
+The `sanitized-v1` public profile creates a separate lossless PNG copy. It removes all source metadata, verifies pixel equivalence, and adds only these CEF-owned text fields:
+
+- `cef_schema_version`
+- `cef_publication_profile`
+- `cef_run_id`
+- `cef_cell_id`
+- `cef_checkpoint_id`
+- `cef_test_id`
+- `cef_manifest_sha256`
+- `cef_evidence_sha256`
+- `cef_original_png_sha256`
+
+`artifact_index.json` records the source and public hashes, pixel-equivalence result, and transformation declaration for every image. Different PNG hashes are therefore expected: the pixel content is unchanged, while the container bytes and metadata are intentionally different.
+
 ## Stability
 
 The 0.1 release is alpha. Artifact names and major semantic roles are intentional, but no formal backward-compatibility guarantee exists until JSON Schemas and migration tests are added. Public consumers should preserve `schema_version` fields where present and retain raw source artifacts.

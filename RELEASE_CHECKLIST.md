@@ -31,7 +31,7 @@ Status legend: `[x]` verified in this curated tree, `[ ]` pending, `BLOCKED` req
 
 ## Automated verification
 
-- [x] All tests pass in the curated tree: 56 passed on 2026-08-14.
+- [x] All tests pass in the curated tree: 57 passed on 2026-08-14.
 - [x] Safe demo and test JSON parse successfully.
 - [x] README-local links resolve.
 - [x] CLI help works from the installed entry point.
@@ -63,10 +63,10 @@ Status legend: `[x]` verified in this curated tree, `[ ]` pending, `BLOCKED` req
 - [x] Exact checkpoint files, hashes, names, and model-card attribution approved.
 - [x] Generate all 12 demo images and prepare a full-resolution adjudication draft.
 - [x] Alex approved the 6-pass / 6-fail human adjudication and three recorded machine disagreements on 2026-08-14.
-- [ ] BLOCKED: decide whether to publish raw PNG metadata or sanitized provenance.
+- [x] Alex approved sanitized structured provenance; raw Forge/A1111 PNG metadata remains private.
 - [x] Alex approved the current report presentation and adjudicated findings for the private candidate.
 - [ ] BLOCKED: approve the final sanitized public artifact bundle after export.
-- [ ] BLOCKED: confirm AGPL-3.0-or-later as the final code license.
+- [x] Alex confirmed AGPL-3.0-or-later as the final code license.
 
 ## Repository identity and publication — BLOCKED
 

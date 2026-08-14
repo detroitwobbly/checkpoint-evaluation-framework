@@ -32,6 +32,7 @@ dev = ["pytest>=8.0", "Pillow>=10.0", "PyYAML>=6.0"]
 cef-eval = "checkpoint_evaluator.cli:main"
 cef-review-run = "scripts.build_run_pipeline_review:main"
 cef-release-audit = "scripts.release_audit:main"
+cef-public-demo = "scripts.build_public_demo:main"
 
 [project.urls]
 Documentation = "https://github.com/detroitwobbly/checkpoint-evaluation-framework#readme"

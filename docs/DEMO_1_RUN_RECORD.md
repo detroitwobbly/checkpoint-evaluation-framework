@@ -3,7 +3,7 @@
 Run date: 2026-08-14
 
 Run ID: `materials_and_light_v1`
-Status: **private candidate; human approval and metadata-publication decisions remain open**
+Status: **private Pages candidate; human adjudication, sanitized-only publication, and AGPL are approved**
 
 ## Experimental question
 
@@ -96,9 +96,9 @@ For CEF:
 
 ## Publication gates still open
 
-- Decide whether to publish raw PNG metadata or only sanitized structured provenance.
+- Sanitized-only structured provenance is approved; raw Forge/A1111 metadata remains private.
 - The portfolio report now presents approved human adjudication alongside machine scores.
 - Verify the final static report in a clean hosted-path simulation.
 - Approve the contact sheet, report, machine-readable artifacts, code license, and public identity together.
 
-No demo artifact should be pushed or hosted until those gates are closed.
+No demo artifact should be made public until the final sanitized bundle and hosted-path rendering are approved.

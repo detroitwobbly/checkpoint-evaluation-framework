@@ -1,0 +1,250 @@
+{
+  "checkpoints": [
+    {
+      "display_name": "Stable Diffusion XL Base 1.0",
+      "id": "checkpoint_a",
+      "sha256": "31e35c80fc4829d14f90153f4c74cd59c90b779f6afe05a74cd6120b893f7e5b"
+    },
+    {
+      "display_name": "RealVisXL V5.0 FP16 (baked VAE)",
+      "id": "checkpoint_b",
+      "sha256": "6a35a7855770ae9820a3c931d4964c3817b6d9e3c6f9c4dabb5b3a94e5643b80"
+    }
+  ],
+  "defaults": {
+    "batch_size": 1,
+    "cfg_scale": 5.0,
+    "height": 768,
+    "n_iter": 1,
+    "negative_prompt": "people, person, face, hands, text, logo, watermark, duplicate object, blurry, low quality",
+    "sampler_name": "DPM++ 2M",
+    "scheduler": "Karras",
+    "seed": 41001,
+    "steps": 28,
+    "width": 768
+  },
+  "lora_profiles": [
+    {
+      "id": "none",
+      "loras": []
+    }
+  ],
+  "metadata": {
+    "checkpoint_provenance": [
+      {
+        "creator": "Stability AI",
+        "display_name": "Stable Diffusion XL Base 1.0",
+        "id": "checkpoint_a",
+        "license": "CreativeML Open RAIL++-M",
+        "sha256": "31e35c80fc4829d14f90153f4c74cd59c90b779f6afe05a74cd6120b893f7e5b",
+        "source": "https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0"
+      },
+      {
+        "creator": "SG161222",
+        "display_name": "RealVisXL V5.0 FP16 (baked VAE)",
+        "id": "checkpoint_b",
+        "license": "OpenRAIL++ (as declared by the creator model card)",
+        "sha256": "6a35a7855770ae9820a3c931d4964c3817b6d9e3c6f9c4dabb5b3a94e5643b80",
+        "source": "https://huggingface.co/SG161222/RealVisXL_V5.0"
+      }
+    ],
+    "evaluation_cautions": [
+      "Image-left/image-right judgments require human review because vision-language models may use directional terminology or spatial evidence inconsistently."
+    ],
+    "intended_scope": "portfolio demonstration",
+    "method": "fixed-seed controlled counterfactuals",
+    "notes": "Human adjudication approved on 2026-08-14. Public images and evidence use the sanitized-v1 publication profile.",
+    "public_safe": true,
+    "research_question": "How reliably do two SDXL checkpoints follow controlled changes to material, image-relative light direction, and object count?"
+  },
+  "name": "Controlled Materials, Lighting, and Count Demo",
+  "suite_id": "CONTROLLED_MATERIALS_AND_LIGHT_V1",
+  "tests": [
+    {
+      "category": "material_counterfactual",
+      "criteria": [
+        {
+          "description": "the lamp reads as polished reflective chrome rather than wood, ceramic, or matte plastic",
+          "id": "material"
+        },
+        {
+          "description": "exactly one primary lamp is present",
+          "id": "object_count"
+        },
+        {
+          "description": "the lamp is centered against a plain studio background",
+          "id": "composition"
+        },
+        {
+          "description": "reflections remain coherent and do not fragment the object",
+          "id": "artifact_check"
+        }
+      ],
+      "id": "MAT_01_CHROME",
+      "metadata": {},
+      "name": "Polished Chrome Material",
+      "prompt": "one simple geometric desk lamp made entirely of polished chrome, centered on a plain gray studio surface, soft neutral product photography",
+      "purpose": "Test whether the renderer expresses polished reflective metal while composition and seed remain controlled against MAT_02.",
+      "reference_images": [],
+      "reference_instruction": "",
+      "settings": {
+        "seed": 41001
+      }
+    },
+    {
+      "category": "material_counterfactual",
+      "criteria": [
+        {
+          "description": "the lamp reads as unfinished pale wood with visible grain rather than metal or ceramic",
+          "id": "material"
+        },
+        {
+          "description": "exactly one primary lamp is present",
+          "id": "object_count"
+        },
+        {
+          "description": "the lamp is centered against a plain studio background",
+          "id": "composition"
+        },
+        {
+          "description": "wood grain follows the object surfaces coherently",
+          "id": "artifact_check"
+        }
+      ],
+      "id": "MAT_02_WOOD",
+      "metadata": {},
+      "name": "Unfinished Wood Material",
+      "prompt": "one simple geometric desk lamp made entirely of unfinished pale wood, centered on a plain gray studio surface, soft neutral product photography",
+      "purpose": "Test whether a material-only instruction changes the surface while preserving the controlled composition used by MAT_01.",
+      "reference_images": [],
+      "reference_instruction": "",
+      "settings": {
+        "seed": 41001
+      }
+    },
+    {
+      "category": "lighting_counterfactual",
+      "criteria": [
+        {
+          "description": "the dominant illumination originates from image-left",
+          "id": "light_direction"
+        },
+        {
+          "description": "the main cast shadow extends toward image-right",
+          "id": "shadow_direction"
+        },
+        {
+          "description": "exactly one primary vase is present",
+          "id": "object_count"
+        },
+        {
+          "description": "the vase reads as matte white ceramic",
+          "id": "material"
+        }
+      ],
+      "id": "LIGHT_01_LEFT",
+      "metadata": {},
+      "name": "Directional Light from Left",
+      "prompt": "one matte white ceramic vase centered on a dark neutral tabletop, a single hard studio light shining from the left, visible shadow cast to the right, product photograph",
+      "purpose": "Test directional-light compliance against an otherwise identical right-light condition.",
+      "reference_images": [],
+      "reference_instruction": "",
+      "settings": {
+        "seed": 41002
+      }
+    },
+    {
+      "category": "lighting_counterfactual",
+      "criteria": [
+        {
+          "description": "the dominant illumination originates from image-right",
+          "id": "light_direction"
+        },
+        {
+          "description": "the main cast shadow extends toward image-left",
+          "id": "shadow_direction"
+        },
+        {
+          "description": "exactly one primary vase is present",
+          "id": "object_count"
+        },
+        {
+          "description": "the vase reads as matte white ceramic",
+          "id": "material"
+        }
+      ],
+      "id": "LIGHT_02_RIGHT",
+      "metadata": {},
+      "name": "Directional Light from Right",
+      "prompt": "one matte white ceramic vase centered on a dark neutral tabletop, a single hard studio light shining from the right, visible shadow cast to the left, product photograph",
+      "purpose": "Test whether reversing only the lighting instruction reverses visible illumination and shadow direction.",
+      "reference_images": [],
+      "reference_instruction": "",
+      "settings": {
+        "seed": 41002
+      }
+    },
+    {
+      "category": "count_counterfactual",
+      "criteria": [
+        {
+          "description": "exactly one cube is visible",
+          "id": "count"
+        },
+        {
+          "description": "the cube reads as translucent blue glass",
+          "id": "material"
+        },
+        {
+          "description": "no fragments or secondary objects resemble additional cubes",
+          "id": "separation"
+        },
+        {
+          "description": "the tabletop and background remain clean and neutral",
+          "id": "background"
+        }
+      ],
+      "id": "COUNT_01_ONE",
+      "metadata": {},
+      "name": "One Object",
+      "prompt": "exactly one translucent blue glass cube arranged on a clean white tabletop, centered product photograph, no other objects",
+      "purpose": "Establish the one-object control for the matched three-object condition.",
+      "reference_images": [],
+      "reference_instruction": "",
+      "settings": {
+        "seed": 41003
+      }
+    },
+    {
+      "category": "count_counterfactual",
+      "criteria": [
+        {
+          "description": "exactly three cubes are visible",
+          "id": "count"
+        },
+        {
+          "description": "all three cubes read as translucent blue glass",
+          "id": "material"
+        },
+        {
+          "description": "the cubes are distinct and are not fused together",
+          "id": "separation"
+        },
+        {
+          "description": "the tabletop and background remain clean and neutral",
+          "id": "background"
+        }
+      ],
+      "id": "COUNT_02_THREE",
+      "metadata": {},
+      "name": "Three Objects",
+      "prompt": "exactly three separate translucent blue glass cubes arranged in a row on a clean white tabletop, centered product photograph, no other objects",
+      "purpose": "Test whether changing only requested count produces three distinct objects without fusion or extras.",
+      "reference_images": [],
+      "reference_instruction": "",
+      "settings": {
+        "seed": 41003
+      }
+    }
+  ]
+}

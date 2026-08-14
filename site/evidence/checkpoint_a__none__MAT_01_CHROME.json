@@ -1,0 +1,126 @@
+{
+  "artifact_type": "cef_public_image_evidence",
+  "cell_id": "checkpoint_a__none__MAT_01_CHROME",
+  "checkpoint": {
+    "display_name": "Stable Diffusion XL Base 1.0",
+    "id": "checkpoint_a",
+    "sha256": "31e35c80fc4829d14f90153f4c74cd59c90b779f6afe05a74cd6120b893f7e5b"
+  },
+  "generation": {
+    "forge_model_hash": "31e35c80fc",
+    "request": {
+      "batch_size": 1,
+      "cfg_scale": 5.0,
+      "height": 768,
+      "n_iter": 1,
+      "negative_prompt": "people, person, face, hands, text, logo, watermark, duplicate object, blurry, low quality",
+      "prompt": "one simple geometric desk lamp made entirely of polished chrome, centered on a plain gray studio surface, soft neutral product photography",
+      "sampler_name": "DPM++ 2M",
+      "save_images": false,
+      "scheduler": "Karras",
+      "seed": 41001,
+      "steps": 28,
+      "width": 768
+    },
+    "settings": {
+      "batch_size": 1,
+      "cfg_scale": 5.0,
+      "height": 768,
+      "n_iter": 1,
+      "negative_prompt": "people, person, face, hands, text, logo, watermark, duplicate object, blurry, low quality",
+      "sampler_name": "DPM++ 2M",
+      "scheduler": "Karras",
+      "seed": 41001,
+      "steps": 28,
+      "width": 768
+    }
+  },
+  "human_adjudication": {
+    "agreement": true,
+    "machine_outcome": "fail",
+    "observation": "The base and stem are reflective chrome, but the glowing cream globe is not chrome; the central material instruction is contradicted.",
+    "outcome": "fail",
+    "safety_or_rights_flags": []
+  },
+  "machine_evaluation": {
+    "criteria_scores": [
+      {
+        "confidence": 0.8,
+        "criterion": "the lamp reads as polished reflective chrome rather than wood, ceramic, or matte plastic",
+        "criterion_id": "material",
+        "evidence": "The metal base, stem, and arm exhibit strong specular highlights and clear reflections consistent with polished chrome. However, the lampshade is a translucent, diffused white material (likely frosted glass or plastic), which contradicts 'entirely of polished chrome'. The chrome components are visually convincing.",
+        "score": 6
+      },
+      {
+        "confidence": 1.0,
+        "criterion": "exactly one primary lamp is present",
+        "criterion_id": "object_count",
+        "evidence": "Only a single desk lamp is visible in the frame, with no duplicates or extraneous objects.",
+        "score": 10
+      },
+      {
+        "confidence": 0.9,
+        "criterion": "the lamp is centered against a plain studio background",
+        "criterion_id": "composition",
+        "evidence": "The lamp is positioned near the center of the frame, with a uniform gray studio background and a light-colored surface beneath it. The composition is balanced.",
+        "score": 8
+      },
+      {
+        "confidence": 0.85,
+        "criterion": "reflections remain coherent and do not fragment the object",
+        "criterion_id": "artifact_check",
+        "evidence": "Reflections on the chrome surfaces are generally coherent, showing smooth transitions and clear highlights. However, some areas of the curved arm show slight distortion or softening in reflection continuity, suggesting minor rendering artifacts.",
+        "score": 7
+      }
+    ],
+    "evaluator_confidence": 0.97,
+    "failures": [
+      "Lampshade material contradicts prompt (not chrome)"
+    ],
+    "intent_failure_check": {
+      "confidence": 0.95,
+      "explanation": "The prompt explicitly requires the lamp to be 'made entirely of polished chrome'. The presence of a non-chrome, translucent lampshade constitutes a direct contradiction. While the metal components are convincing, this single failure prevents full compliance with the test's core requirement.",
+      "failure_modes": [
+        "prompt_literalism",
+        "intent_conflict"
+      ],
+      "passes_human_intent": false
+    },
+    "overall_score": 5,
+    "pass_fail": "fail",
+    "prompt_adherence": "The image satisfies most criteria except for material fidelity: it contains one lamp, is well-composed, and has largely coherent reflections. However, the lampshade is not chrome, which violates the 'entirely of polished chrome' requirement.",
+    "rubric_scores": {
+      "anatomy": null,
+      "artifact_severity": 0.2,
+      "composition": 8,
+      "environment_quality": 8,
+      "face_quality": null,
+      "foot_quality": null,
+      "hand_quality": null,
+      "identity_retention": null,
+      "lora_integration": null,
+      "object_interaction": null,
+      "prompt_adherence": 6,
+      "style_adherence": 7
+    },
+    "semantic_observations": [],
+    "visual_summary": "The image shows a single desk lamp with a polished chrome base and stem against a plain gray background. The lampshade is translucent white, which contradicts the prompt's requirement for 'entirely of polished chrome'. Reflections on the metal are mostly coherent but show minor artifacts. The composition is centered.",
+    "warnings": [
+      "The lampshade is a non-chrome material, which may be an artifact of the model's interpretation or a failure to fully respect the prompt."
+    ],
+    "wildcard_observations": []
+  },
+  "private_artifact_anchors": {
+    "generation_json_sha256": "36f286887425be26ecff56218fbd1a5730340945ad0d1d82575d27782821a768",
+    "original_png_sha256": "aa9bc9275e1810b3653471e8ad816a2f3329a260b6654f810ee76a4512ae941d",
+    "request_json_sha256": "ff4ccb5ba3f68de893167d6f4ef136bb14e93f8e7d621d99e406cdcf72574a90",
+    "run_manifest_sha256": "fc904fc44ce28a50dadc8157e51d12cd312a8a12fe2851d8545fc78d6343fc83"
+  },
+  "publication_profile": "sanitized-v1",
+  "run_id": "materials_and_light_v1",
+  "schema_version": "1.0",
+  "test": {
+    "id": "MAT_01_CHROME",
+    "name": "Polished Chrome Material"
+  }
+}

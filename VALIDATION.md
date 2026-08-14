@@ -12,7 +12,7 @@ Command:
 python -m pytest -q
 ```
 
-Result: `56 passed`.
+Result: `57 passed`.
 
 The suite covers manifest/model handling, request generation, checkpoint-hash selection, resume behavior, manifest-drift refusal, incomplete-cell recovery, analysis response parsing, provenance extraction, reporting, evaluator comparison, observer qualification, semantic observers, dossiers, pipeline-review output, and release sanitation.
 
@@ -60,7 +60,19 @@ Verified on 2026-08-14:
 - top-level evaluator model, endpoint, settings, and directive-hash provenance;
 - HTML, JSON, contact-sheet, and pipeline-review artifact generation.
 
-See [Demo 1 run record](docs/DEMO_1_RUN_RECORD.md). Generated artifacts remain ignored and private pending human approval.
+See [Demo 1 run record](docs/DEMO_1_RUN_RECORD.md). Generated artifacts remain ignored and private pending final sanitized-bundle review and Pages activation.
+
+## Sanitized public-demo export
+
+The approved run was exported into a private Pages candidate with 12 losslessly re-encoded PNGs. For each image, the exporter:
+
+- preserves and records the private source SHA-256;
+- removes the raw Forge/A1111 `parameters` chunk;
+- adds only the versioned CEF identity-and-hash envelope;
+- verifies pixel equivalence after re-encoding;
+- records both hashes and the exact transformation in `artifact_index.json`.
+
+The Demo 1 raw Forge parameter keys retained privately are `Steps`, `Sampler`, `Schedule type`, `CFG scale`, `Seed`, `Size`, `Model hash`, `Model`, `RNG`, and `Version`. None of their values are copied into public PNG metadata.
 
 ## Not yet verified
 

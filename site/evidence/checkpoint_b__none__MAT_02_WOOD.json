@@ -1,0 +1,127 @@
+{
+  "artifact_type": "cef_public_image_evidence",
+  "cell_id": "checkpoint_b__none__MAT_02_WOOD",
+  "checkpoint": {
+    "display_name": "RealVisXL V5.0 FP16 (baked VAE)",
+    "id": "checkpoint_b",
+    "sha256": "6a35a7855770ae9820a3c931d4964c3817b6d9e3c6f9c4dabb5b3a94e5643b80"
+  },
+  "generation": {
+    "forge_model_hash": "6a35a78557",
+    "request": {
+      "batch_size": 1,
+      "cfg_scale": 5.0,
+      "height": 768,
+      "n_iter": 1,
+      "negative_prompt": "people, person, face, hands, text, logo, watermark, duplicate object, blurry, low quality",
+      "prompt": "one simple geometric desk lamp made entirely of unfinished pale wood, centered on a plain gray studio surface, soft neutral product photography",
+      "sampler_name": "DPM++ 2M",
+      "save_images": false,
+      "scheduler": "Karras",
+      "seed": 41001,
+      "steps": 28,
+      "width": 768
+    },
+    "settings": {
+      "batch_size": 1,
+      "cfg_scale": 5.0,
+      "height": 768,
+      "n_iter": 1,
+      "negative_prompt": "people, person, face, hands, text, logo, watermark, duplicate object, blurry, low quality",
+      "sampler_name": "DPM++ 2M",
+      "scheduler": "Karras",
+      "seed": 41001,
+      "steps": 28,
+      "width": 768
+    }
+  },
+  "human_adjudication": {
+    "agreement": true,
+    "machine_outcome": "fail",
+    "observation": "The base and supports read as pale wood, but the cylindrical fabric shade is not wood; the central material instruction is contradicted.",
+    "outcome": "fail",
+    "safety_or_rights_flags": []
+  },
+  "machine_evaluation": {
+    "criteria_scores": [
+      {
+        "confidence": 0.95,
+        "criterion": "the lamp reads as unfinished pale wood with visible grain rather than metal or ceramic",
+        "criterion_id": "material",
+        "evidence": "The base and support structure are clearly rendered as light-colored, unfinished wood with visible grain patterns. The cylindrical shade is fabric-like (off-white, matte), not wood. This contradicts the prompt's requirement that 'the lamp' be made entirely of wood.",
+        "score": 8
+      },
+      {
+        "confidence": 1.0,
+        "criterion": "exactly one primary lamp is present",
+        "criterion_id": "object_count",
+        "evidence": "There is exactly one lamp assembly visible in the image, including its base and shade.",
+        "score": 10
+      },
+      {
+        "confidence": 0.98,
+        "criterion": "the lamp is centered against a plain studio background",
+        "criterion_id": "composition",
+        "evidence": "The lamp is positioned near the center of the frame, with a uniform gray studio background and a light-colored surface beneath it.",
+        "score": 9
+      },
+      {
+        "confidence": 0.85,
+        "criterion": "wood grain follows the object surfaces coherently",
+        "criterion_id": "artifact_check",
+        "evidence": "Wood grain is visible on the base and support blocks, following their planar surfaces. However, the grain pattern appears somewhat artificial or stylized in places (especially on the vertical supports), lacking natural continuity across all faces.",
+        "score": 7
+      }
+    ],
+    "evaluator_confidence": 0.98,
+    "failures": [
+      "Shade material contradicts prompt ('entirely of unfinished pale wood')",
+      "Wood grain coherence is inconsistent in some areas"
+    ],
+    "intent_failure_check": {
+      "confidence": 0.98,
+      "explanation": "The prompt explicitly requires the lamp to be 'made entirely of unfinished pale wood'. The presence of a fabric shade constitutes a material contradiction, even if the wooden base is accurate. This violates the literal intent of the prompt.",
+      "failure_modes": [
+        "prompt_literalism",
+        "intent_conflict"
+      ],
+      "passes_human_intent": false
+    },
+    "overall_score": 7,
+    "pass_fail": "fail",
+    "prompt_adherence": "Partially compliant: The lamp\u2019s structure is correctly rendered as wood, and composition is accurate. However, the shade violates the 'entirely wood' specification.",
+    "rubric_scores": {
+      "anatomy": null,
+      "artifact_severity": 0.2,
+      "composition": 9,
+      "environment_quality": 9,
+      "face_quality": null,
+      "foot_quality": null,
+      "hand_quality": null,
+      "identity_retention": null,
+      "lora_integration": null,
+      "object_interaction": null,
+      "prompt_adherence": 7,
+      "style_adherence": 8
+    },
+    "semantic_observations": [],
+    "visual_summary": "The image shows a single lamp with a fabric shade and wooden base/supports against a plain gray background. The wood material is visually convincing but not fully consistent with the prompt's 'entirely of unfinished pale wood' requirement due to the non-wood shade.",
+    "warnings": [
+      "The shade appears to be fabric, not wood. This is a direct contradiction of the prompt\u2019s material requirement."
+    ],
+    "wildcard_observations": []
+  },
+  "private_artifact_anchors": {
+    "generation_json_sha256": "0f81a5c7c9e9630e3f647e7569429b32819b98f6b97f00de2482952f461b7beb",
+    "original_png_sha256": "7efdcb1e677a1bbe52576658d1d170a84b0da842b2704411a2aecf3f767e2c2d",
+    "request_json_sha256": "c8f67d45ef018a7954c211f4322558ca44240c9917b669ee1c2a3006d6cdf6d0",
+    "run_manifest_sha256": "fc904fc44ce28a50dadc8157e51d12cd312a8a12fe2851d8545fc78d6343fc83"
+  },
+  "publication_profile": "sanitized-v1",
+  "run_id": "materials_and_light_v1",
+  "schema_version": "1.0",
+  "test": {
+    "id": "MAT_02_WOOD",
+    "name": "Unfinished Wood Material"
+  }
+}

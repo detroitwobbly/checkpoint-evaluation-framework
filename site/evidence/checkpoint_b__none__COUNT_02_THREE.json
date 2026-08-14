@@ -1,0 +1,119 @@
+{
+  "artifact_type": "cef_public_image_evidence",
+  "cell_id": "checkpoint_b__none__COUNT_02_THREE",
+  "checkpoint": {
+    "display_name": "RealVisXL V5.0 FP16 (baked VAE)",
+    "id": "checkpoint_b",
+    "sha256": "6a35a7855770ae9820a3c931d4964c3817b6d9e3c6f9c4dabb5b3a94e5643b80"
+  },
+  "generation": {
+    "forge_model_hash": "6a35a78557",
+    "request": {
+      "batch_size": 1,
+      "cfg_scale": 5.0,
+      "height": 768,
+      "n_iter": 1,
+      "negative_prompt": "people, person, face, hands, text, logo, watermark, duplicate object, blurry, low quality",
+      "prompt": "exactly three separate translucent blue glass cubes arranged in a row on a clean white tabletop, centered product photograph, no other objects",
+      "sampler_name": "DPM++ 2M",
+      "save_images": false,
+      "scheduler": "Karras",
+      "seed": 41003,
+      "steps": 28,
+      "width": 768
+    },
+    "settings": {
+      "batch_size": 1,
+      "cfg_scale": 5.0,
+      "height": 768,
+      "n_iter": 1,
+      "negative_prompt": "people, person, face, hands, text, logo, watermark, duplicate object, blurry, low quality",
+      "sampler_name": "DPM++ 2M",
+      "scheduler": "Karras",
+      "seed": 41003,
+      "steps": 28,
+      "width": 768
+    }
+  },
+  "human_adjudication": {
+    "agreement": true,
+    "machine_outcome": "pass",
+    "observation": "Exactly three distinct translucent blue cubes are visible on a clean neutral surface.",
+    "outcome": "pass",
+    "safety_or_rights_flags": []
+  },
+  "machine_evaluation": {
+    "criteria_scores": [
+      {
+        "confidence": 1.0,
+        "criterion": "exactly three cubes are visible",
+        "criterion_id": "count",
+        "evidence": "Three distinct cube-shaped objects are clearly visible, arranged in a row from left to right. No additional or missing cubes are present.",
+        "score": 10
+      },
+      {
+        "confidence": 1.0,
+        "criterion": "all three cubes read as translucent blue glass",
+        "criterion_id": "material",
+        "evidence": "All three objects exhibit a consistent translucent blue coloration with visible internal refraction and surface reflections characteristic of glass. The edges show slight thickness variation typical of molded or blown glass.",
+        "score": 10
+      },
+      {
+        "confidence": 1.0,
+        "criterion": "the cubes are distinct and are not fused together",
+        "criterion_id": "separation",
+        "evidence": "The three cubes maintain clear, unambiguous boundaries with no visible fusion or merging of edges. Each cube casts a separate shadow on the surface, confirming their individuality.",
+        "score": 10
+      },
+      {
+        "confidence": 1.0,
+        "criterion": "the tabletop and background remain clean and neutral",
+        "criterion_id": "background",
+        "evidence": "The entire scene is set on a uniformly white, reflective surface with no visible clutter or distracting elements. The background is plain white, consistent with a studio product shot.",
+        "score": 10
+      }
+    ],
+    "evaluator_confidence": 1.0,
+    "failures": [],
+    "intent_failure_check": {
+      "confidence": 1.0,
+      "explanation": "The image satisfies the literal, visual requirements of the prompt without ambiguity or contradiction.",
+      "failure_modes": [],
+      "passes_human_intent": true
+    },
+    "overall_score": 9.5,
+    "pass_fail": "pass",
+    "prompt_adherence": "Fully compliant. The prompt's core requirements \u2014 count, material, separation, and background \u2014 are all visually satisfied with no evidence of failure modes such as fused objects, text, logos, or extraneous elements.",
+    "rubric_scores": {
+      "anatomy": 10,
+      "artifact_severity": 0,
+      "composition": 10,
+      "environment_quality": 10,
+      "face_quality": null,
+      "foot_quality": null,
+      "hand_quality": null,
+      "identity_retention": 10,
+      "lora_integration": 10,
+      "object_interaction": 10,
+      "prompt_adherence": 10,
+      "style_adherence": 10
+    },
+    "semantic_observations": [],
+    "visual_summary": "The image displays three distinct translucent blue glass cubes arranged in a row on a clean white tabletop. All requested properties are clearly and accurately rendered without contradiction or artifact.",
+    "warnings": [],
+    "wildcard_observations": []
+  },
+  "private_artifact_anchors": {
+    "generation_json_sha256": "bd121aa4cb8ee226037b18822f1b894722cffd08665ce36db4cf571152b6237f",
+    "original_png_sha256": "e166b7071a3e236f8fa6bedea149d23ef1fbbcd3fa276ee1f4dd8091895b43b0",
+    "request_json_sha256": "e3a5a9b1b941af25c035d60256132b15653e7c506d0a1f1174dd06f432d1293d",
+    "run_manifest_sha256": "fc904fc44ce28a50dadc8157e51d12cd312a8a12fe2851d8545fc78d6343fc83"
+  },
+  "publication_profile": "sanitized-v1",
+  "run_id": "materials_and_light_v1",
+  "schema_version": "1.0",
+  "test": {
+    "id": "COUNT_02_THREE",
+    "name": "Three Objects"
+  }
+}

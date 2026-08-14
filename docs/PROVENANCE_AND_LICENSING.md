@@ -14,7 +14,7 @@ Candidate research and the recommended baseline-versus-fine-tune pair are docume
 - [ ] Inspect every generated image for people, signatures, logos, watermarks, copyrighted characters, and unsafe surprises.
 - [x] Record the exact checkpoint hashes used in the run.
 - [x] Record the Forge/Forge-Neo version and relevant runtime settings.
-- [ ] Decide whether generated PNG metadata should be retained publicly or replaced with a sanitized structured provenance record.
+- [x] Publish sanitized structured provenance and a minimal CEF PNG envelope; retain raw Forge/A1111 PNG metadata only in the private archive.
 - [x] Obtain rights for every reference image, or use no reference images in the first demo; Demo 1 uses none.
 - [ ] Approve the final contact sheet, report, and machine-readable artifacts together.
 
@@ -23,7 +23,7 @@ Candidate research and the recommended baseline-versus-fine-tune pair are docume
 - [x] Repository URLs use the final GitHub account: `detroitwobbly`.
 - [ ] Decide the author/maintainer name and contact metadata to publish.
 - [ ] Decide whether to add a citation file and, if so, which public identity it should use.
-- [ ] Confirm that AGPL-3.0-or-later remains the desired code license.
+- [x] AGPL-3.0-or-later confirmed by Alex on 2026-08-14.
 
 ## Excluded by default
 

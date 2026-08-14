@@ -1,0 +1,119 @@
+{
+  "artifact_type": "cef_public_image_evidence",
+  "cell_id": "checkpoint_a__none__LIGHT_01_LEFT",
+  "checkpoint": {
+    "display_name": "Stable Diffusion XL Base 1.0",
+    "id": "checkpoint_a",
+    "sha256": "31e35c80fc4829d14f90153f4c74cd59c90b779f6afe05a74cd6120b893f7e5b"
+  },
+  "generation": {
+    "forge_model_hash": "31e35c80fc",
+    "request": {
+      "batch_size": 1,
+      "cfg_scale": 5.0,
+      "height": 768,
+      "n_iter": 1,
+      "negative_prompt": "people, person, face, hands, text, logo, watermark, duplicate object, blurry, low quality",
+      "prompt": "one matte white ceramic vase centered on a dark neutral tabletop, a single hard studio light shining from the left, visible shadow cast to the right, product photograph",
+      "sampler_name": "DPM++ 2M",
+      "save_images": false,
+      "scheduler": "Karras",
+      "seed": 41002,
+      "steps": 28,
+      "width": 768
+    },
+    "settings": {
+      "batch_size": 1,
+      "cfg_scale": 5.0,
+      "height": 768,
+      "n_iter": 1,
+      "negative_prompt": "people, person, face, hands, text, logo, watermark, duplicate object, blurry, low quality",
+      "sampler_name": "DPM++ 2M",
+      "scheduler": "Karras",
+      "seed": 41002,
+      "steps": 28,
+      "width": 768
+    }
+  },
+  "human_adjudication": {
+    "agreement": true,
+    "machine_outcome": "pass",
+    "observation": "The vase is brighter on image-left and casts its dominant shadow toward image-right.",
+    "outcome": "pass",
+    "safety_or_rights_flags": []
+  },
+  "machine_evaluation": {
+    "criteria_scores": [
+      {
+        "confidence": 1.0,
+        "criterion": "the dominant illumination originates from image-left",
+        "criterion_id": "light_direction",
+        "evidence": "The vase exhibits a clear, soft gradient of light on its left side and a corresponding shadowed right side. The highlight is brightest on the upper-left curve, consistent with a single hard light source from the left.",
+        "score": 10
+      },
+      {
+        "confidence": 1.0,
+        "criterion": "the main cast shadow extends toward image-right",
+        "criterion_id": "shadow_direction",
+        "evidence": "A distinct, soft-edged shadow is visible on the tabletop directly beneath and to the right of the vase\u2019s base, extending horizontally toward the image-right edge.",
+        "score": 10
+      },
+      {
+        "confidence": 1.0,
+        "criterion": "exactly one primary vase is present",
+        "criterion_id": "object_count",
+        "evidence": "Only a single, centrally located vase is visible in the frame. No duplicates, partial objects, or background elements are present that could be mistaken for additional vases.",
+        "score": 10
+      },
+      {
+        "confidence": 0.85,
+        "criterion": "the vase reads as matte white ceramic",
+        "criterion_id": "material",
+        "evidence": "The vase is uniformly white with a non-reflective, diffuse surface that lacks specular highlights or glossiness consistent with matte ceramic. However, the texture appears slightly too smooth and uniform for real ceramic; there are no visible pores, glaze variations, or subtle imperfections typical of handmade ceramic.",
+        "score": 9
+      }
+    ],
+    "evaluator_confidence": 1.0,
+    "failures": [],
+    "intent_failure_check": {
+      "confidence": 0.95,
+      "explanation": "The image satisfies the prompt\u2019s core requirements: directional lighting, shadow direction, single object, and matte white appearance. The material realism is slightly stylized but does not contradict the prompt's intent to depict a clean product photograph.",
+      "failure_modes": [],
+      "passes_human_intent": true
+    },
+    "overall_score": 9,
+    "pass_fail": "pass",
+    "prompt_adherence": "Highly compliant with prompt requirements for light direction and object count. Minor deviation in material realism.",
+    "rubric_scores": {
+      "anatomy": 10,
+      "artifact_severity": 0,
+      "composition": 10,
+      "environment_quality": 10,
+      "face_quality": null,
+      "foot_quality": null,
+      "hand_quality": null,
+      "identity_retention": null,
+      "lora_integration": null,
+      "object_interaction": 10,
+      "prompt_adherence": 9,
+      "style_adherence": 9.5
+    },
+    "semantic_observations": [],
+    "visual_summary": "The image shows a single white vase on a neutral surface under directional lighting from the left, casting a shadow to the right. The material appears matte but lacks realistic ceramic texture. No artifacts, text, logos, or people are present.",
+    "warnings": [],
+    "wildcard_observations": []
+  },
+  "private_artifact_anchors": {
+    "generation_json_sha256": "56cf324df4a440bb0f2e2c3ce515821276ed1e2d871a481e8ba472f2ea139ae2",
+    "original_png_sha256": "1fd1a99de527a903bb7858b5baf6170436d1e6e44d5727ed1997b9c9f7dd939c",
+    "request_json_sha256": "9c5bf032e0838d5c3823c259a6c72516c1738bc32d7157b35d2e1bc8f74df19b",
+    "run_manifest_sha256": "fc904fc44ce28a50dadc8157e51d12cd312a8a12fe2851d8545fc78d6343fc83"
+  },
+  "publication_profile": "sanitized-v1",
+  "run_id": "materials_and_light_v1",
+  "schema_version": "1.0",
+  "test": {
+    "id": "LIGHT_01_LEFT",
+    "name": "Directional Light from Left"
+  }
+}

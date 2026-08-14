@@ -1,0 +1,352 @@
+{
+  "artifact_count": 12,
+  "artifact_type": "cef_public_artifact_index",
+  "artifacts": [
+    {
+      "cell_id": "checkpoint_a__none__MAT_01_CHROME",
+      "embedded_png_keys": [
+        "cef_schema_version",
+        "cef_publication_profile",
+        "cef_run_id",
+        "cef_cell_id",
+        "cef_checkpoint_id",
+        "cef_test_id",
+        "cef_manifest_sha256",
+        "cef_evidence_sha256",
+        "cef_original_png_sha256"
+      ],
+      "evidence": "evidence/checkpoint_a__none__MAT_01_CHROME.json",
+      "evidence_sha256": "d2f2dba2f4d58900840be5c53d96be17584f551c7d24fa7a6ad00fdcd064ebee",
+      "image": "assets/images/checkpoint_a__none__MAT_01_CHROME.png",
+      "image_sha256": "5e0bcfa5aafc43ad0c1e26ce71bc2cc63957ecdd2291563413944cbd498c8a9c",
+      "original_png_sha256": "aa9bc9275e1810b3653471e8ad816a2f3329a260b6654f810ee76a4512ae941d",
+      "pixel_equivalent": true,
+      "transformation": {
+        "cef_envelope_added": true,
+        "container_bytes_modified": true,
+        "decode": "lossless",
+        "encode": "lossless PNG re-encode",
+        "pixel_content_modified": false,
+        "source_metadata_removed": true
+      }
+    },
+    {
+      "cell_id": "checkpoint_a__none__MAT_02_WOOD",
+      "embedded_png_keys": [
+        "cef_schema_version",
+        "cef_publication_profile",
+        "cef_run_id",
+        "cef_cell_id",
+        "cef_checkpoint_id",
+        "cef_test_id",
+        "cef_manifest_sha256",
+        "cef_evidence_sha256",
+        "cef_original_png_sha256"
+      ],
+      "evidence": "evidence/checkpoint_a__none__MAT_02_WOOD.json",
+      "evidence_sha256": "04fab540bf7e4d5e9865ff48ea6497406f8d007094e9a26bdeb2311bf8009b83",
+      "image": "assets/images/checkpoint_a__none__MAT_02_WOOD.png",
+      "image_sha256": "bce7dd635e047fde08aedba54298378d526cdd637a786ef4303fca0d911a7fcb",
+      "original_png_sha256": "4c9fc09bd9d84c2ceb0aba5716e37fc890dcfff111a9784cd4c19af0da4ea29a",
+      "pixel_equivalent": true,
+      "transformation": {
+        "cef_envelope_added": true,
+        "container_bytes_modified": true,
+        "decode": "lossless",
+        "encode": "lossless PNG re-encode",
+        "pixel_content_modified": false,
+        "source_metadata_removed": true
+      }
+    },
+    {
+      "cell_id": "checkpoint_a__none__LIGHT_01_LEFT",
+      "embedded_png_keys": [
+        "cef_schema_version",
+        "cef_publication_profile",
+        "cef_run_id",
+        "cef_cell_id",
+        "cef_checkpoint_id",
+        "cef_test_id",
+        "cef_manifest_sha256",
+        "cef_evidence_sha256",
+        "cef_original_png_sha256"
+      ],
+      "evidence": "evidence/checkpoint_a__none__LIGHT_01_LEFT.json",
+      "evidence_sha256": "e03094a9500e5a662d423f4089745047d70e8da65638cb81ce4130dee26a8f35",
+      "image": "assets/images/checkpoint_a__none__LIGHT_01_LEFT.png",
+      "image_sha256": "0836a8b3fd99ed7dfc03760e0ed913692a0c897b267ca90c395342c09e7c2707",
+      "original_png_sha256": "1fd1a99de527a903bb7858b5baf6170436d1e6e44d5727ed1997b9c9f7dd939c",
+      "pixel_equivalent": true,
+      "transformation": {
+        "cef_envelope_added": true,
+        "container_bytes_modified": true,
+        "decode": "lossless",
+        "encode": "lossless PNG re-encode",
+        "pixel_content_modified": false,
+        "source_metadata_removed": true
+      }
+    },
+    {
+      "cell_id": "checkpoint_a__none__LIGHT_02_RIGHT",
+      "embedded_png_keys": [
+        "cef_schema_version",
+        "cef_publication_profile",
+        "cef_run_id",
+        "cef_cell_id",
+        "cef_checkpoint_id",
+        "cef_test_id",
+        "cef_manifest_sha256",
+        "cef_evidence_sha256",
+        "cef_original_png_sha256"
+      ],
+      "evidence": "evidence/checkpoint_a__none__LIGHT_02_RIGHT.json",
+      "evidence_sha256": "f1c19075608cdfdffb41a1bdc7a9e1875f85a1b3ac1c38719baad08273a1dc77",
+      "image": "assets/images/checkpoint_a__none__LIGHT_02_RIGHT.png",
+      "image_sha256": "5848f3be5527f2291d8301c5806c5e970425581d2da632d5a1f4c83fedbf424e",
+      "original_png_sha256": "51e2d9dbd7e29bebfa36115cd09e40dd1b116de6d829be281ed0ac39ba66ff78",
+      "pixel_equivalent": true,
+      "transformation": {
+        "cef_envelope_added": true,
+        "container_bytes_modified": true,
+        "decode": "lossless",
+        "encode": "lossless PNG re-encode",
+        "pixel_content_modified": false,
+        "source_metadata_removed": true
+      }
+    },
+    {
+      "cell_id": "checkpoint_a__none__COUNT_01_ONE",
+      "embedded_png_keys": [
+        "cef_schema_version",
+        "cef_publication_profile",
+        "cef_run_id",
+        "cef_cell_id",
+        "cef_checkpoint_id",
+        "cef_test_id",
+        "cef_manifest_sha256",
+        "cef_evidence_sha256",
+        "cef_original_png_sha256"
+      ],
+      "evidence": "evidence/checkpoint_a__none__COUNT_01_ONE.json",
+      "evidence_sha256": "7310094baa453a0c792d6fdef45c0bc3bddcffb8734b364b074f88cbc4235c1a",
+      "image": "assets/images/checkpoint_a__none__COUNT_01_ONE.png",
+      "image_sha256": "0b1c2e93238a6875baced75d4704cc8f12672d72e398504d2a217108bcd8dd7f",
+      "original_png_sha256": "8cc88d8ec39a16a14dedabfe075d3c2dbd67123f08b2ea6df78560e9606c5349",
+      "pixel_equivalent": true,
+      "transformation": {
+        "cef_envelope_added": true,
+        "container_bytes_modified": true,
+        "decode": "lossless",
+        "encode": "lossless PNG re-encode",
+        "pixel_content_modified": false,
+        "source_metadata_removed": true
+      }
+    },
+    {
+      "cell_id": "checkpoint_a__none__COUNT_02_THREE",
+      "embedded_png_keys": [
+        "cef_schema_version",
+        "cef_publication_profile",
+        "cef_run_id",
+        "cef_cell_id",
+        "cef_checkpoint_id",
+        "cef_test_id",
+        "cef_manifest_sha256",
+        "cef_evidence_sha256",
+        "cef_original_png_sha256"
+      ],
+      "evidence": "evidence/checkpoint_a__none__COUNT_02_THREE.json",
+      "evidence_sha256": "1e92f09fe0c391a89b13d9244e176a5eb34588029552deebd057aaa6210b64e2",
+      "image": "assets/images/checkpoint_a__none__COUNT_02_THREE.png",
+      "image_sha256": "768d17ee220b83d3461147d210cb78b768c14efbaa2d3700bb74f83c386e939d",
+      "original_png_sha256": "67dbb2ff7e5ecbfca9a8dcbf214cd218ed8e51d27461ea1747a721a40c0e2e04",
+      "pixel_equivalent": true,
+      "transformation": {
+        "cef_envelope_added": true,
+        "container_bytes_modified": true,
+        "decode": "lossless",
+        "encode": "lossless PNG re-encode",
+        "pixel_content_modified": false,
+        "source_metadata_removed": true
+      }
+    },
+    {
+      "cell_id": "checkpoint_b__none__MAT_01_CHROME",
+      "embedded_png_keys": [
+        "cef_schema_version",
+        "cef_publication_profile",
+        "cef_run_id",
+        "cef_cell_id",
+        "cef_checkpoint_id",
+        "cef_test_id",
+        "cef_manifest_sha256",
+        "cef_evidence_sha256",
+        "cef_original_png_sha256"
+      ],
+      "evidence": "evidence/checkpoint_b__none__MAT_01_CHROME.json",
+      "evidence_sha256": "6845af07bbd7e49aa55e1c54e077de37bea0c0269b7293999480ff9da7bfd4e3",
+      "image": "assets/images/checkpoint_b__none__MAT_01_CHROME.png",
+      "image_sha256": "d4824855fd319e37b5a4885359ec9a64e3c600681b846b458ef61c4e8c09c855",
+      "original_png_sha256": "3f0e17ca3113dec011bf0f99d03b8bab307495d365b6fcab03c0d4f1468d8a1b",
+      "pixel_equivalent": true,
+      "transformation": {
+        "cef_envelope_added": true,
+        "container_bytes_modified": true,
+        "decode": "lossless",
+        "encode": "lossless PNG re-encode",
+        "pixel_content_modified": false,
+        "source_metadata_removed": true
+      }
+    },
+    {
+      "cell_id": "checkpoint_b__none__MAT_02_WOOD",
+      "embedded_png_keys": [
+        "cef_schema_version",
+        "cef_publication_profile",
+        "cef_run_id",
+        "cef_cell_id",
+        "cef_checkpoint_id",
+        "cef_test_id",
+        "cef_manifest_sha256",
+        "cef_evidence_sha256",
+        "cef_original_png_sha256"
+      ],
+      "evidence": "evidence/checkpoint_b__none__MAT_02_WOOD.json",
+      "evidence_sha256": "c8b5c5ebab7a18ba800b3fb08277743a5b5af33cad2fed858194764f3036b868",
+      "image": "assets/images/checkpoint_b__none__MAT_02_WOOD.png",
+      "image_sha256": "8b873f3b5e097d9913a37e52f0ed7e8894108bc207268d546c71d8aeb3a344bf",
+      "original_png_sha256": "7efdcb1e677a1bbe52576658d1d170a84b0da842b2704411a2aecf3f767e2c2d",
+      "pixel_equivalent": true,
+      "transformation": {
+        "cef_envelope_added": true,
+        "container_bytes_modified": true,
+        "decode": "lossless",
+        "encode": "lossless PNG re-encode",
+        "pixel_content_modified": false,
+        "source_metadata_removed": true
+      }
+    },
+    {
+      "cell_id": "checkpoint_b__none__LIGHT_01_LEFT",
+      "embedded_png_keys": [
+        "cef_schema_version",
+        "cef_publication_profile",
+        "cef_run_id",
+        "cef_cell_id",
+        "cef_checkpoint_id",
+        "cef_test_id",
+        "cef_manifest_sha256",
+        "cef_evidence_sha256",
+        "cef_original_png_sha256"
+      ],
+      "evidence": "evidence/checkpoint_b__none__LIGHT_01_LEFT.json",
+      "evidence_sha256": "91c393a3ea2eafcf775fe1d17923bfcf99f7e9d7c2f7d61930898782c718301b",
+      "image": "assets/images/checkpoint_b__none__LIGHT_01_LEFT.png",
+      "image_sha256": "b7d290c4ed0e5917fb2310b819c5f69907581aab3381b875c056d610aef214ee",
+      "original_png_sha256": "94d4900f550629d2f025e5974c1a83cdad6e1230b990191fd609626e42dc042e",
+      "pixel_equivalent": true,
+      "transformation": {
+        "cef_envelope_added": true,
+        "container_bytes_modified": true,
+        "decode": "lossless",
+        "encode": "lossless PNG re-encode",
+        "pixel_content_modified": false,
+        "source_metadata_removed": true
+      }
+    },
+    {
+      "cell_id": "checkpoint_b__none__LIGHT_02_RIGHT",
+      "embedded_png_keys": [
+        "cef_schema_version",
+        "cef_publication_profile",
+        "cef_run_id",
+        "cef_cell_id",
+        "cef_checkpoint_id",
+        "cef_test_id",
+        "cef_manifest_sha256",
+        "cef_evidence_sha256",
+        "cef_original_png_sha256"
+      ],
+      "evidence": "evidence/checkpoint_b__none__LIGHT_02_RIGHT.json",
+      "evidence_sha256": "f76ff75ef51fef6f3fef733cb202b6f421967a93a612cacb2526fe1e9454332d",
+      "image": "assets/images/checkpoint_b__none__LIGHT_02_RIGHT.png",
+      "image_sha256": "a8bfda9905c74d299a16d4f938f8be794381fccbcd2bef0ed778b7b2a4dd8285",
+      "original_png_sha256": "bb5e4e22d83746d51ae5c6f4d97fdc309f943a62f61b124ed90356369bc4b835",
+      "pixel_equivalent": true,
+      "transformation": {
+        "cef_envelope_added": true,
+        "container_bytes_modified": true,
+        "decode": "lossless",
+        "encode": "lossless PNG re-encode",
+        "pixel_content_modified": false,
+        "source_metadata_removed": true
+      }
+    },
+    {
+      "cell_id": "checkpoint_b__none__COUNT_01_ONE",
+      "embedded_png_keys": [
+        "cef_schema_version",
+        "cef_publication_profile",
+        "cef_run_id",
+        "cef_cell_id",
+        "cef_checkpoint_id",
+        "cef_test_id",
+        "cef_manifest_sha256",
+        "cef_evidence_sha256",
+        "cef_original_png_sha256"
+      ],
+      "evidence": "evidence/checkpoint_b__none__COUNT_01_ONE.json",
+      "evidence_sha256": "39b798d78bf6fb4b57aa9334c7eac6db778459299730077aab50416e236a5dae",
+      "image": "assets/images/checkpoint_b__none__COUNT_01_ONE.png",
+      "image_sha256": "3f715a5d89188feddf48dc0577041b81741dda8c79fa781a5ae14186852c6e65",
+      "original_png_sha256": "f65ac551d3802e551a38aa17e9ba271a49707166025e937d036db560063dc44a",
+      "pixel_equivalent": true,
+      "transformation": {
+        "cef_envelope_added": true,
+        "container_bytes_modified": true,
+        "decode": "lossless",
+        "encode": "lossless PNG re-encode",
+        "pixel_content_modified": false,
+        "source_metadata_removed": true
+      }
+    },
+    {
+      "cell_id": "checkpoint_b__none__COUNT_02_THREE",
+      "embedded_png_keys": [
+        "cef_schema_version",
+        "cef_publication_profile",
+        "cef_run_id",
+        "cef_cell_id",
+        "cef_checkpoint_id",
+        "cef_test_id",
+        "cef_manifest_sha256",
+        "cef_evidence_sha256",
+        "cef_original_png_sha256"
+      ],
+      "evidence": "evidence/checkpoint_b__none__COUNT_02_THREE.json",
+      "evidence_sha256": "05d0c6514cf8fec16ffae7d92ce5052d824a40181b50a93afc121260ed8eee01",
+      "image": "assets/images/checkpoint_b__none__COUNT_02_THREE.png",
+      "image_sha256": "5b233fe8f6fdb5c1128d884ad6d56cfd93eaf3cf9330b7c42715790d1180efd6",
+      "original_png_sha256": "e166b7071a3e236f8fa6bedea149d23ef1fbbcd3fa276ee1f4dd8091895b43b0",
+      "pixel_equivalent": true,
+      "transformation": {
+        "cef_envelope_added": true,
+        "container_bytes_modified": true,
+        "decode": "lossless",
+        "encode": "lossless PNG re-encode",
+        "pixel_content_modified": false,
+        "source_metadata_removed": true
+      }
+    }
+  ],
+  "publication_profile": "sanitized-v1",
+  "run_id": "materials_and_light_v1",
+  "sanitization_assertions": [
+    "Public PNGs contain only the declared CEF text envelope.",
+    "Raw Forge/A1111 PNG metadata is not included.",
+    "Pixel values match the corresponding private original.",
+    "Private original PNGs are not modified."
+  ],
+  "schema_version": "1.0",
+  "source_manifest_sha256": "fc904fc44ce28a50dadc8157e51d12cd312a8a12fe2851d8545fc78d6343fc83"
+}

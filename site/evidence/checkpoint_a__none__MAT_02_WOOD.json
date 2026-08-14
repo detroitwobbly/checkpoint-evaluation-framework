@@ -1,0 +1,125 @@
+{
+  "artifact_type": "cef_public_image_evidence",
+  "cell_id": "checkpoint_a__none__MAT_02_WOOD",
+  "checkpoint": {
+    "display_name": "Stable Diffusion XL Base 1.0",
+    "id": "checkpoint_a",
+    "sha256": "31e35c80fc4829d14f90153f4c74cd59c90b779f6afe05a74cd6120b893f7e5b"
+  },
+  "generation": {
+    "forge_model_hash": "31e35c80fc",
+    "request": {
+      "batch_size": 1,
+      "cfg_scale": 5.0,
+      "height": 768,
+      "n_iter": 1,
+      "negative_prompt": "people, person, face, hands, text, logo, watermark, duplicate object, blurry, low quality",
+      "prompt": "one simple geometric desk lamp made entirely of unfinished pale wood, centered on a plain gray studio surface, soft neutral product photography",
+      "sampler_name": "DPM++ 2M",
+      "save_images": false,
+      "scheduler": "Karras",
+      "seed": 41001,
+      "steps": 28,
+      "width": 768
+    },
+    "settings": {
+      "batch_size": 1,
+      "cfg_scale": 5.0,
+      "height": 768,
+      "n_iter": 1,
+      "negative_prompt": "people, person, face, hands, text, logo, watermark, duplicate object, blurry, low quality",
+      "sampler_name": "DPM++ 2M",
+      "scheduler": "Karras",
+      "seed": 41001,
+      "steps": 28,
+      "width": 768
+    }
+  },
+  "human_adjudication": {
+    "agreement": false,
+    "machine_outcome": "pass",
+    "observation": "The support and base read as pale wood, but the large glowing globe reads as glass or plastic rather than unfinished wood. Qwen overlooked this contradiction on retry.",
+    "outcome": "fail",
+    "safety_or_rights_flags": []
+  },
+  "machine_evaluation": {
+    "criteria_scores": [
+      {
+        "confidence": 0.95,
+        "criterion": "the lamp reads as unfinished pale wood with visible grain rather than metal or ceramic",
+        "criterion_id": "material",
+        "evidence": "The base and arm are clearly rendered in light-colored, unfinished wood with discernible vertical grain patterns consistent with pale wood. The material does not appear metallic or ceramic.",
+        "score": 8
+      },
+      {
+        "confidence": 1.0,
+        "criterion": "exactly one primary lamp is present",
+        "criterion_id": "object_count",
+        "evidence": "There is only a single, complete desk lamp visible in the frame with no duplicates or partial objects.",
+        "score": 10
+      },
+      {
+        "confidence": 0.95,
+        "criterion": "the lamp is centered against a plain studio background",
+        "criterion_id": "composition",
+        "evidence": "The lamp is positioned near the center of the frame, with a uniform gray gradient background and a neutral white surface beneath it.",
+        "score": 8
+      },
+      {
+        "confidence": 0.85,
+        "criterion": "wood grain follows the object surfaces coherently",
+        "criterion_id": "artifact_check",
+        "evidence": "Wood grain is visible on the base and arm, but appears somewhat inconsistent or artificially mapped in areas where curvature should break it (e.g., along the curved arm). The grain does not flow naturally around the spherical lampshade.",
+        "score": 6
+      }
+    ],
+    "evaluator_confidence": 0.98,
+    "failures": [
+      "Wood grain does not follow curved surfaces coherently, suggesting an artifact in texture mapping."
+    ],
+    "intent_failure_check": {
+      "confidence": 0.98,
+      "explanation": "The prompt asks for an unfinished pale wood lamp, which is visually satisfied except for the grain\u2019s incoherence on curved surfaces. This does not contradict the core intent but represents a minor generative artifact.",
+      "failure_modes": [
+        "intent_conflict"
+      ],
+      "passes_human_intent": true
+    },
+    "overall_score": 7,
+    "pass_fail": "pass",
+    "prompt_adherence": "The prompt requests an unfinished pale wood lamp; this is largely met except for minor inconsistencies in how the wood grain follows curved geometry. The negative prompts are respected: no faces, hands, text, or watermarks are visible.",
+    "rubric_scores": {
+      "anatomy": 10,
+      "artifact_severity": 3,
+      "composition": 8,
+      "environment_quality": 9,
+      "face_quality": null,
+      "foot_quality": null,
+      "hand_quality": null,
+      "identity_retention": null,
+      "lora_integration": null,
+      "object_interaction": 8,
+      "prompt_adherence": 9,
+      "style_adherence": 7
+    },
+    "semantic_observations": [],
+    "visual_summary": "The image displays a single desk lamp with an unfinished pale wood base and arm. The material is convincingly rendered as wood with visible grain, though the grain\u2019s coherence on curved surfaces is questionable. The composition centers the object against a plain studio background. No people, text, or logos are present.",
+    "warnings": [
+      "The wood grain on the curved arm appears artificially applied rather than naturally flowing with the object\u2019s geometry. This may be a generative artifact, not an intentional design choice."
+    ],
+    "wildcard_observations": []
+  },
+  "private_artifact_anchors": {
+    "generation_json_sha256": "53efffb24c01ea1944e0faff495a28d99dfbe1fb559889feb80e91b85bcf3ef7",
+    "original_png_sha256": "4c9fc09bd9d84c2ceb0aba5716e37fc890dcfff111a9784cd4c19af0da4ea29a",
+    "request_json_sha256": "c8f67d45ef018a7954c211f4322558ca44240c9917b669ee1c2a3006d6cdf6d0",
+    "run_manifest_sha256": "fc904fc44ce28a50dadc8157e51d12cd312a8a12fe2851d8545fc78d6343fc83"
+  },
+  "publication_profile": "sanitized-v1",
+  "run_id": "materials_and_light_v1",
+  "schema_version": "1.0",
+  "test": {
+    "id": "MAT_02_WOOD",
+    "name": "Unfinished Wood Material"
+  }
+}
