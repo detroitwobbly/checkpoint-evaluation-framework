@@ -56,7 +56,7 @@ Status legend: `[x]` verified in this curated tree, `[ ]` pending, `BLOCKED` req
 - [x] Add the approved real-demo visual report and contact sheet.
 - [x] Add the hosted report link after GitHub Pages review.
 
-## Provenance and licensing — BLOCKED
+## Provenance and licensing
 
 - [x] Public-demo pair selected: SDXL Base 1.0 and RealVisXL V5.0 FP16.
 - [x] Each checkpoint’s license evidence and output-use terms reviewed.
@@ -68,7 +68,7 @@ Status legend: `[x]` verified in this curated tree, `[ ]` pending, `BLOCKED` req
 - [x] Alex approved and requested publication of the final sanitized public artifact bundle on 2026-08-14.
 - [x] Alex confirmed AGPL-3.0-or-later as the final code license.
 
-## Repository identity and publication — BLOCKED
+## Repository identity and publication
 
 - [x] GitHub owner/account selected: `detroitwobbly`.
 - [x] Repository identity placeholders replaced.
