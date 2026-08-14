@@ -46,7 +46,7 @@ The dry run expands the 2-checkpoint × 1-profile × 6-test manifold into 12 aud
 ## Run a real experiment
 
 1. Start a Forge/A1111-compatible backend with its API enabled.
-2. Replace the placeholder checkpoint titles in the demo manifest with exact API-visible titles.
+2. Verify that the demo manifest's checkpoint hashes match your files. If your backend renamed the files, replace only the API-visible titles.
 3. Probe the backend and generate:
 
 ```powershell

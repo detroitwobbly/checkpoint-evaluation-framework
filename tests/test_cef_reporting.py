@@ -10,10 +10,45 @@ def test_build_report_writes_html_and_json(tmp_path):
         json.dumps({"records": [{"image_paths": ["image.png"]}]}),
         encoding="utf-8",
     )
+    (run_root / "run_manifest.json").write_text(
+        json.dumps(
+            {
+                "suite_id": "CONTROLLED_DEMO",
+                "name": "Controlled Materials Demo",
+                "metadata": {
+                    "method": "fixed-seed counterfactuals",
+                    "intended_scope": "portfolio demonstration",
+                    "research_question": "Can the checkpoints follow the controlled change?",
+                    "evaluation_cautions": ["Directional judgments require human review."],
+                    "checkpoint_provenance": [
+                        {
+                            "id": "ckpt",
+                            "display_name": "Example Checkpoint",
+                            "creator": "Example Creator",
+                            "license": "Example License",
+                            "sha256": "abc123",
+                            "source": "https://example.com/model",
+                        }
+                    ],
+                },
+            }
+        ),
+        encoding="utf-8",
+    )
     (run_root / "analysis_index.json").write_text(
         json.dumps(
             {
                 "run_id": "run_report",
+                "evaluator": {
+                    "client": "QwenEvaluationClient",
+                    "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+                    "model": "vision-model",
+                    "temperature": 0.1,
+                    "max_tokens": 3000,
+                    "response_mode": "json",
+                    "structured_response_requested": True,
+                },
+                "directive": {"name": "evaluator.txt", "sha256": "abc123"},
                 "analyzed_images": 1,
                 "checkpoint_summary": {"ckpt": {"average_score": 8.0, "count": 1}},
                 "test_summary": {"test": {"average_score": 8.0, "count": 1}},
@@ -73,7 +108,15 @@ def test_build_report_writes_html_and_json(tmp_path):
     assert report["generated_images"] == 1
     assert (run_root / "report.json").exists()
     html = (run_root / "report.html").read_text(encoding="utf-8")
-    assert "CEF Report" in html
+    assert "Controlled Materials Demo" in html
+    assert "Experiment at a Glance" in html
+    assert "machine observations, not ground truth" in html
+    assert "Directional judgments require human review." in html
+    assert "Can the checkpoints follow the controlled change?" in html
+    assert "Checkpoint Provenance" in html
+    assert "Example Checkpoint" in html
+    assert "Controlled Manifold: 1 Generated Image" in html
+    assert 'class="contact-sheet"' in html
     assert "visible" in html
     assert "Wildcard Observations" in html
     assert "small edge artifact" in html
@@ -83,3 +126,8 @@ def test_build_report_writes_html_and_json(tmp_path):
     assert "the subject reads as the wrong creature type" in html
     assert "Rubric Averages" in html
     assert "prompt_adherence" in html
+    assert "Evaluator Provenance" in html
+    assert "vision-model" in html
+    assert "evaluator.txt" in html
+    assert report["evaluator"]["model"] == "vision-model"
+    assert report["suite_name"] == "Controlled Materials Demo"

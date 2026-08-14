@@ -6,6 +6,7 @@ from checkpoint_evaluator.analysis_client import _response_format_schema
 from checkpoint_evaluator.analysis import _build_analysis_report
 from checkpoint_evaluator.analysis import _filtered_records
 from checkpoint_evaluator.analysis import _reference_comparison
+from checkpoint_evaluator.analysis_client import QwenEvaluationClient
 
 
 def test_qwen_endpoint_normalization():
@@ -15,6 +16,27 @@ def test_qwen_endpoint_normalization():
         _normalize_chat_completions_endpoint("http://host:1234/v1/chat/completions")
         == "http://host:1234/v1/chat/completions"
     )
+
+
+def test_qwen_provenance_records_settings_without_api_key():
+    client = QwenEvaluationClient(
+        endpoint="http://host:1234",
+        model="vision-model",
+        api_key="example-credential",
+        temperature=0.2,
+        max_tokens=2048,
+        timeout=90,
+    )
+
+    provenance = client.provenance()
+
+    assert provenance["endpoint"] == "http://host:1234/v1/chat/completions"
+    assert provenance["model"] == "vision-model"
+    assert provenance["temperature"] == 0.2
+    assert provenance["max_tokens"] == 2048
+    assert provenance["timeout_seconds"] == 90
+    assert "api_key" not in provenance
+    assert "example-credential" not in json.dumps(provenance)
 
 
 def test_parse_json_content_strips_markdown_fence():

@@ -8,7 +8,7 @@ This 12-cell demonstration compares two user-supplied checkpoints across three m
 
 Each pair keeps its seed and basic composition fixed while changing one primary instruction. This helps separate material, lighting, and count compliance from unrelated prompt or seed changes. Cross-checkpoint comparisons are behavioral observations, not claims about training data or model internals.
 
-The manifest contains placeholder checkpoint titles. Replace them with the exact titles returned by your Forge/A1111-compatible backend. Before publishing generated images, complete the decisions in `docs/PROVENANCE_AND_LICENSING.md`.
+The release manifest records the exact checkpoint titles and SHA-256 values used for Demo 1. If reproducing the experiment with renamed local files, replace only the API-visible titles and verify that the full hashes still match. Before publishing generated images, complete the remaining decisions in `docs/PROVENANCE_AND_LICENSING.md`.
 
 Dry-build the artifact tree without contacting a backend:
 

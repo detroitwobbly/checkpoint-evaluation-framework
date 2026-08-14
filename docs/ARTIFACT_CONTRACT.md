@@ -34,7 +34,7 @@ A non-dry cell is complete only when `generation.json` parses and all recorded i
 
 ## Evaluation artifacts
 
-Per-image analysis records preserve normalized analysis plus raw response material. `analysis_index.json` aggregates records for reporting and comparison. Evaluation can be partial when failure records or a deliberately selected `--test-id` subset are disclosed.
+Per-image analysis records preserve normalized analysis plus raw response material. `analysis_index.json` aggregates records for reporting and comparison and records sanitized evaluator settings plus the evaluator-directive hash. Credentials are excluded. Evaluation can be partial when failure records or a deliberately selected `--test-id` subset are disclosed.
 
 ## Provenance artifacts
 

@@ -11,12 +11,19 @@ from typing import Any
 def build_report(run_root: Path) -> dict[str, Any]:
     analysis_path = run_root / "analysis_index.json"
     generation_path = run_root / "generation_index.json"
+    manifest_path = run_root / "run_manifest.json"
     if not analysis_path.exists():
         raise FileNotFoundError(f"Missing analysis index: {analysis_path}")
     analysis = json.loads(analysis_path.read_text(encoding="utf-8-sig"))
     generation = json.loads(generation_path.read_text(encoding="utf-8-sig")) if generation_path.exists() else {}
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8-sig")) if manifest_path.exists() else {}
     report = {
         "run_id": analysis.get("run_id", run_root.name),
+        "suite_id": manifest.get("suite_id"),
+        "suite_name": manifest.get("name"),
+        "suite_metadata": manifest.get("metadata", {}),
+        "evaluator": analysis.get("evaluator", {}),
+        "directive": analysis.get("directive", {}),
         "analyzed_images": analysis.get("analyzed_images", 0),
         "generated_images": sum(len(record.get("image_paths", [])) for record in generation.get("records", [])),
         "checkpoint_summary": analysis.get("checkpoint_summary", {}),
@@ -204,12 +211,19 @@ def build_html_report(report: dict[str, Any], run_root: Path) -> str:
     intent_failure_rows = _intent_failure_rows(intent_summary.get("failed_records", []))
     executive_summary_section = _executive_summary_section(executive_summary)
     personality_section = _personality_section(personality)
+    evaluator_provenance_section = _evaluator_provenance_section(
+        report.get("evaluator", {}),
+        report.get("directive", {}),
+    )
+    experiment_overview_section = _experiment_overview_section(report)
+    checkpoint_provenance_section = _checkpoint_provenance_section(report.get("suite_metadata", {}))
+    report_title = str(report.get("suite_name") or "CEF Report")
     return f"""<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CEF Report - {escape(str(report.get("run_id", "")))}</title>
+  <title>{escape(report_title)} - CEF Report</title>
   <style>
     :root {{
       --bg: #f7f7f4;
@@ -218,6 +232,8 @@ def build_html_report(report: dict[str, Any], run_root: Path) -> str:
       --line: #d8ddd7;
       --panel: #ffffff;
       --accent: #2f6f67;
+      --accent-deep: #173f3a;
+      --accent-soft: #e2eeea;
       --warn: #9a5b00;
       --fail: #a43737;
     }}
@@ -225,17 +241,18 @@ def build_html_report(report: dict[str, Any], run_root: Path) -> str:
     body {{
       margin: 0;
       font-family: Segoe UI, system-ui, sans-serif;
-      background: var(--bg);
+      background: linear-gradient(180deg, #edf3f0 0, var(--bg) 260px);
       color: var(--ink);
     }}
     header {{
-      padding: 24px clamp(18px, 4vw, 48px);
-      border-bottom: 1px solid var(--line);
-      background: #eef2ef;
+      padding: 34px clamp(18px, 4vw, 48px) 30px;
+      border-bottom: 4px solid #71a79e;
+      background: linear-gradient(120deg, #102e2b, var(--accent-deep));
+      color: #fff;
     }}
     h1 {{
       margin: 0 0 10px;
-      font-size: 28px;
+      font-size: clamp(28px, 4vw, 44px);
       font-weight: 700;
       letter-spacing: 0;
     }}
@@ -258,6 +275,7 @@ def build_html_report(report: dict[str, Any], run_root: Path) -> str:
       background: var(--panel);
       border: 1px solid var(--line);
       border-radius: 8px;
+      box-shadow: 0 8px 24px rgba(18, 45, 40, 0.055);
     }}
     .metric {{
       padding: 14px 16px;
@@ -272,10 +290,34 @@ def build_html_report(report: dict[str, Any], run_root: Path) -> str:
       display: block;
       margin-top: 6px;
       font-size: 24px;
+      color: var(--accent-deep);
     }}
     .section {{
       padding: 16px;
       overflow-x: auto;
+    }}
+    .overview {{
+      border-top: 5px solid var(--accent);
+      background: linear-gradient(135deg, #ffffff, #f2f8f5);
+      padding: clamp(18px, 3vw, 28px);
+    }}
+    .overview p {{
+      max-width: 1000px;
+      line-height: 1.55;
+    }}
+    .overview .boundary {{
+      padding: 12px 14px;
+      border-radius: 6px;
+      background: var(--accent-soft);
+    }}
+    .contact-sheet {{
+      display: block;
+      width: min(100%, 1100px);
+      height: auto;
+      margin: 12px auto 4px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
     }}
     table {{
       width: 100%;
@@ -443,10 +485,11 @@ def build_html_report(report: dict[str, Any], run_root: Path) -> str:
 </head>
 <body>
   <header>
-    <h1>CEF Report</h1>
-    <div class="meta">{escape(str(report.get("run_id", "")))}</div>
+    <h1>{escape(report_title)}</h1>
+    <div class="meta">CEF report &middot; {escape(str(report.get("run_id", "")))}</div>
   </header>
   <main>
+    {experiment_overview_section}
     <section class="metrics">
       <div class="metric"><span>Generated</span><strong>{escape(str(report.get("generated_images", 0)))}</strong></div>
       <div class="metric"><span>Analyzed</span><strong>{escape(str(report.get("analyzed_images", 0)))}</strong></div>
@@ -458,8 +501,10 @@ def build_html_report(report: dict[str, Any], run_root: Path) -> str:
       <div class="metric"><span>Reference Assisted</span><strong>{escape(str(reference_summary.get("assisted_image_count", 0)))}</strong></div>
       <div class="metric"><span>Reference Delta</span><strong>{escape(str(reference_summary.get("average_score_delta", "n/a")))}</strong></div>
     </section>
-    {executive_summary_section}
     {contact_sheet_link}
+    {executive_summary_section}
+    {checkpoint_provenance_section}
+    {evaluator_provenance_section}
     {personality_section}
     <section class="section">
       <h2>By Checkpoint</h2>
@@ -504,6 +549,101 @@ def build_html_report(report: dict[str, Any], run_root: Path) -> str:
 </html>"""
 
 
+def _evaluator_provenance_section(evaluator: Any, directive: Any) -> str:
+    if not isinstance(evaluator, dict):
+        evaluator = {}
+    if not isinstance(directive, dict):
+        directive = {}
+    if not evaluator and not directive:
+        return ""
+    rows = [
+        ("Model", evaluator.get("model")),
+        ("Client", evaluator.get("client")),
+        ("Endpoint", evaluator.get("endpoint")),
+        ("Temperature", evaluator.get("temperature")),
+        ("Max tokens", evaluator.get("max_tokens")),
+        ("Response mode", evaluator.get("response_mode")),
+        ("Structured response", evaluator.get("structured_response_requested")),
+        ("Directive", directive.get("name")),
+        ("Directive SHA-256", directive.get("sha256")),
+    ]
+    rendered = "\n".join(
+        f"<tr><td>{escape(label)}</td><td><code>{escape(str(value))}</code></td></tr>"
+        for label, value in rows
+        if value is not None and str(value) != ""
+    )
+    return f"""
+    <section class="section">
+      <h2>Evaluator Provenance</h2>
+      <table><thead><tr><th>Field</th><th>Recorded value</th></tr></thead><tbody>{rendered}</tbody></table>
+      <p class="meta">Credentials are never written to evaluator provenance.</p>
+    </section>
+    """
+
+
+def _experiment_overview_section(report: dict[str, Any]) -> str:
+    metadata = report.get("suite_metadata", {})
+    if not isinstance(metadata, dict):
+        metadata = {}
+    checkpoint_summary = report.get("checkpoint_summary", {})
+    checkpoint_count = len(checkpoint_summary) if isinstance(checkpoint_summary, dict) else 0
+    test_summary = report.get("test_summary", {})
+    test_count = len(test_summary) if isinstance(test_summary, dict) else 0
+    generated = report.get("generated_images", 0)
+    method = str(metadata.get("method") or "predeclared criteria and structured evaluation")
+    scope = str(metadata.get("intended_scope") or "checkpoint evaluation")
+    question = str(
+        metadata.get("research_question")
+        or "How reliably do the selected checkpoints satisfy the predeclared evaluation criteria?"
+    )
+    cautions = metadata.get("evaluation_cautions", [])
+    if not isinstance(cautions, list):
+        cautions = [cautions]
+    caution_items = "".join(
+        f"<li>{escape(str(item))}</li>" for item in cautions if str(item).strip()
+    )
+    caution_block = f"<ul>{caution_items}</ul>" if caution_items else ""
+    return f"""<section class="section overview">
+      <h2>Experiment at a Glance</h2>
+      <p><strong>Question:</strong> {escape(question)}</p>
+      <p><strong>Design:</strong> {escape(str(checkpoint_count))} checkpoints &times; {escape(str(test_count))} predeclared tests = {escape(str(generated))} generated images; {escape(method)}.</p>
+      <p><strong>Scope:</strong> {escape(scope)}.</p>
+      <p class="boundary"><strong>Interpretation boundary:</strong> Scores and pass/fail labels below are machine observations, not ground truth. Human adjudication is a required publication gate.</p>
+      {caution_block}
+    </section>"""
+
+
+def _checkpoint_provenance_section(metadata: Any) -> str:
+    if not isinstance(metadata, dict):
+        return ""
+    items = metadata.get("checkpoint_provenance", [])
+    if not isinstance(items, list) or not items:
+        return ""
+    rows = []
+    for item in items:
+        if not isinstance(item, dict):
+            continue
+        source = str(item.get("source") or "")
+        source_html = (
+            f'<a href="{escape(source)}">model documentation</a>' if source else "not recorded"
+        )
+        rows.append(
+            "<tr>"
+            f"<td>{escape(str(item.get('display_name') or item.get('id') or ''))}</td>"
+            f"<td>{escape(str(item.get('creator') or ''))}</td>"
+            f"<td>{escape(str(item.get('license') or ''))}</td>"
+            f"<td><code>{escape(str(item.get('sha256') or ''))}</code></td>"
+            f"<td>{source_html}</td>"
+            "</tr>"
+        )
+    if not rows:
+        return ""
+    return f"""<section class="section">
+      <h2>Checkpoint Provenance</h2>
+      <table><thead><tr><th>Checkpoint</th><th>Creator</th><th>Declared license</th><th>SHA-256</th><th>Source</th></tr></thead><tbody>{''.join(rows)}</tbody></table>
+    </section>"""
+
+
 def _summary_rows(summary: dict[str, Any], label: str) -> str:
     if not summary:
         return f'<tr><td colspan="3">No {escape(label.lower())} scores yet.</td></tr>'
@@ -517,9 +657,12 @@ def _contact_sheet_link(report: dict[str, Any]) -> str:
     path = str(report.get("contact_sheet") or "")
     if not path:
         return ""
+    generated = report.get("generated_images", 0)
+    image_label = "Image" if generated == 1 else "Images"
     return f"""<section class="section">
-      <h2>Contact Sheet</h2>
-      <a href="{escape(path)}">Open score contact sheet</a>
+      <h2>Controlled Manifold: {escape(str(generated))} Generated {image_label}</h2>
+      <div class="meta">Open the contact sheet to inspect the paired checkpoint and counterfactual results at full size.</div>
+      <a href="{escape(path)}"><img class="contact-sheet" src="{escape(path)}" alt="Contact sheet of all generated demo images and machine scores"></a>
     </section>"""
 
 
@@ -848,6 +991,7 @@ def _executive_summary(report: dict[str, Any]) -> dict[str, Any]:
     personality = report.get("checkpoint_personality", {})
     wildcard_summary = report.get("wildcard_summary", {})
     semantic_summary = report.get("semantic_summary", {})
+    metadata = report.get("suite_metadata", {})
 
     return {
         "checkpoint": _executive_checkpoint_name(report),
@@ -861,15 +1005,33 @@ def _executive_summary(report: dict[str, Any]) -> dict[str, Any]:
         "dominant_latent_attractors": _latent_attractors(personality),
         "failure_personality": _failure_personality(records, wildcard_summary, semantic_summary),
         "recommended_use": _recommended_use(records),
-        "caution": _caution_note(records, wildcard_summary, semantic_summary),
+        "caution": _report_caution(records, wildcard_summary, semantic_summary, metadata),
     }
+
+
+def _report_caution(records: list[dict[str, Any]], wildcard_summary: Any, semantic_summary: Any, metadata: Any) -> str:
+    if isinstance(metadata, dict):
+        cautions = metadata.get("evaluation_cautions", [])
+        if not isinstance(cautions, list):
+            cautions = [cautions]
+        explicit = [str(item).strip() for item in cautions if str(item).strip()]
+        if explicit:
+            return " ".join(explicit)
+    return _caution_note(records, wildcard_summary, semantic_summary)
 
 
 def _executive_checkpoint_name(report: dict[str, Any]) -> str:
     summary = report.get("checkpoint_summary", {})
     if isinstance(summary, dict) and summary:
-        key = next(iter(summary.keys()))
-        return Path(str(key)).stem or str(key)
+        metadata = report.get("suite_metadata", {})
+        provenance = metadata.get("checkpoint_provenance", []) if isinstance(metadata, dict) else []
+        display_by_id = {
+            str(item.get("id")): str(item.get("display_name"))
+            for item in provenance
+            if isinstance(item, dict) and item.get("id") and item.get("display_name")
+        }
+        names = [display_by_id.get(str(key), Path(str(key)).stem or str(key)) for key in summary]
+        return " vs ".join(names)
     for record in report.get("records", []):
         if not isinstance(record, dict):
             continue

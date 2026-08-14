@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import hashlib
 from datetime import datetime
 from pathlib import Path
 from typing import Any
@@ -22,6 +23,11 @@ def run_analysis(
     if not index_path.exists():
         raise FileNotFoundError(f"Missing generation index: {index_path}")
     directive = directive_path.read_text(encoding="utf-8-sig")
+    evaluator_metadata = client.provenance()
+    directive_metadata = {
+        "name": directive_path.name,
+        "sha256": hashlib.sha256(directive.encode("utf-8")).hexdigest(),
+    }
     index = json.loads(index_path.read_text(encoding="utf-8-sig"))
     records = _filtered_records(index.get("records", []), test_ids)
     analysis_records: list[dict[str, Any]] = []
@@ -53,6 +59,8 @@ def run_analysis(
                     "analyzed_at": datetime.now().isoformat(timespec="seconds"),
                     "image_path": str(image_path),
                     "generation_path": str(generation_path),
+                    "evaluator": evaluator_metadata,
+                    "directive": directive_metadata,
                     "reference_images": reference_images,
                     "analysis": {key: value for key, value in parsed.items() if key != "_raw_response"},
                     "raw_response": parsed.get("_raw_response", {}),
@@ -73,7 +81,12 @@ def run_analysis(
                 )
             analysis_records.append(_summary_record(record, image_path, analysis_path, parsed, reference_images))
 
-    report = _build_analysis_report(index.get("run_id", run_root.name), analysis_records)
+    report = _build_analysis_report(
+        index.get("run_id", run_root.name),
+        analysis_records,
+        evaluator=evaluator_metadata,
+        directive=directive_metadata,
+    )
     _write_json(run_root / "analysis_index.json", report)
     build_report(run_root)
     return report
@@ -271,7 +284,12 @@ def _normalize_observation(value: str) -> str:
     return " ".join(value.lower().split())
 
 
-def _build_analysis_report(run_id: str, records: list[dict[str, Any]]) -> dict[str, Any]:
+def _build_analysis_report(
+    run_id: str,
+    records: list[dict[str, Any]],
+    evaluator: dict[str, Any] | None = None,
+    directive: dict[str, Any] | None = None,
+) -> dict[str, Any]:
     checkpoint_scores: dict[str, list[float]] = {}
     test_scores: dict[str, list[float]] = {}
     for record in records:
@@ -282,6 +300,8 @@ def _build_analysis_report(run_id: str, records: list[dict[str, Any]]) -> dict[s
         test_scores.setdefault(str(record.get("test_id")), []).append(score)
     return {
         "run_id": run_id,
+        "evaluator": evaluator or {},
+        "directive": directive or {},
         "analyzed_images": len(records),
         "records": records,
         "checkpoint_summary": _average_scores(checkpoint_scores),

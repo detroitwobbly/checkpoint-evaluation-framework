@@ -11,8 +11,8 @@ Status legend: `[x]` verified in this curated tree, `[ ]` pending, `BLOCKED` req
 - [x] Artist-specific and explicit demo material excluded.
 - [x] Personal names removed from copied test fixtures and heuristic keyword lists.
 - [x] Generated run directories ignored by default.
-- [ ] Review final Git status immediately before first commit.
-- [ ] Create intentional initial Git history after approval.
+- [x] Review final Git status immediately before first commit.
+- [x] Create intentional initial Git history after approval.
 
 ## Installation and behavior
 
@@ -26,12 +26,12 @@ Status legend: `[x]` verified in this curated tree, `[ ]` pending, `BLOCKED` req
 - [x] Structured evaluator failures can be preserved with `--continue-on-error`.
 - [ ] Verify clean editable install in a fresh environment.
 - [x] Verify built wheel installation in a fresh environment.
-- [ ] Verify Forge preflight and one real generation run.
-- [ ] Verify one OpenAI-compatible local VLM analysis run.
+- [x] Verify Forge preflight, per-checkpoint canaries, and one 12-cell real generation run.
+- [x] Verify one OpenAI-compatible local Qwen3-VL analysis run, including preserved failure and targeted retry.
 
 ## Automated verification
 
-- [x] All tests pass in the curated tree: 55 passed on 2026-08-14.
+- [x] All tests pass in the curated tree: 56 passed on 2026-08-14.
 - [x] Safe demo and test JSON parse successfully.
 - [x] README-local links resolve.
 - [x] CLI help works from the installed entry point.
@@ -58,10 +58,11 @@ Status legend: `[x]` verified in this curated tree, `[ ]` pending, `BLOCKED` req
 
 ## Provenance and licensing — BLOCKED
 
-- [ ] BLOCKED: choose two public-demo checkpoints.
-- [ ] BLOCKED: verify each checkpoint’s license and output-use terms.
-- [ ] BLOCKED: approve exact checkpoint names and attribution.
-- [ ] BLOCKED: run and inspect the 12 generated demo images.
+- [x] Public-demo pair selected: SDXL Base 1.0 and RealVisXL V5.0 FP16.
+- [x] Each checkpoint’s license evidence and output-use terms reviewed.
+- [x] Exact checkpoint files, hashes, names, and model-card attribution approved.
+- [x] Generate all 12 demo images and prepare a full-resolution adjudication draft.
+- [ ] BLOCKED: Alex completes and approves the 12-image human-review checklist.
 - [ ] BLOCKED: decide whether to publish raw PNG metadata or sanitized provenance.
 - [ ] BLOCKED: approve all report images and machine-readable artifacts.
 - [ ] BLOCKED: confirm AGPL-3.0-or-later as the final code license.
@@ -71,7 +72,7 @@ Status legend: `[x]` verified in this curated tree, `[ ]` pending, `BLOCKED` req
 - [x] GitHub owner/account selected: `detroitwobbly`.
 - [x] Repository identity placeholders replaced.
 - [ ] BLOCKED: choose public author and maintainer metadata.
-- [ ] BLOCKED: approve repository creation and initial push.
+- [x] Repository created privately and initial curated tree pushed after approval.
 - [ ] BLOCKED: configure GitHub Pages only after demo provenance approval.
 
 ## Final manual review

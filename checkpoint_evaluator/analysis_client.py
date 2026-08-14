@@ -32,6 +32,23 @@ class QwenEvaluationClient:
         self.use_response_format = use_response_format
         self.response_mode = response_mode
 
+    def provenance(self) -> dict[str, Any]:
+        """Return sanitized evaluator settings suitable for run artifacts.
+
+        Credentials are deliberately excluded. The normalized endpoint and decoding
+        controls are part of the experiment and must survive beyond the live process.
+        """
+        return {
+            "client": type(self).__name__,
+            "endpoint": self.endpoint,
+            "model": self.model,
+            "temperature": self.temperature,
+            "max_tokens": self.max_tokens,
+            "timeout_seconds": self.timeout,
+            "response_mode": self.response_mode,
+            "structured_response_requested": self.use_response_format,
+        }
+
     def evaluate_image(
         self,
         image_path: Path,

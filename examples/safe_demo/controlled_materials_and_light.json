@@ -5,16 +5,38 @@
     "public_safe": true,
     "method": "fixed-seed controlled counterfactuals",
     "intended_scope": "portfolio demonstration",
-    "notes": "Replace checkpoint titles with exact API-visible titles. Verify checkpoint and output licensing before publishing generated artifacts."
+    "research_question": "How reliably do two SDXL checkpoints follow controlled changes to material, image-relative light direction, and object count?",
+    "notes": "Checkpoint titles and hashes were verified against Forge-Neo and the downloaded files on 2026-08-14. Generated artifacts still require human review before publication.",
+    "evaluation_cautions": [
+      "Image-left/image-right judgments require human review because vision-language models may use directional terminology or spatial evidence inconsistently."
+    ],
+    "checkpoint_provenance": [
+      {
+        "id": "checkpoint_a",
+        "display_name": "Stable Diffusion XL Base 1.0",
+        "creator": "Stability AI",
+        "source": "https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0",
+        "license": "CreativeML Open RAIL++-M",
+        "sha256": "31e35c80fc4829d14f90153f4c74cd59c90b779f6afe05a74cd6120b893f7e5b"
+      },
+      {
+        "id": "checkpoint_b",
+        "display_name": "RealVisXL V5.0 FP16 (baked VAE)",
+        "creator": "SG161222",
+        "source": "https://huggingface.co/SG161222/RealVisXL_V5.0",
+        "license": "OpenRAIL++ (as declared by the creator model card)",
+        "sha256": "6a35a7855770ae9820a3c931d4964c3817b6d9e3c6f9c4dabb5b3a94e5643b80"
+      }
+    ]
   },
   "checkpoints": [
     {
       "id": "checkpoint_a",
-      "title": "sd\\YOUR_CHECKPOINT_A.safetensors"
+      "title": "sd\\sdXL_v10.safetensors [31e35c80fc]"
     },
     {
       "id": "checkpoint_b",
-      "title": "sd\\YOUR_CHECKPOINT_B.safetensors"
+      "title": "sd\\realvisxlV50_v50Bakedvae.safetensors [6a35a78557]"
     }
   ],
   "lora_profiles": [

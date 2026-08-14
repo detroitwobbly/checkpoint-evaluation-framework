@@ -4,16 +4,18 @@ The CEF code can be released under AGPL-3.0-or-later. That does not automaticall
 
 ## Decisions required before a public demo
 
-- [ ] Choose checkpoint A and record its source URL, version, creator, license, and output-use terms.
-- [ ] Choose checkpoint B and record the same information.
-- [ ] Confirm that the checkpoints permit the intended generation and public display of outputs.
-- [ ] Confirm whether attribution or a model card link is required.
-- [ ] Confirm that neither checkpoint name creates an avoidable adult-content or artist-imitation distraction.
+Candidate research and the recommended baseline-versus-fine-tune pair are documented in [Checkpoint provenance review for Demo 1](CHECKPOINT_PROVENANCE_REVIEW.md). The recommendation does not become final until the exact downloaded files and hashes are verified.
+
+- [x] Choose checkpoint A and record its source URL, version, creator, license, and output-use terms.
+- [x] Choose checkpoint B and record the same information.
+- [x] Confirm that the checkpoints permit the intended generation and public display of outputs.
+- [x] Confirm whether attribution or a model card link is required; retain both creator model-card links in the public report.
+- [x] Confirm that neither checkpoint name creates an avoidable adult-content or artist-imitation distraction.
 - [ ] Inspect every generated image for people, signatures, logos, watermarks, copyrighted characters, and unsafe surprises.
-- [ ] Record the exact checkpoint hashes used in the run.
-- [ ] Record the Forge/Forge-Neo version and relevant runtime settings.
+- [x] Record the exact checkpoint hashes used in the run.
+- [x] Record the Forge/Forge-Neo version and relevant runtime settings.
 - [ ] Decide whether generated PNG metadata should be retained publicly or replaced with a sanitized structured provenance record.
-- [ ] Obtain rights for every reference image, or use no reference images in the first demo.
+- [x] Obtain rights for every reference image, or use no reference images in the first demo; Demo 1 uses none.
 - [ ] Approve the final contact sheet, report, and machine-readable artifacts together.
 
 ## Repository identity decisions
@@ -38,11 +40,11 @@ The CEF code can be released under AGPL-3.0-or-later. That does not automaticall
 
 | Artifact | Source/creator | License or permission | Hash/version | Public? | Notes |
 |---|---|---|---|---|---|
-| Checkpoint A | Decision required | Decision required | Pending | No | Placeholder only |
-| Checkpoint B | Decision required | Decision required | Pending | No | Placeholder only |
+| Checkpoint A | Stability AI, [SDXL Base 1.0](https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0) | CreativeML Open RAIL++-M | `31e35c80fc4829d14f90153f4c74cd59c90b779f6afe05a74cd6120b893f7e5b` | Link/credit only | Exact local and Forge hash verified; weights excluded |
+| Checkpoint B | SG161222, [RealVisXL V5.0](https://huggingface.co/SG161222/RealVisXL_V5.0) | OpenRAIL++ declared by creator model card | `6a35a7855770ae9820a3c931d4964c3817b6d9e3c6f9c4dabb5b3a94e5643b80` | Link/credit only | FP16 baked-VAE file; exact local and Forge hash verified; weights excluded |
 | Demo manifest | CEF Project | Repository license | v1 | Yes | No third-party content |
 | Evaluator directive | CEF Project | Repository license | v1 | Yes | No third-party content |
-| Generated images | Pending run | Depends on model terms | Pending | No | Human review required |
-| HTML report | Pending run | Mixed artifact | Pending | No | Publish only with approved inputs |
+| Generated images | Private Demo 1 run | Reviewed checkpoint terms; final artifact approval pending | 12 images; hashes in private provenance index | No | Codex-assisted draft complete; Alex review required |
+| HTML report | Private Demo 1 run | Mixed artifact | CEF v0.1 candidate | No | Publish only after adjudication and metadata approval |
 
 If a right or term is unclear, keep the artifact private and record the unresolved question. Do not infer permission from public availability.
