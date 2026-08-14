@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "checkpoint-evaluation-framework"
+version = "0.1.0"
+description = "Reproducible multimodal evaluation for controlled generative-image experiments."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "AGPL-3.0-or-later" }
+authors = [{ name = "CEF Project" }]
+keywords = ["generative-ai", "multimodal-evaluation", "computer-vision", "stable-diffusion", "vlm"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Environment :: Console",
+  "License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = []
+
+[project.optional-dependencies]
+reporting = ["Pillow>=10.0"]
+yaml = ["PyYAML>=6.0"]
+dev = ["pytest>=8.0", "Pillow>=10.0", "PyYAML>=6.0"]
+
+[project.scripts]
+cef-eval = "checkpoint_evaluator.cli:main"
+cef-review-run = "scripts.build_run_pipeline_review:main"
+cef-release-audit = "scripts.release_audit:main"
+
+[project.urls]
+Documentation = "https://github.com/detroitwobbly/checkpoint-evaluation-framework#readme"
+Issues = "https://github.com/detroitwobbly/checkpoint-evaluation-framework/issues"
+
+[tool.setuptools.packages.find]
+include = ["checkpoint_evaluator*", "scripts*"]
+
+[tool.pytest.ini_options]
+addopts = "-ra"
+testpaths = ["tests"]

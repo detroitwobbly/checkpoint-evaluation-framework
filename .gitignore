@@ -1,0 +1,32 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.test_tmp*/
+.verify_*/
+.coverage
+htmlcov/
+.venv/
+venv/
+build/
+dist/
+
+# Generated evaluation data is private until deliberately reviewed.
+runs/
+cef_runs/
+references/
+*.safetensors
+*.ckpt
+
+# Local configuration and credentials.
+.env
+.env.*
+!.env.example
+*_LOCAL.json
+*_PRIVATE.json
+
+# Editors and operating systems.
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

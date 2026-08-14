@@ -1,0 +1,124 @@
+{
+  "suite_id": "CONTROLLED_MATERIALS_AND_LIGHT_V1",
+  "name": "Controlled Materials, Lighting, and Count Demo",
+  "metadata": {
+    "public_safe": true,
+    "method": "fixed-seed controlled counterfactuals",
+    "intended_scope": "portfolio demonstration",
+    "notes": "Replace checkpoint titles with exact API-visible titles. Verify checkpoint and output licensing before publishing generated artifacts."
+  },
+  "checkpoints": [
+    {
+      "id": "checkpoint_a",
+      "title": "sd\\YOUR_CHECKPOINT_A.safetensors"
+    },
+    {
+      "id": "checkpoint_b",
+      "title": "sd\\YOUR_CHECKPOINT_B.safetensors"
+    }
+  ],
+  "lora_profiles": [
+    {
+      "id": "none",
+      "loras": []
+    }
+  ],
+  "defaults": {
+    "negative_prompt": "people, person, face, hands, text, logo, watermark, duplicate object, blurry, low quality",
+    "steps": 28,
+    "cfg_scale": 5.0,
+    "width": 768,
+    "height": 768,
+    "sampler_name": "DPM++ 2M",
+    "scheduler": "Karras",
+    "seed": 41001,
+    "batch_size": 1,
+    "n_iter": 1
+  },
+  "tests": [
+    {
+      "id": "MAT_01_CHROME",
+      "name": "Polished Chrome Material",
+      "category": "material_counterfactual",
+      "purpose": "Test whether the renderer expresses polished reflective metal while composition and seed remain controlled against MAT_02.",
+      "prompt": "one simple geometric desk lamp made entirely of polished chrome, centered on a plain gray studio surface, soft neutral product photography",
+      "criteria": [
+        {"id": "material", "description": "the lamp reads as polished reflective chrome rather than wood, ceramic, or matte plastic"},
+        {"id": "object_count", "description": "exactly one primary lamp is present"},
+        {"id": "composition", "description": "the lamp is centered against a plain studio background"},
+        {"id": "artifact_check", "description": "reflections remain coherent and do not fragment the object"}
+      ],
+      "settings": {"seed": 41001}
+    },
+    {
+      "id": "MAT_02_WOOD",
+      "name": "Unfinished Wood Material",
+      "category": "material_counterfactual",
+      "purpose": "Test whether a material-only instruction changes the surface while preserving the controlled composition used by MAT_01.",
+      "prompt": "one simple geometric desk lamp made entirely of unfinished pale wood, centered on a plain gray studio surface, soft neutral product photography",
+      "criteria": [
+        {"id": "material", "description": "the lamp reads as unfinished pale wood with visible grain rather than metal or ceramic"},
+        {"id": "object_count", "description": "exactly one primary lamp is present"},
+        {"id": "composition", "description": "the lamp is centered against a plain studio background"},
+        {"id": "artifact_check", "description": "wood grain follows the object surfaces coherently"}
+      ],
+      "settings": {"seed": 41001}
+    },
+    {
+      "id": "LIGHT_01_LEFT",
+      "name": "Directional Light from Left",
+      "category": "lighting_counterfactual",
+      "purpose": "Test directional-light compliance against an otherwise identical right-light condition.",
+      "prompt": "one matte white ceramic vase centered on a dark neutral tabletop, a single hard studio light shining from the left, visible shadow cast to the right, product photograph",
+      "criteria": [
+        {"id": "light_direction", "description": "the dominant illumination originates from image-left"},
+        {"id": "shadow_direction", "description": "the main cast shadow extends toward image-right"},
+        {"id": "object_count", "description": "exactly one primary vase is present"},
+        {"id": "material", "description": "the vase reads as matte white ceramic"}
+      ],
+      "settings": {"seed": 41002}
+    },
+    {
+      "id": "LIGHT_02_RIGHT",
+      "name": "Directional Light from Right",
+      "category": "lighting_counterfactual",
+      "purpose": "Test whether reversing only the lighting instruction reverses visible illumination and shadow direction.",
+      "prompt": "one matte white ceramic vase centered on a dark neutral tabletop, a single hard studio light shining from the right, visible shadow cast to the left, product photograph",
+      "criteria": [
+        {"id": "light_direction", "description": "the dominant illumination originates from image-right"},
+        {"id": "shadow_direction", "description": "the main cast shadow extends toward image-left"},
+        {"id": "object_count", "description": "exactly one primary vase is present"},
+        {"id": "material", "description": "the vase reads as matte white ceramic"}
+      ],
+      "settings": {"seed": 41002}
+    },
+    {
+      "id": "COUNT_01_ONE",
+      "name": "One Object",
+      "category": "count_counterfactual",
+      "purpose": "Establish the one-object control for the matched three-object condition.",
+      "prompt": "exactly one translucent blue glass cube arranged on a clean white tabletop, centered product photograph, no other objects",
+      "criteria": [
+        {"id": "count", "description": "exactly one cube is visible"},
+        {"id": "material", "description": "the cube reads as translucent blue glass"},
+        {"id": "separation", "description": "no fragments or secondary objects resemble additional cubes"},
+        {"id": "background", "description": "the tabletop and background remain clean and neutral"}
+      ],
+      "settings": {"seed": 41003}
+    },
+    {
+      "id": "COUNT_02_THREE",
+      "name": "Three Objects",
+      "category": "count_counterfactual",
+      "purpose": "Test whether changing only requested count produces three distinct objects without fusion or extras.",
+      "prompt": "exactly three separate translucent blue glass cubes arranged in a row on a clean white tabletop, centered product photograph, no other objects",
+      "criteria": [
+        {"id": "count", "description": "exactly three cubes are visible"},
+        {"id": "material", "description": "all three cubes read as translucent blue glass"},
+        {"id": "separation", "description": "the cubes are distinct and are not fused together"},
+        {"id": "background", "description": "the tabletop and background remain clean and neutral"}
+      ],
+      "settings": {"seed": 41003}
+    }
+  ]
+}

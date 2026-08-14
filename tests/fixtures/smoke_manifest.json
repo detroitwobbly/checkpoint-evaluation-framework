@@ -1,0 +1,42 @@
+{
+  "suite_id": "CEF_SMOKE",
+  "name": "CEF Portable Smoke Suite",
+  "checkpoints": [
+    {
+      "id": "example_checkpoint",
+      "title": "sd\\YOUR_CHECKPOINT.safetensors"
+    }
+  ],
+  "lora_profiles": [
+    {
+      "id": "none",
+      "loras": []
+    }
+  ],
+  "defaults": {
+    "negative_prompt": "blurry, low quality, text, watermark",
+    "steps": 4,
+    "cfg_scale": 4.5,
+    "width": 512,
+    "height": 512,
+    "sampler_name": "Euler a",
+    "seed": 12345,
+    "batch_size": 1,
+    "n_iter": 1
+  },
+  "tests": [
+    {
+      "id": "CEF_SMOKE_01",
+      "name": "Simple Object Baseline",
+      "category": "object_composition",
+      "purpose": "Verify the generation and artifact pipeline with an innocuous prompt.",
+      "prompt": "a simple red cube on a wooden table, neutral studio lighting",
+      "criteria": [
+        "red cube visible",
+        "wooden table visible",
+        "single primary object",
+        "neutral studio lighting"
+      ]
+    }
+  ]
+}
