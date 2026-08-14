@@ -20,6 +20,8 @@ The suite covers manifest/model handling, request generation, checkpoint-hash se
 
 A wheel was built from `pyproject.toml` with no dependency resolution and installed into a new virtual environment.
 
+The private GitHub repository was also cloned into a separate temporary directory at commit `94a6050`. A new virtual environment installed the clone in editable mode using standard PEP 517 build isolation, and the installed `cef-eval` entry point started successfully. This verifies that the tracked remote tree does not rely on untracked workspace files.
+
 Verified installed entry points:
 
 - `cef-eval`
@@ -65,6 +67,5 @@ See [Demo 1 run record](docs/DEMO_1_RUN_RECORD.md). Generated artifacts remain i
 - Python 3.10–3.12 CI matrix on GitHub Actions
 - GitHub Pages rendering from the final hosted location
 - Final human approval of generated images and sanitized publication metadata
-- Clean editable install with dependencies fetched from a public package index
 
 These remain explicit release gates.

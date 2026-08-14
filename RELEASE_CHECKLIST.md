@@ -24,7 +24,7 @@ Status legend: `[x]` verified in this curated tree, `[ ]` pending, `BLOCKED` req
 - [x] Generation index and run state are written incrementally and atomically.
 - [x] Analysis reuses per-image results unless overwrite is requested.
 - [x] Structured evaluator failures can be preserved with `--continue-on-error`.
-- [ ] Verify clean editable install in a fresh environment.
+- [x] Verify clean editable install in a fresh environment.
 - [x] Verify built wheel installation in a fresh environment.
 - [x] Verify Forge preflight, per-checkpoint canaries, and one 12-cell real generation run.
 - [x] Verify one OpenAI-compatible local Qwen3-VL analysis run, including preserved failure and targeted retry.
@@ -77,7 +77,7 @@ Status legend: `[x]` verified in this curated tree, `[ ]` pending, `BLOCKED` req
 
 ## Final manual review
 
-- [ ] Clone the future repository into a clean directory.
+- [x] Clone the private GitHub repository into a clean directory at commit `94a6050`.
 - [ ] Follow README commands exactly without relying on the private archive.
 - [ ] Open every HTML report and verify images, labels, and relative links.
 - [ ] Validate representative JSON against documented semantics.
