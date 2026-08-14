@@ -33,6 +33,6 @@ Link the finished GitHub Pages report before the source repository in job applic
 7. Methodology and limitations
 8. Installation and complete command reference
 
-## Pending identity edits
+## Published identity
 
-Repository URLs now use `detroitwobbly`; add final maintainer metadata and add badges only after their targets exist. Do not add decorative badges that imply releases, CI status, or hosted documentation before those resources are real.
+Repository URLs use `detroitwobbly`, public author metadata uses `Alex Led`, and the approved report is hosted at <https://detroitwobbly.github.io/checkpoint-evaluation-framework/>. Add badges only when they communicate useful status; do not add decorative badges that imply resources that do not exist.

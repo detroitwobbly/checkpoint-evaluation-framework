@@ -6,6 +6,8 @@ CEF characterizes behavior under stated conditions. It does not rank a checkpoin
 
 > CEF is a methodology for generating progressively stronger questions about observable behavior, not progressively stronger claims about hidden mechanisms.
 
+**[View the live controlled materials, lighting, and count demonstration](https://detroitwobbly.github.io/checkpoint-evaluation-framework/)** — 12 fixed-seed generations across two SDXL checkpoints, with machine evaluation, human adjudication, structured evidence, and sanitized provenance.
+
 ## What it demonstrates
 
 - Declarative test manifolds across checkpoints, prompts, seeds, settings, and LoRA profiles
@@ -118,9 +120,9 @@ Generated run folders are ignored by default. Publication must be an explicit cu
 
 ## Current status
 
-This is a curated release candidate extracted from a larger private research archive. The reusable core and tests are present; private runs, local paths, personal datasets, model files, explicit demo material, and artist-specific investigations are intentionally excluded.
+This is a curated public release extracted from a larger private research archive. The reusable core and tests are present; private runs, local paths, personal datasets, model files, explicit research material, and artist-specific investigations are intentionally excluded.
 
-A sanitized public-demo candidate has been prepared from the approved private run. Raw Forge/A1111 PNG metadata remains private; public copies use a minimal CEF identity-and-hash envelope and a transformation index. Public hosting remains gated on final bundle review.
+The [live public demonstration](https://detroitwobbly.github.io/checkpoint-evaluation-framework/) was exported from an approved private run. Raw Forge/A1111 PNG metadata remains private; public copies use a minimal CEF identity-and-hash envelope and a transformation index.
 
 ## License
 

@@ -9,7 +9,7 @@ description = "Reproducible multimodal evaluation for controlled generative-imag
 readme = "README.md"
 requires-python = ">=3.10"
 license = { text = "AGPL-3.0-or-later" }
-authors = [{ name = "CEF Project" }]
+authors = [{ name = "Alex Led" }]
 keywords = ["generative-ai", "multimodal-evaluation", "computer-vision", "stable-diffusion", "vlm"]
 classifiers = [
   "Development Status :: 3 - Alpha",
@@ -36,6 +36,7 @@ cef-public-demo = "scripts.build_public_demo:main"
 
 [project.urls]
 Documentation = "https://github.com/detroitwobbly/checkpoint-evaluation-framework#readme"
+Demo = "https://detroitwobbly.github.io/checkpoint-evaluation-framework/"
 Issues = "https://github.com/detroitwobbly/checkpoint-evaluation-framework/issues"
 
 [tool.setuptools.packages.find]

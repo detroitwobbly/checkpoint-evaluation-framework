@@ -40,7 +40,7 @@ Status legend: `[x]` verified in this curated tree, `[ ]` pending, `BLOCKED` req
 - [x] Scan returns no credential-like values.
 - [x] Scan returns no personal absolute paths or usernames.
 - [x] Built wheel contains no cache, generated run, or model files.
-- [ ] GitHub Actions workflow passes after repository creation.
+- [x] GitHub Actions test matrix and Pages deployment workflow pass after repository creation.
 
 ## Documentation
 
@@ -53,8 +53,8 @@ Status legend: `[x]` verified in this curated tree, `[ ]` pending, `BLOCKED` req
 - [x] Security and data-disclosure behavior documented.
 - [x] Portfolio blurbs grounded in inspected code and tests.
 - [x] GitHub description, topics, and pinned ordering proposed.
-- [ ] Add screenshots after the approved real demo exists.
-- [ ] Add a hosted report link after GitHub Pages review.
+- [x] Add the approved real-demo visual report and contact sheet.
+- [x] Add the hosted report link after GitHub Pages review.
 
 ## Provenance and licensing — BLOCKED
 
@@ -65,23 +65,23 @@ Status legend: `[x]` verified in this curated tree, `[ ]` pending, `BLOCKED` req
 - [x] Alex approved the 6-pass / 6-fail human adjudication and three recorded machine disagreements on 2026-08-14.
 - [x] Alex approved sanitized structured provenance; raw Forge/A1111 PNG metadata remains private.
 - [x] Alex approved the current report presentation and adjudicated findings for the private candidate.
-- [ ] BLOCKED: approve the final sanitized public artifact bundle after export.
+- [x] Alex approved and requested publication of the final sanitized public artifact bundle on 2026-08-14.
 - [x] Alex confirmed AGPL-3.0-or-later as the final code license.
 
 ## Repository identity and publication — BLOCKED
 
 - [x] GitHub owner/account selected: `detroitwobbly`.
 - [x] Repository identity placeholders replaced.
-- [ ] BLOCKED: choose public author and maintainer metadata.
+- [x] Public author metadata selected: `Alex Led`.
 - [x] Repository created privately and initial curated tree pushed after approval.
-- [ ] BLOCKED: configure GitHub Pages only after demo provenance approval.
+- [x] Repository made public and GitHub Pages configured after demo provenance approval.
 
 ## Final manual review
 
 - [x] Clone the private GitHub repository into a clean directory at commit `0b18742`; verify the public-demo entry point and all committed site hashes.
 - [ ] Follow README commands exactly without relying on the private archive.
-- [ ] Open every HTML report and verify images, labels, and relative links.
-- [ ] Validate representative JSON against documented semantics.
-- [ ] Confirm the demo report matches its manifest and methodology text.
+- [x] Open the public HTML report and verify its 25 local image, evidence, and support targets over HTTPS.
+- [x] Validate representative JSON and all published hashes against documented semantics.
+- [x] Confirm the demo report matches its manifest, adjudication, and methodology text.
 - [ ] Confirm no unsupported claims appear in README, portfolio copy, or application copy.
 - [ ] Review the repository as a hiring manager with five minutes and no project history.
