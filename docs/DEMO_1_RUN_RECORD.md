@@ -62,11 +62,11 @@ The first SDXL wood evaluation returned truncated, malformed JSON. CEF preserved
 
 The near-equal averages should not be presented as a universal checkpoint ranking. The useful evidence is criterion-specific.
 
-## Codex-assisted adjudication draft
+## Human adjudication
 
-Status: **pending Alex's human review**.
+Status: **approved by Alex on 2026-08-14**.
 
-The private draft records six passes, six failures, nine machine/draft agreements, and three disagreements:
+The approval record confirms six passes, six failures, nine machine/human agreements, and three disagreements:
 
 1. Qwen passed SDXL's wood test despite the large glowing globe reading as glass or plastic rather than wood.
 2. Qwen passed SDXL's right-light test even though the image remains left-lit with a rightward shadow.
@@ -79,7 +79,7 @@ Approximate grayscale diagnostics support the lighting review:
 | SDXL Base | 1.33 | +72.73 | +73.05 |
 | RealVisXL | 1.65 | +81.14 | +79.31 |
 
-Both fixed-seed pairs are nearly unchanged and remain much brighter on image-left under both prompts. These measurements are corroborative diagnostics, not independent human approval.
+Both fixed-seed pairs are nearly unchanged and remain much brighter on image-left under both prompts. These measurements are corroborative diagnostics supporting the approved human reading.
 
 ## Directional-language limitation
 
@@ -96,9 +96,8 @@ For CEF:
 
 ## Publication gates still open
 
-- Alex must complete the private `ALEX_REVIEW_CHECKLIST.md` against full-resolution images.
 - Decide whether to publish raw PNG metadata or only sanitized structured provenance.
-- Rebuild the portfolio narrative with approved adjudication rather than machine scores alone.
+- The portfolio report now presents approved human adjudication alongside machine scores.
 - Verify the final static report in a clean hosted-path simulation.
 - Approve the contact sheet, report, machine-readable artifacts, code license, and public identity together.
 

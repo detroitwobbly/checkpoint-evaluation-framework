@@ -12,16 +12,23 @@ def build_report(run_root: Path) -> dict[str, Any]:
     analysis_path = run_root / "analysis_index.json"
     generation_path = run_root / "generation_index.json"
     manifest_path = run_root / "run_manifest.json"
+    adjudication_path = run_root / "human_adjudication.json"
     if not analysis_path.exists():
         raise FileNotFoundError(f"Missing analysis index: {analysis_path}")
     analysis = json.loads(analysis_path.read_text(encoding="utf-8-sig"))
     generation = json.loads(generation_path.read_text(encoding="utf-8-sig")) if generation_path.exists() else {}
     manifest = json.loads(manifest_path.read_text(encoding="utf-8-sig")) if manifest_path.exists() else {}
+    adjudication = (
+        json.loads(adjudication_path.read_text(encoding="utf-8-sig"))
+        if adjudication_path.exists()
+        else {}
+    )
     report = {
         "run_id": analysis.get("run_id", run_root.name),
         "suite_id": manifest.get("suite_id"),
         "suite_name": manifest.get("name"),
         "suite_metadata": manifest.get("metadata", {}),
+        "human_adjudication": adjudication,
         "evaluator": analysis.get("evaluator", {}),
         "directive": analysis.get("directive", {}),
         "analyzed_images": analysis.get("analyzed_images", 0),
@@ -217,6 +224,7 @@ def build_html_report(report: dict[str, Any], run_root: Path) -> str:
     )
     experiment_overview_section = _experiment_overview_section(report)
     checkpoint_provenance_section = _checkpoint_provenance_section(report.get("suite_metadata", {}))
+    human_adjudication_section = _human_adjudication_section(report.get("human_adjudication", {}))
     report_title = str(report.get("suite_name") or "CEF Report")
     return f"""<!doctype html>
 <html lang="en">
@@ -319,6 +327,9 @@ def build_html_report(report: dict[str, Any], run_root: Path) -> str:
       border-radius: 8px;
       background: #fff;
     }}
+    .human-pass {{ color: #226f4a; font-weight: 700; }}
+    .human-fail {{ color: var(--fail); font-weight: 700; }}
+    .agreement-no {{ color: var(--warn); font-weight: 700; }}
     table {{
       width: 100%;
       border-collapse: collapse;
@@ -502,6 +513,7 @@ def build_html_report(report: dict[str, Any], run_root: Path) -> str:
       <div class="metric"><span>Reference Delta</span><strong>{escape(str(reference_summary.get("average_score_delta", "n/a")))}</strong></div>
     </section>
     {contact_sheet_link}
+    {human_adjudication_section}
     {executive_summary_section}
     {checkpoint_provenance_section}
     {evaluator_provenance_section}
@@ -641,6 +653,44 @@ def _checkpoint_provenance_section(metadata: Any) -> str:
     return f"""<section class="section">
       <h2>Checkpoint Provenance</h2>
       <table><thead><tr><th>Checkpoint</th><th>Creator</th><th>Declared license</th><th>SHA-256</th><th>Source</th></tr></thead><tbody>{''.join(rows)}</tbody></table>
+    </section>"""
+
+
+def _human_adjudication_section(adjudication: Any) -> str:
+    if not isinstance(adjudication, dict) or adjudication.get("status") != "approved":
+        return ""
+    summary = adjudication.get("summary", {})
+    records = adjudication.get("records", [])
+    if not isinstance(summary, dict):
+        summary = {}
+    if not isinstance(records, list):
+        records = []
+    rows = []
+    for record in records:
+        if not isinstance(record, dict):
+            continue
+        human_outcome = str(record.get("human_outcome") or record.get("draft_outcome") or "unknown")
+        machine_outcome = str(record.get("machine_outcome") or "unknown")
+        agreement = bool(record.get("agreement"))
+        rows.append(
+            "<tr>"
+            f"<td>{escape(str(record.get('checkpoint_id') or ''))}</td>"
+            f"<td>{escape(str(record.get('test_id') or ''))}</td>"
+            f"<td>{escape(machine_outcome)}</td>"
+            f'<td class="human-{escape(human_outcome)}">{escape(human_outcome)}</td>'
+            f'<td class="{"" if agreement else "agreement-no"}">{"yes" if agreement else "no"}</td>'
+            f"<td>{escape(str(record.get('observation') or ''))}</td>"
+            "</tr>"
+        )
+    if not rows:
+        return ""
+    approved_by = str(adjudication.get("approved_by") or "human reviewer")
+    approved_at = str(adjudication.get("approved_at") or "")
+    return f"""<section class="section">
+      <h2>Human Adjudication</h2>
+      <p><strong>{escape(str(summary.get('human_pass', 0)))} pass / {escape(str(summary.get('human_fail', 0)))} fail.</strong> Machine agreement: {escape(str(summary.get('machine_agreements', 0)))} of {escape(str(summary.get('records', len(records))))} records.</p>
+      <div class="meta">Approved by {escape(approved_by)}{escape(' on ' + approved_at if approved_at else '')}. Human findings supersede machine pass/fail labels where they disagree.</div>
+      <table><thead><tr><th>Checkpoint</th><th>Test</th><th>Machine</th><th>Human</th><th>Agreement</th><th>Human observation</th></tr></thead><tbody>{''.join(rows)}</tbody></table>
     </section>"""
 
 

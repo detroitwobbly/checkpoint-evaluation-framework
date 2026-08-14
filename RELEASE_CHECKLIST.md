@@ -62,9 +62,10 @@ Status legend: `[x]` verified in this curated tree, `[ ]` pending, `BLOCKED` req
 - [x] Each checkpoint’s license evidence and output-use terms reviewed.
 - [x] Exact checkpoint files, hashes, names, and model-card attribution approved.
 - [x] Generate all 12 demo images and prepare a full-resolution adjudication draft.
-- [ ] BLOCKED: Alex completes and approves the 12-image human-review checklist.
+- [x] Alex approved the 6-pass / 6-fail human adjudication and three recorded machine disagreements on 2026-08-14.
 - [ ] BLOCKED: decide whether to publish raw PNG metadata or sanitized provenance.
-- [ ] BLOCKED: approve all report images and machine-readable artifacts.
+- [x] Alex approved the current report presentation and adjudicated findings for the private candidate.
+- [ ] BLOCKED: approve the final sanitized public artifact bundle after export.
 - [ ] BLOCKED: confirm AGPL-3.0-or-later as the final code license.
 
 ## Repository identity and publication — BLOCKED

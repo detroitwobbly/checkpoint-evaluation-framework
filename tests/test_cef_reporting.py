@@ -35,6 +35,32 @@ def test_build_report_writes_html_and_json(tmp_path):
         ),
         encoding="utf-8",
     )
+    (run_root / "human_adjudication.json").write_text(
+        json.dumps(
+            {
+                "status": "approved",
+                "approved_by": "Human Reviewer",
+                "approved_at": "2026-08-14T16:35:36-04:00",
+                "summary": {
+                    "records": 1,
+                    "human_pass": 0,
+                    "human_fail": 1,
+                    "machine_agreements": 0,
+                },
+                "records": [
+                    {
+                        "checkpoint_id": "ckpt",
+                        "test_id": "test",
+                        "machine_outcome": "pass",
+                        "human_outcome": "fail",
+                        "agreement": False,
+                        "observation": "Human review found a visible contradiction.",
+                    }
+                ],
+            }
+        ),
+        encoding="utf-8",
+    )
     (run_root / "analysis_index.json").write_text(
         json.dumps(
             {
@@ -117,6 +143,9 @@ def test_build_report_writes_html_and_json(tmp_path):
     assert "Example Checkpoint" in html
     assert "Controlled Manifold: 1 Generated Image" in html
     assert 'class="contact-sheet"' in html
+    assert "Human Adjudication" in html
+    assert "0 pass / 1 fail" in html
+    assert "Human review found a visible contradiction." in html
     assert "visible" in html
     assert "Wildcard Observations" in html
     assert "small edge artifact" in html
