@@ -8,6 +8,8 @@ CEF evaluates outputs against controlled counterfactuals rather than attributing
 
 A fixed seed controls one source of variation, but it does not make images from different checkpoints pixel-equivalent. Conclusions must remain proportional to the control actually imposed.
 
+The evaluator is also an experimental instrument. Its competence must be qualified by task rather than represented by one global score. Count, direction, material, topology, schema reliability, and compression fidelity can fail independently. See [Vision-model observer qualification](VISION_MODEL_OBSERVER_QUALIFICATION.md).
+
 ## Recommended protocol
 
 1. State one behavioral question in observable language.
@@ -30,6 +32,8 @@ A fixed seed controls one source of variation, but it does not make images from 
 
 These roles can use the same underlying VLM, but their directives and evidence contracts should remain distinct.
 
+Agreement from a same-model retry is a stability observation, not independent corroboration. Independent evidence requires a different qualified observer, a deterministic measurement, trusted metadata, or human review.
+
 ## Evidence language
 
 Prefer: “Under these prompts and fixed seeds, checkpoint A followed left/right lighting instructions in five of six evaluated images.”
@@ -41,3 +45,5 @@ CEF supports progressively stronger behavioral claims when replication, controls
 ## Automated evaluation limits
 
 Vision models can miss count errors, confuse reflection with material, reverse image-left and subject-left, import expectations from prompt text, or return malformed structures. CEF preserves uncertainty, raw responses, comparison artifacts, and human-review queues because automated evaluation is evidence—not ground truth.
+
+For criteria vulnerable to prompt expectation, prefer a prompt-blind visible-evidence pass before the prompt-conditioned judgment. Where possible, record the basis of each claim, permit explicit unknown states, and preserve structured observation separately from prose compression and final judgment.

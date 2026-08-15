@@ -107,6 +107,7 @@ Generated run folders are ignored by default. Publication must be an explicit cu
 
 - [Architecture](docs/ARCHITECTURE.md)
 - [Evaluation methodology](docs/EVALUATION_METHODOLOGY.md)
+- [Vision-model observer qualification](docs/VISION_MODEL_OBSERVER_QUALIFICATION.md)
 - [Resumability and artifact integrity](docs/RESUMABILITY_AND_INTEGRITY.md)
 - [Artifact contract](docs/ARTIFACT_CONTRACT.md)
 - [PNG metadata and publication model](docs/PNG_METADATA_AND_PUBLICATION.md)

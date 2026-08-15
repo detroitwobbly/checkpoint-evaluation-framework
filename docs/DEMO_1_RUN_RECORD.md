@@ -93,13 +93,11 @@ For CEF:
 - paired outputs should be inspected together rather than independently;
 - evaluator agreement should be checked against simple image diagnostics where practical;
 - Qwen should not be the sole adjudicator for directional claims;
-- the broader VLM-limitations inventory from the Image Caption project must be imported before the public report is finalized.
+- the broader VLM-limitations inventory from the Image Caption project is now incorporated in [Vision-model observer qualification](VISION_MODEL_OBSERVER_QUALIFICATION.md).
 
-## Publication gates still open
+## Publication record
 
-- Sanitized-only structured provenance is approved; raw Forge/A1111 metadata remains private.
-- The portfolio report now presents approved human adjudication alongside machine scores.
-- Verify the final static report in a clean hosted-path simulation.
-- Approve the contact sheet, report, machine-readable artifacts, code license, and public identity together.
-
-No demo artifact should be made public until the final sanitized bundle and hosted-path rendering are approved.
+- Sanitized-only structured provenance was approved; raw Forge/A1111 metadata remains private.
+- The contact sheet, report, machine-readable artifacts, AGPL-3.0-or-later code license, and public identity were approved together.
+- The static report and all local targets were verified from the hosted GitHub Pages path.
+- The four-cube correction was regenerated from the approved source record, republished with updated hashes, and verified live.
