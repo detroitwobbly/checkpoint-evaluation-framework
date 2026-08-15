@@ -156,9 +156,9 @@
         "cef_original_png_sha256"
       ],
       "evidence": "evidence/checkpoint_a__none__COUNT_02_THREE.json",
-      "evidence_sha256": "1e92f09fe0c391a89b13d9244e176a5eb34588029552deebd057aaa6210b64e2",
+      "evidence_sha256": "8fa9dd6a8df2a535dd76104772fcd45066a16d3b077ec6a6e52e6f0dd2717c7a",
       "image": "assets/images/checkpoint_a__none__COUNT_02_THREE.png",
-      "image_sha256": "768d17ee220b83d3461147d210cb78b768c14efbaa2d3700bb74f83c386e939d",
+      "image_sha256": "e25d27233622663a8d8ea719de5c12c109f583808c84e9ae9542e7f1f71b98a7",
       "original_png_sha256": "67dbb2ff7e5ecbfca9a8dcbf214cd218ed8e51d27461ea1747a721a40c0e2e04",
       "pixel_equivalent": true,
       "transformation": {

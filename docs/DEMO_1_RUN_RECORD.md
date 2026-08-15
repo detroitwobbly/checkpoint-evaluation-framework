@@ -3,7 +3,7 @@
 Run date: 2026-08-14
 
 Run ID: `materials_and_light_v1`
-Status: **private Pages candidate; human adjudication, sanitized-only publication, and AGPL are approved**
+Status: **published; corrected human adjudication, sanitized-only publication, and AGPL are approved**
 
 ## Experimental question
 
@@ -66,11 +66,12 @@ The near-equal averages should not be presented as a universal checkpoint rankin
 
 Status: **approved by Alex on 2026-08-14**.
 
-The approval record confirms six passes, six failures, nine machine/human agreements, and three disagreements:
+The corrected approval record confirms five passes, seven failures, eight machine/human agreements, and four disagreements:
 
 1. Qwen passed SDXL's wood test despite the large glowing globe reading as glass or plastic rather than wood.
 2. Qwen passed SDXL's right-light test even though the image remains left-lit with a rightward shadow.
 3. Qwen passed RealVisXL's right-light test under the same contradiction.
+4. Qwen passed SDXL's three-cube count test despite four distinct cube bodies being visible (left, rear-center, front-center, and right).
 
 Approximate grayscale diagnostics support the lighting review:
 

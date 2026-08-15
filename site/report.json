@@ -79,10 +79,11 @@
   },
   "generated_images": 12,
   "human_adjudication": {
-    "approval_statement": "That's the read.",
+    "approval_statement": "That's the read. Correction after publication: the SDXL three-cube cell contains four cubes.",
     "approved_at": "2026-08-14T16:35:36-04:00",
     "approved_by": "Alex Led",
     "artifact_type": "human_adjudication",
+    "corrected_at": "2026-08-14T20:03:55-04:00",
     "lighting_pair_diagnostics": [
       {
         "checkpoint_id": "checkpoint_a",
@@ -158,12 +159,12 @@
         "test_id": "COUNT_01_ONE"
       },
       {
-        "agreement": true,
+        "agreement": false,
         "checkpoint_id": "checkpoint_a",
-        "draft_outcome": "pass",
+        "draft_outcome": "fail",
         "machine_outcome": "pass",
         "machine_score": 9.0,
-        "observation": "Exactly three distinct cubes are visible. Overlapping top faces initially look ambiguous in the contact sheet but resolve as three objects at full resolution.",
+        "observation": "Four distinct translucent blue cube bodies are visible: left, rear-center, front-center, and right. This contradicts the request for exactly three cubes; Qwen also miscounted the image as three.",
         "safety_or_rights_flags": [],
         "test_id": "COUNT_02_THREE"
       },
@@ -228,14 +229,14 @@
         "test_id": "COUNT_02_THREE"
       }
     ],
-    "reviewer_note": "Alex approved the proposed 6-pass/6-fail reading and the documented three machine disagreements. This approval does not decide raw-metadata publication or the final code license.",
+    "reviewer_note": "Alex approved the adjudication, then identified a fourth distinct cube in the SDXL COUNT_02_THREE image after publication. The corrected record contains 5 passes, 7 failures, and 4 machine disagreements.",
     "schema_version": "1.0",
     "status": "approved",
     "summary": {
-      "human_fail": 6,
-      "human_pass": 6,
-      "machine_agreements": 9,
-      "machine_disagreements": 3,
+      "human_fail": 7,
+      "human_pass": 5,
+      "machine_agreements": 8,
+      "machine_disagreements": 4,
       "publication_status": "approved_for_private_candidate_pending_metadata_and_license_decisions",
       "records": 12,
       "rights_or_trademark_flags": 0,

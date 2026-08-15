@@ -36,10 +36,10 @@
     }
   },
   "human_adjudication": {
-    "agreement": true,
+    "agreement": false,
     "machine_outcome": "pass",
-    "observation": "Exactly three distinct cubes are visible. Overlapping top faces initially look ambiguous in the contact sheet but resolve as three objects at full resolution.",
-    "outcome": "pass",
+    "observation": "Four distinct translucent blue cube bodies are visible: left, rear-center, front-center, and right. This contradicts the request for exactly three cubes; Qwen also miscounted the image as three.",
+    "outcome": "fail",
     "safety_or_rights_flags": []
   },
   "machine_evaluation": {

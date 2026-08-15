@@ -62,7 +62,7 @@ Status legend: `[x]` verified in this curated tree, `[ ]` pending, `BLOCKED` req
 - [x] Each checkpoint’s license evidence and output-use terms reviewed.
 - [x] Exact checkpoint files, hashes, names, and model-card attribution approved.
 - [x] Generate all 12 demo images and prepare a full-resolution adjudication draft.
-- [x] Alex approved the 6-pass / 6-fail human adjudication and three recorded machine disagreements on 2026-08-14.
+- [x] Alex approved the adjudication and corrected the SDXL count cell after publication: 5 pass / 7 fail, with four recorded machine disagreements, on 2026-08-14.
 - [x] Alex approved sanitized structured provenance; raw Forge/A1111 PNG metadata remains private.
 - [x] Alex approved the current report presentation and adjudicated findings for the private candidate.
 - [x] Alex approved and requested publication of the final sanitized public artifact bundle on 2026-08-14.
