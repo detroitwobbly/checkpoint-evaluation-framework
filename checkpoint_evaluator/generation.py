@@ -220,13 +220,19 @@ def _write_run_state(
     )
 
 
-def _request_payload(test: TestCase, settings: GenerationSettings, lora_profile: LoraProfile) -> dict[str, Any]:
+def _request_payload(
+    test: TestCase,
+    settings: GenerationSettings,
+    lora_profile: LoraProfile,
+    *,
+    include_lora_tokens: bool = True,
+) -> dict[str, Any]:
     prompt = test.prompt
     prompt_overrides = test.metadata.get("lora_prompt_overrides") if isinstance(test.metadata, dict) else None
     if isinstance(prompt_overrides, dict) and lora_profile.id in prompt_overrides:
         prompt = str(prompt_overrides[lora_profile.id])
     prompt_parts = [prompt.strip()]
-    lora_suffix = lora_profile.prompt_suffix()
+    lora_suffix = lora_profile.prompt_suffix() if include_lora_tokens else ""
     if lora_suffix:
         prompt_parts.append(lora_suffix)
     payload = {

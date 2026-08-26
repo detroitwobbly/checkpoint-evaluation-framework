@@ -13,11 +13,19 @@ CEF characterizes behavior under stated conditions. It does not rank a checkpoin
 - Declarative test manifolds across checkpoints, prompts, seeds, settings, and LoRA profiles
 - Fixed-seed controls and counterfactual comparisons
 - Resumable generation and evaluation with manifest-drift protection
-- Forge/A1111 generation and OpenAI-compatible vision-model evaluation
+- Forge/A1111 or ComfyUI generation and OpenAI-compatible vision-model evaluation
 - Run-local manifests, backend inventories, model hashes, PNG provenance, and integrity review
 - Configurable criteria, references, evaluator roles, and human-review queues
 - Machine-readable results alongside HTML reports and contact sheets
 - Explicit uncertainty, failure records, and evaluator disagreement
+
+## Designed for constrained hardware
+
+CEF is designed under real hardware constraints rather than idealized cloud assumptions. SDXL generation and local vision-model evaluation run as separate, sequential stages so diffusion and VLM workloads do not compete for limited memory. Runs are divided into independently recoverable cells; completed work is not regenerated under resume; and resource telemetry, model release, and failure recovery are treated as first-class workflow concerns.
+
+The ComfyUI backend resolves and saves its executable and editable graphs before submission, then persists the accepted prompt ID before CEF waits for or retrieves the result. This makes interrupted runner processes recoverable without silently submitting the same work twice. The backend was validated on an NVIDIA RTX 3080 with 12 GB VRAM and approximately 16 GB system RAM, including full SDXL generation, positive and negative LoRA weights, embedded workflow provenance, cache-safe idempotency, cross-process prompt recovery, explicit model/memory release, and cold-process pixel repeatability for the tested graph.
+
+Constraint awareness is part of the architecture, not an accommodation added after an out-of-memory failure. The demonstrated operating envelope is sequential execution; concurrency is not implied.
 
 ## Five-minute dry run
 
@@ -110,6 +118,8 @@ Generated run folders are ignored by default. Publication must be an explicit cu
 - [Vision-model observer qualification](docs/VISION_MODEL_OBSERVER_QUALIFICATION.md)
 - [Resumability and artifact integrity](docs/RESUMABILITY_AND_INTEGRITY.md)
 - [Artifact contract](docs/ARTIFACT_CONTRACT.md)
+- [ComfyUI backend and recovery guide](docs/COMFY_BACKEND.md)
+- [ComfyUI application evidence](docs/portfolio/COMFYUI_APPLICATION_EVIDENCE.md)
 - [PNG metadata and publication model](docs/PNG_METADATA_AND_PUBLICATION.md)
 - [Safe demo protocol](examples/safe_demo/README.md)
 - [Provenance and licensing decisions](docs/PROVENANCE_AND_LICENSING.md)
@@ -118,6 +128,10 @@ Generated run folders are ignored by default. Publication must be an explicit cu
 - [Security](SECURITY.md)
 - [Release checklist](RELEASE_CHECKLIST.md)
 - [Validation record](VALIDATION.md)
+
+## ComfyUI evidence package
+
+The application-ready ComfyUI package includes editable and executable workflow JSON, a semantic binding contract, the native backend implementation, machine-readable smoke and cold-repeat verification, and a clean graph capture. Start with the [ComfyUI application evidence index](docs/portfolio/COMFYUI_APPLICATION_EVIDENCE.md).
 
 ## Current status
 

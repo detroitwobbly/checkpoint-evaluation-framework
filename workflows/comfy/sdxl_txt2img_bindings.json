@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "workflow_family": "sdxl_txt2img_core",
+  "description": "Stable CEF bindings for core-node SDXL baseline and single-LoRA ComfyUI workflows.",
+  "variants": {
+    "base": {
+      "api_workflow": "sdxl_txt2img_base_api.json",
+      "ui_workflow": "sdxl_txt2img_base_ui.json",
+      "output_node": "9",
+      "bindings": {
+        "checkpoint": ["4", "CheckpointLoaderSimple", "ckpt_name"],
+        "positive_prompt": ["6", "CLIPTextEncode", "text"],
+        "negative_prompt": ["7", "CLIPTextEncode", "text"],
+        "seed": ["3", "KSampler", "seed"],
+        "steps": ["3", "KSampler", "steps"],
+        "cfg_scale": ["3", "KSampler", "cfg"],
+        "sampler_name": ["3", "KSampler", "sampler_name"],
+        "scheduler": ["3", "KSampler", "scheduler"],
+        "denoise": ["3", "KSampler", "denoise"],
+        "width": ["5", "EmptyLatentImage", "width"],
+        "height": ["5", "EmptyLatentImage", "height"],
+        "batch_size": ["5", "EmptyLatentImage", "batch_size"],
+        "output_prefix": ["9", "SaveImage", "filename_prefix"]
+      }
+    },
+    "single_lora": {
+      "api_workflow": "sdxl_txt2img_single_lora_api.json",
+      "ui_workflow": "sdxl_txt2img_single_lora_ui.json",
+      "output_node": "9",
+      "bindings": {
+        "checkpoint": ["4", "CheckpointLoaderSimple", "ckpt_name"],
+        "positive_prompt": ["6", "CLIPTextEncode", "text"],
+        "negative_prompt": ["7", "CLIPTextEncode", "text"],
+        "seed": ["3", "KSampler", "seed"],
+        "steps": ["3", "KSampler", "steps"],
+        "cfg_scale": ["3", "KSampler", "cfg"],
+        "sampler_name": ["3", "KSampler", "sampler_name"],
+        "scheduler": ["3", "KSampler", "scheduler"],
+        "denoise": ["3", "KSampler", "denoise"],
+        "width": ["5", "EmptyLatentImage", "width"],
+        "height": ["5", "EmptyLatentImage", "height"],
+        "batch_size": ["5", "EmptyLatentImage", "batch_size"],
+        "output_prefix": ["9", "SaveImage", "filename_prefix"],
+        "lora_name": ["10", "LoraLoader", "lora_name"],
+        "lora_strength_model": ["10", "LoraLoader", "strength_model"],
+        "lora_strength_clip": ["10", "LoraLoader", "strength_clip"]
+      }
+    }
+  }
+}

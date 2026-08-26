@@ -1,0 +1,61 @@
+{
+  "suite_id": "COMFY_NATIVE_BACKEND_GATE",
+  "name": "ComfyUI Native Backend Integration Gate",
+  "checkpoints": [
+    {
+      "id": "juggernaut_xl_ragnarok",
+      "title": "juggernautXL_ragnarokBy.safetensors"
+    }
+  ],
+  "lora_profiles": [
+    {
+      "id": "none",
+      "loras": []
+    },
+    {
+      "id": "near_far_plus_one",
+      "loras": [
+        {
+          "name": "Near_Far_v1.safetensors",
+          "weight": 1.0
+        }
+      ]
+    }
+  ],
+  "defaults": {
+    "negative_prompt": "text, watermark",
+    "steps": 30,
+    "cfg_scale": 7.0,
+    "width": 1024,
+    "height": 1024,
+    "sampler_name": "dpmpp_2m_sde",
+    "scheduler": "karras",
+    "seed": 42,
+    "batch_size": 1,
+    "n_iter": 1
+  },
+  "tests": [
+    {
+      "id": "NATIVE_01_BLACK_DRESS",
+      "name": "Native backend framing canary",
+      "category": "backend_integration",
+      "purpose": "Verify ordinary CEF manifest execution through the native Comfy backend.",
+      "prompt": "A woman wearing a black dress",
+      "criteria": [
+        {
+          "id": "subject",
+          "description": "A woman wearing a black dress is visible."
+        },
+        {
+          "id": "framing",
+          "description": "Record the apparent camera distance without inferring intent."
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "backend_gate": "comfy_native_v0",
+    "execution_policy": "sequential_only",
+    "qwen_gate": "do_not_invoke"
+  }
+}

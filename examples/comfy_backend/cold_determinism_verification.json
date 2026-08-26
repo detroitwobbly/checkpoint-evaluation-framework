@@ -1,0 +1,32 @@
+{
+  "artifact_type": "comfy_cold_process_determinism_verification",
+  "schema_version": "0.1",
+  "run_id": "run_comfy_cold_repeat_v0",
+  "status": "pass",
+  "restart_condition": {
+    "comfyui_process_restarted_by_operator": true,
+    "target_run_absent_before_submission": true,
+    "torch_vram_total_before_submission": 0,
+    "vram_free_bytes_before_submission": 11673796608
+  },
+  "prompt_id": "a891dafb-7d62-405a-96ce-61548cb17f15",
+  "execution_ms": 23149,
+  "cached_nodes": [],
+  "resolved_inputs": {
+    "checkpoint": "juggernautXL_ragnarokBy.safetensors",
+    "seed": 42,
+    "lora_name": "Near_Far_v1.safetensors",
+    "model_weight": 1.0,
+    "clip_weight": 1.0
+  },
+  "png_text_keys": [
+    "prompt",
+    "workflow"
+  ],
+  "reference_pixel_sha256_rgba": "2fda375bf1c9468b95d6c855a1ab864515d183395dcd67fbb92a131499660a33",
+  "cold_pixel_sha256_rgba": "2fda375bf1c9468b95d6c855a1ab864515d183395dcd67fbb92a131499660a33",
+  "decoded_pixel_buffers_equal": true,
+  "cold_png_sha256": "384cfd7683b5e66e6a63c98eec3227f2b54b4af255b69befa05d3ea107a02827",
+  "complete_png_equality_expected": false,
+  "conclusion": "Cold-process repeatability passed for this environment and resolved graph. This does not claim cross-hardware or cross-version determinism."
+}

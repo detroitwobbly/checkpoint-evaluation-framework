@@ -1,0 +1,80 @@
+{
+  "all_embedded_graph_checks_pass": true,
+  "all_four_cells_complete": true,
+  "artifact_type": "comfy_backend_smoke_verification",
+  "cells": [
+    {
+      "cell_id": "baseline_seed42",
+      "checks": {
+        "backend_is_comfyui": true,
+        "lora_weight_matches": true,
+        "prompt_and_workflow_chunks_present": true,
+        "sampler_is_dpmpp_2m_sde_karras": true,
+        "seed_is_42": true
+      },
+      "elapsed_seconds": 19.2,
+      "embedded_clip_weight": null,
+      "embedded_lora_name": null,
+      "embedded_model_weight": null,
+      "pixel_sha256_rgba": "7c74f8d7fc5d5b2e2406a812a8fdbcaa73cc667b9b6865dfd812ebb12948d3c7",
+      "png_sha256": "5275939ec1e7c76339b6c058c1162d23c47588772630ed444492aaafaae103ee"
+    },
+    {
+      "cell_id": "near_far_w-1_seed42",
+      "checks": {
+        "backend_is_comfyui": true,
+        "lora_weight_matches": true,
+        "prompt_and_workflow_chunks_present": true,
+        "sampler_is_dpmpp_2m_sde_karras": true,
+        "seed_is_42": true
+      },
+      "elapsed_seconds": 20.189,
+      "embedded_clip_weight": -1.0,
+      "embedded_lora_name": "Near_Far_v1.safetensors",
+      "embedded_model_weight": -1.0,
+      "pixel_sha256_rgba": "bcc293caf130ac79e467b8a5039f8e1008758746b42823cb02e5b3ae96da0ec7",
+      "png_sha256": "da8666e1d8a9076e1103396a6f9c9fc66a7f3ff15628c674f14e019a4b5dcd55"
+    },
+    {
+      "cell_id": "near_far_w+1_seed42",
+      "checks": {
+        "backend_is_comfyui": true,
+        "lora_weight_matches": true,
+        "prompt_and_workflow_chunks_present": true,
+        "sampler_is_dpmpp_2m_sde_karras": true,
+        "seed_is_42": true
+      },
+      "elapsed_seconds": 20.163,
+      "embedded_clip_weight": 1.0,
+      "embedded_lora_name": "Near_Far_v1.safetensors",
+      "embedded_model_weight": 1.0,
+      "pixel_sha256_rgba": "2fda375bf1c9468b95d6c855a1ab864515d183395dcd67fbb92a131499660a33",
+      "png_sha256": "d3bc0bedb1138b524444708bc1e68d923023982153354a7293b7851a63f6e94c"
+    },
+    {
+      "cell_id": "near_far_w+1_seed42_repeat",
+      "checks": {
+        "backend_is_comfyui": true,
+        "lora_weight_matches": true,
+        "prompt_and_workflow_chunks_present": true,
+        "sampler_is_dpmpp_2m_sde_karras": true,
+        "seed_is_42": true
+      },
+      "elapsed_seconds": 1.06,
+      "embedded_clip_weight": 1.0,
+      "embedded_lora_name": "Near_Far_v1.safetensors",
+      "embedded_model_weight": 1.0,
+      "pixel_sha256_rgba": "2fda375bf1c9468b95d6c855a1ab864515d183395dcd67fbb92a131499660a33",
+      "png_sha256": "881e02239c1747d8b0939f933b072d02761f626eee6cb4dae818fd4f1f7e9c13"
+    }
+  ],
+  "deterministic_repeat_pixel_equal": true,
+  "full_png_expected_to_differ_due_to_output_prefix_metadata": true,
+  "post_run_resources": {
+    "ram_free_bytes": 2613018624,
+    "vram_free_bytes": 4637994300
+  },
+  "run_id": "run_comfy_sdxl_backend_smoke_v0",
+  "schema_version": "0.1",
+  "verified_at": "2026-08-26T16:07:09-04:00"
+}
