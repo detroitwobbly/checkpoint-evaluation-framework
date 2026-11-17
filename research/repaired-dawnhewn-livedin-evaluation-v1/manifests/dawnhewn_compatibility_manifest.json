@@ -1,0 +1,53 @@
+{
+  "suite_id": "dawnhewn_repaired_compatibility_v01",
+  "name": "CEF Research Annex — Dawnhewn × Repaired",
+  "checkpoints": [
+    {
+      "id": "juggernaut_xl_ragnarok",
+      "title": "sd\\juggernautXL_ragnarokBy.safetensors",
+      "sha256": "dd08fa32f98d05a2443ca1419e46df1575a0811f6e3b246d9dd47ff20f5eb66a"
+    }
+  ],
+  "lora_profiles": [
+    {"id": "dawnhewn_only", "loras": [{"name": "jsolarum_dawnhewn_ship_xl_v2", "weight": 1.0, "sha256": "6e1d76dd2b2fed5ee4abe26c7dc3c79e3383f3241eb92b89049b4d762c0e6642"}]},
+    {"id": "dawnhewn_repaired_m2", "loras": [{"name": "jsolarum_dawnhewn_ship_xl_v2", "weight": 1.0, "sha256": "6e1d76dd2b2fed5ee4abe26c7dc3c79e3383f3241eb92b89049b4d762c0e6642"}, {"name": "Repaired_v1", "weight": -2.0, "sha256": "829f924aea08b8391db941a52f1da7a527952d98444170b647330657d516ea98"}]},
+    {"id": "dawnhewn_repaired_m1", "loras": [{"name": "jsolarum_dawnhewn_ship_xl_v2", "weight": 1.0, "sha256": "6e1d76dd2b2fed5ee4abe26c7dc3c79e3383f3241eb92b89049b4d762c0e6642"}, {"name": "Repaired_v1", "weight": -1.0, "sha256": "829f924aea08b8391db941a52f1da7a527952d98444170b647330657d516ea98"}]},
+    {"id": "dawnhewn_repaired_0", "loras": [{"name": "jsolarum_dawnhewn_ship_xl_v2", "weight": 1.0, "sha256": "6e1d76dd2b2fed5ee4abe26c7dc3c79e3383f3241eb92b89049b4d762c0e6642"}, {"name": "Repaired_v1", "weight": 0.0, "sha256": "829f924aea08b8391db941a52f1da7a527952d98444170b647330657d516ea98"}]},
+    {"id": "dawnhewn_repaired_p1", "loras": [{"name": "jsolarum_dawnhewn_ship_xl_v2", "weight": 1.0, "sha256": "6e1d76dd2b2fed5ee4abe26c7dc3c79e3383f3241eb92b89049b4d762c0e6642"}, {"name": "Repaired_v1", "weight": 1.0, "sha256": "829f924aea08b8391db941a52f1da7a527952d98444170b647330657d516ea98"}]},
+    {"id": "dawnhewn_repaired_p2", "loras": [{"name": "jsolarum_dawnhewn_ship_xl_v2", "weight": 1.0, "sha256": "6e1d76dd2b2fed5ee4abe26c7dc3c79e3383f3241eb92b89049b4d762c0e6642"}, {"name": "Repaired_v1", "weight": 2.0, "sha256": "829f924aea08b8391db941a52f1da7a527952d98444170b647330657d516ea98"}]},
+    {"id": "dawnhewn_repaired_p3", "loras": [{"name": "jsolarum_dawnhewn_ship_xl_v2", "weight": 1.0, "sha256": "6e1d76dd2b2fed5ee4abe26c7dc3c79e3383f3241eb92b89049b4d762c0e6642"}, {"name": "Repaired_v1", "weight": 3.0, "sha256": "829f924aea08b8391db941a52f1da7a527952d98444170b647330657d516ea98"}]}
+  ],
+  "defaults": {
+    "negative_prompt": "text, watermark, logo, signature, duplicate spacecraft, multiple spacecraft, cropped spacecraft, malformed geometry, deformed, low quality",
+    "steps": 24,
+    "cfg_scale": 5.0,
+    "width": 1216,
+    "height": 832,
+    "sampler_name": "DPM++ 2M",
+    "scheduler": "Karras",
+    "seed": 217001,
+    "batch_size": 1,
+    "n_iter": 1,
+    "clip_skip": 1
+  },
+  "tests": [
+    {"id": "d1_planetary_s217001", "name": "D1 Planetary orbit — seed 217001", "category": "dawnhewn_exterior", "prompt": "jdhship, a small spaceship, a three-quarter exterior view of the Dawnhewn spacecraft orbiting a large planet, the cylindrical hull and solar arrays visible against space, complete vessel visible", "criteria": ["Dawnhewn identity", "hull silhouette", "solar arrays", "repair visibility", "structural distortion", "background leakage"], "settings": {"seed": 217001}},
+    {"id": "d1_planetary_s217019", "name": "D1 Planetary orbit — seed 217019", "category": "dawnhewn_exterior", "prompt": "jdhship, a small spaceship, a three-quarter exterior view of the Dawnhewn spacecraft orbiting a large planet, the cylindrical hull and solar arrays visible against space, complete vessel visible", "criteria": ["seed consistency", "Dawnhewn identity", "repair visibility"], "settings": {"seed": 217019}},
+    {"id": "d2_interstellar_s217031", "name": "D2 Interstellar travel — seed 217031", "category": "dawnhewn_exterior", "prompt": "jdhship, a small spaceship, the Dawnhewn travelling through deep space, viewed from a rear-quarter angle, with the complete vessel visible against a distant starfield", "criteria": ["Dawnhewn identity", "rear geometry", "engine configuration", "repair visibility", "structural distortion"], "settings": {"seed": 217031}},
+    {"id": "d2_interstellar_s217043", "name": "D2 Interstellar travel — seed 217043", "category": "dawnhewn_exterior", "prompt": "jdhship, a small spaceship, the Dawnhewn travelling through deep space, viewed from a rear-quarter angle, with the complete vessel visible against a distant starfield", "criteria": ["seed consistency", "Dawnhewn identity", "repair visibility"], "settings": {"seed": 217043}},
+    {"id": "d3_asteroid_s217057", "name": "D3 Asteroid anchorage — seed 217057", "category": "dawnhewn_exterior", "prompt": "jdhship, a small spaceship, the Dawnhewn secured beside a rocky asteroid, with docking equipment or anchoring hardware visible, the ship remaining the dominant subject, complete vessel visible", "criteria": ["Dawnhewn identity", "docking fixtures", "repair attribution", "asteroid leakage"], "settings": {"seed": 217057}},
+    {"id": "d3_asteroid_s217071", "name": "D3 Asteroid anchorage — seed 217071", "category": "dawnhewn_exterior", "prompt": "jdhship, a small spaceship, the Dawnhewn secured beside a rocky asteroid, with docking equipment or anchoring hardware visible, the ship remaining the dominant subject, complete vessel visible", "criteria": ["seed consistency", "Dawnhewn identity", "repair visibility"], "settings": {"seed": 217071}},
+    {"id": "d4_dock_s217083", "name": "D4 Space dock — seed 217083", "category": "dawnhewn_exterior", "prompt": "jdhship, a small spaceship, the Dawnhewn positioned inside an industrial orbital service dock, with gantries, maintenance platforms and large-scale docking infrastructure, the complete vessel visible", "criteria": ["Dawnhewn identity", "ship versus dock attribution", "repair visibility", "background leakage"], "settings": {"seed": 217083}},
+    {"id": "d4_dock_s217097", "name": "D4 Space dock — seed 217097", "category": "dawnhewn_exterior", "prompt": "jdhship, a small spaceship, the Dawnhewn positioned inside an industrial orbital service dock, with gantries, maintenance platforms and large-scale docking infrastructure, the complete vessel visible", "criteria": ["seed consistency", "Dawnhewn identity", "repair visibility"], "settings": {"seed": 217097}}
+  ],
+  "metadata": {
+    "protocol": "CEF private research annex",
+    "planned_case_count": 56,
+    "automated_vlm": false,
+    "review_authority": "human",
+    "cross_checkpoint_notice": "Dawnhewn metadata identifies Juggernaut XL v9 / RunDiffusion Photo 2 as its training base. Ragnarok results are compatibility evidence, not native-base characterization.",
+    "dawnhewn_trigger_source": "Embedded metadata documents jdhship and a small spaceship.",
+    "dawnhewn_weight_assumption": "No numeric recommended weight was found in embedded metadata. Weight 1.0 is a conservative evaluation assumption and is not represented as creator-documented guidance.",
+    "redistribution": "Dawnhewn weights are evidence-only and must not be packaged."
+  }
+}

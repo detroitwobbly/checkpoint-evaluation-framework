@@ -1,0 +1,56 @@
+{
+  "suite_id": "dawnhewn_repaired_production_profile_followup_v01",
+  "name": "CEF Follow-Up — Dawnhewn × Repaired Production Profile",
+  "checkpoints": [
+    {
+      "id": "juggernaut_xl_ragnarok",
+      "title": "sd\\juggernautXL_ragnarokBy.safetensors",
+      "sha256": "dd08fa32f98d05a2443ca1419e46df1575a0811f6e3b246d9dd47ff20f5eb66a"
+    }
+  ],
+  "lora_profiles": [
+    {"id": "dawnhewn_only", "loras": [{"name": "jsolarum_dawnhewn_ship_xl_v2", "weight": 1.0, "sha256": "6e1d76dd2b2fed5ee4abe26c7dc3c79e3383f3241eb92b89049b4d762c0e6642"}]},
+    {"id": "dawnhewn_repaired_p1", "loras": [{"name": "jsolarum_dawnhewn_ship_xl_v2", "weight": 1.0, "sha256": "6e1d76dd2b2fed5ee4abe26c7dc3c79e3383f3241eb92b89049b4d762c0e6642"}, {"name": "Repaired_v1", "weight": 1.0, "sha256": "829f924aea08b8391db941a52f1da7a527952d98444170b647330657d516ea98"}]},
+    {"id": "dawnhewn_repaired_p2", "loras": [{"name": "jsolarum_dawnhewn_ship_xl_v2", "weight": 1.0, "sha256": "6e1d76dd2b2fed5ee4abe26c7dc3c79e3383f3241eb92b89049b4d762c0e6642"}, {"name": "Repaired_v1", "weight": 2.0, "sha256": "829f924aea08b8391db941a52f1da7a527952d98444170b647330657d516ea98"}]}
+  ],
+  "defaults": {
+    "negative_prompt": "text, watermark, logo, signature, duplicate spacecraft, multiple spacecraft, cropped spacecraft, malformed geometry, destroyed, derelict, low quality",
+    "steps": 32,
+    "cfg_scale": 7.0,
+    "width": 1216,
+    "height": 832,
+    "sampler_name": "DPM++ 2M SDE",
+    "scheduler": "Karras",
+    "seed": 217001,
+    "batch_size": 1,
+    "n_iter": 1,
+    "clip_skip": 1
+  },
+  "tests": [
+    {
+      "id": "planetary_original_s217001",
+      "name": "Dawnhewn planetary orbit — original prompt — production profile",
+      "category": "settings_bridge",
+      "prompt": "jdhship, a small spaceship, a three-quarter exterior view of the Dawnhewn spacecraft orbiting a large planet, the cylindrical hull and solar arrays visible against space, complete vessel visible",
+      "criteria": ["direct comparison with CFG 5 run", "Dawnhewn identity", "repair/intervention visibility", "solar and end-cap preservation"],
+      "settings": {"seed": 217001}
+    },
+    {
+      "id": "dock_original_s217083",
+      "name": "Dawnhewn space dock — original prompt — production profile",
+      "category": "settings_bridge",
+      "prompt": "jdhship, a small spaceship, the Dawnhewn positioned inside an industrial orbital service dock, with gantries, maintenance platforms and large-scale docking infrastructure, the complete vessel visible",
+      "criteria": ["direct comparison with CFG 5 run", "Dawnhewn identity", "ship versus dock attribution", "end-cap and hull preservation"],
+      "settings": {"seed": 217083}
+    }
+  ],
+  "metadata": {
+    "protocol": "CEF production-profile follow-up probe",
+    "generation_profile_id": "alex_sdxl_lora_production_v1",
+    "planned_case_count": 6,
+    "automated_vlm": false,
+    "review_authority": "human",
+    "comparison_run": "dawnhewn_compatibility_v01_live",
+    "cross_checkpoint_notice": "Dawnhewn metadata identifies Juggernaut XL v9 / RunDiffusion Photo 2 as its training base. Ragnarok results are compatibility evidence, not native-base characterization."
+  }
+}

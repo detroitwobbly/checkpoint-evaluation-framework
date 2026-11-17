@@ -133,6 +133,10 @@ Generated run folders are ignored by default. Publication must be an explicit cu
 
 The application-ready ComfyUI package includes editable and executable workflow JSON, a semantic binding contract, the native backend implementation, machine-readable smoke and cold-repeat verification, and a clean graph capture. Start with the [ComfyUI application evidence index](docs/portfolio/COMFYUI_APPLICATION_EVIDENCE.md).
 
+## External evaluation packages
+
+- [Repaired × Dawnhewn × Lived-In](research/repaired-dawnhewn-livedin-evaluation-v1/README.md) — a 227-generation external-customer evaluation with 37 curated comparison sheets, production-profile refinements, complete manifests, and explicit identity-preservation limits. Model weights and private service artifacts are excluded.
+
 ## Current status
 
 This is a curated public release extracted from a larger private research archive. The reusable core and tests are present; private runs, local paths, personal datasets, model files, explicit research material, and artist-specific investigations are intentionally excluded.

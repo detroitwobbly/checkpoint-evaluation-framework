@@ -1,0 +1,40 @@
+{
+  "suite_id": "repaired_livedin_cabin_preview_v01",
+  "name": "CEF Research Annex — Repaired × Lived-In Cabin Concepts",
+  "checkpoints": [
+    {"id": "juggernaut_xl_ragnarok", "title": "sd\\juggernautXL_ragnarokBy.safetensors", "sha256": "dd08fa32f98d05a2443ca1419e46df1575a0811f6e3b246d9dd47ff20f5eb66a"}
+  ],
+  "lora_profiles": [
+    {"id": "baseline", "loras": []},
+    {"id": "repaired_p1", "loras": [{"name": "Repaired_v1", "weight": 1.0, "sha256": "829f924aea08b8391db941a52f1da7a527952d98444170b647330657d516ea98"}]},
+    {"id": "repaired_p3", "loras": [{"name": "Repaired_v1", "weight": 3.0, "sha256": "829f924aea08b8391db941a52f1da7a527952d98444170b647330657d516ea98"}]},
+    {"id": "livedin_p1", "loras": [{"name": "LivedIn_v1", "weight": 1.0, "sha256": "e2d8804d6ce4bb9c8a9beebee24b3e4eee73433d40bb7bc927a50f30ee18b391"}]},
+    {"id": "livedin_p3", "loras": [{"name": "LivedIn_v1", "weight": 3.0, "sha256": "e2d8804d6ce4bb9c8a9beebee24b3e4eee73433d40bb7bc927a50f30ee18b391"}]},
+    {"id": "combined_p1_p1", "loras": [{"name": "Repaired_v1", "weight": 1.0, "sha256": "829f924aea08b8391db941a52f1da7a527952d98444170b647330657d516ea98"}, {"name": "LivedIn_v1", "weight": 1.0, "sha256": "e2d8804d6ce4bb9c8a9beebee24b3e4eee73433d40bb7bc927a50f30ee18b391"}]},
+    {"id": "combined_p2_p2", "loras": [{"name": "Repaired_v1", "weight": 2.0, "sha256": "829f924aea08b8391db941a52f1da7a527952d98444170b647330657d516ea98"}, {"name": "LivedIn_v1", "weight": 2.0, "sha256": "e2d8804d6ce4bb9c8a9beebee24b3e4eee73433d40bb7bc927a50f30ee18b391"}]},
+    {"id": "combined_p2_p3", "loras": [{"name": "Repaired_v1", "weight": 2.0, "sha256": "829f924aea08b8391db941a52f1da7a527952d98444170b647330657d516ea98"}, {"name": "LivedIn_v1", "weight": 3.0, "sha256": "e2d8804d6ce4bb9c8a9beebee24b3e4eee73433d40bb7bc927a50f30ee18b391"}]},
+    {"id": "livedin_m2", "loras": [{"name": "LivedIn_v1", "weight": -2.0, "sha256": "e2d8804d6ce4bb9c8a9beebee24b3e4eee73433d40bb7bc927a50f30ee18b391"}]}
+  ],
+  "defaults": {
+    "negative_prompt": "text, watermark, logo, signature, people, vast luxury interior, military command bridge, pristine laboratory, cyberpunk neon, cavernous room, malformed architecture, duplicate furniture, low quality",
+    "steps": 24, "cfg_scale": 5.0, "width": 1216, "height": 832,
+    "sampler_name": "DPM++ 2M", "scheduler": "Karras", "seed": 317001,
+    "batch_size": 1, "n_iter": 1, "clip_skip": 1
+  },
+  "tests": [
+    {"id": "c1_cockpit", "name": "C1 Working cockpit", "category": "cabin", "prompt": "a photorealistic interior photograph of the compact cockpit of a long-range civilian spacecraft, viewed from the rear looking toward the forward windows, a narrow central aisle between practical control consoles, analog instruments, navigation displays, overhead storage lockers, exposed service conduits, utility compartments, a pair of well-used pilot seats, curved metal ceiling panels, restrained industrial lighting, believable human-scale proportions, deep space visible through the forward windows, realistic materials and fine physical detail", "criteria": ["cockpit geometry", "maintenance versus damage", "repair locality", "habitation evidence", "functional plausibility"], "settings": {"seed": 317001}},
+    {"id": "c2_living", "name": "C2 Space Winnebago living cabin", "category": "cabin", "prompt": "a photorealistic wide-angle interior photograph of a compact long-range spacecraft living cabin, practical vintage recreational-vehicle layout and working spaceship engineering, narrow central walkway, built-in galley with sink and compact cooking equipment, foldaway dining table, storage lockers, overhead cabinets, small sleeping berth, curved pressure-hull walls, practical work surfaces, warm utility lighting, cream panels, muted ochre accents, aluminum fixtures, realistic fabric upholstery, small believable space designed for extended journeys", "criteria": ["domestic layout", "habitation evidence", "repair versus clutter", "functional plausibility"], "settings": {"seed": 317019}},
+    {"id": "c3_engineering", "name": "C3 Engineering compartment", "category": "cabin", "prompt": "a photorealistic interior photograph of a compact spacecraft engineering compartment, narrow maintenance aisle between machinery cabinets, pressure pipes, electrical distribution panels, ventilation ducts, mechanical pumps, cable conduits and tool storage, curved pressure-hull construction, exposed structural ribs, metal access panels, practical overhead lighting, realistic industrial equipment and believable maintenance access, documentary photographic realism", "criteria": ["machinery identity", "material-specific repair", "maintenance access", "damage leakage"], "settings": {"seed": 317031}},
+    {"id": "c4_personal", "name": "C4 Personal sleeping and work area", "category": "cabin", "prompt": "a photorealistic interior photograph of a tiny sleeping and working compartment aboard a long-range civilian spacecraft, built-in narrow bunk, compact writing desk, small viewport overlooking space, overhead storage compartments, reading lamp, equipment locker, personal storage shelves, practical ventilation fittings, curved metal walls, cream and ochre panels, soft fabric bedding, functional lighting, confined but comfortable habitation", "criteria": ["personal occupation", "domestic repair", "repair versus wear", "plausible confined architecture"], "settings": {"seed": 317043}},
+    {"id": "c5_dockside", "name": "C5 Dockside maintenance", "category": "cabin", "prompt": "a photorealistic interior photograph of a small civilian spacecraft cabin during routine servicing at an orbital dock, compact control consoles, storage compartments, galley fixtures, equipment lockers, curved pressure-hull walls and practical work surfaces, structural gantries of a space dock visible through a side window, realistic industrial materials, believable spacecraft architecture, neutral functional lighting and documentary photographic detail", "criteria": ["prompted maintenance versus slider effect", "repair locality", "habitation evidence", "background attribution"], "settings": {"seed": 317057}}
+  ],
+  "metadata": {
+    "protocol": "CEF private research annex",
+    "planned_case_count": 45,
+    "automated_vlm": false,
+    "review_authority": "human",
+    "purpose": "Concept preview and slider interaction study; not part of standalone Repaired scoring.",
+    "profile_order": "LoRAs are applied in the explicit order recorded in each profile.",
+    "redistribution": "No model weights are included in research-annex outputs."
+  }
+}

@@ -1,0 +1,153 @@
+{
+  "suite_id": "repaired_external_eval_v01",
+  "name": "CEF External Evaluation — Repaired v1",
+  "checkpoints": [
+    {
+      "id": "juggernaut_xl_ragnarok",
+      "title": "sd\\juggernautXL_ragnarokBy.safetensors",
+      "sha256": "dd08fa32f98d05a2443ca1419e46df1575a0811f6e3b246d9dd47ff20f5eb66a"
+    }
+  ],
+  "lora_profiles": [
+    {"id": "control", "loras": []},
+    {"id": "repaired_m3", "loras": [{"name": "Repaired_v1", "weight": -3.0, "sha256": "829f924aea08b8391db941a52f1da7a527952d98444170b647330657d516ea98"}]},
+    {"id": "repaired_m2", "loras": [{"name": "Repaired_v1", "weight": -2.0, "sha256": "829f924aea08b8391db941a52f1da7a527952d98444170b647330657d516ea98"}]},
+    {"id": "repaired_m1", "loras": [{"name": "Repaired_v1", "weight": -1.0, "sha256": "829f924aea08b8391db941a52f1da7a527952d98444170b647330657d516ea98"}]},
+    {"id": "adapter_zero", "loras": [{"name": "Repaired_v1", "weight": 0.0, "sha256": "829f924aea08b8391db941a52f1da7a527952d98444170b647330657d516ea98"}]},
+    {"id": "repaired_p1", "loras": [{"name": "Repaired_v1", "weight": 1.0, "sha256": "829f924aea08b8391db941a52f1da7a527952d98444170b647330657d516ea98"}]},
+    {"id": "repaired_p2", "loras": [{"name": "Repaired_v1", "weight": 2.0, "sha256": "829f924aea08b8391db941a52f1da7a527952d98444170b647330657d516ea98"}]},
+    {"id": "repaired_p3", "loras": [{"name": "Repaired_v1", "weight": 3.0, "sha256": "829f924aea08b8391db941a52f1da7a527952d98444170b647330657d516ea98"}]}
+  ],
+  "defaults": {
+    "negative_prompt": "text, watermark, logo, signature, duplicate subject, duplicate object, malformed geometry, deformed, low quality",
+    "steps": 24,
+    "cfg_scale": 5.0,
+    "width": 1024,
+    "height": 1024,
+    "sampler_name": "DPM++ 2M",
+    "scheduler": "Karras",
+    "seed": 117001,
+    "batch_size": 1,
+    "n_iter": 1,
+    "clip_skip": 1
+  },
+  "tests": [
+    {
+      "id": "machine_generator_s117001",
+      "name": "Large machine — diesel generator — seed 117001",
+      "category": "large_machine",
+      "purpose": "Dose response on a machine with plausible housings, pipes, fasteners, and replaceable sections.",
+      "prompt": "a large industrial diesel generator in a clean working maintenance bay, centered documentary photograph, complete machine visible, realistic metal housings, pipes, fasteners and controls",
+      "criteria": ["repair activation", "functional plausibility", "identity and geometry preservation", "damage, dirt, weathering and wholesale replacement recorded separately"],
+      "settings": {"seed": 117001}
+    },
+    {
+      "id": "machine_generator_s117019",
+      "name": "Large machine — diesel generator — seed 117019",
+      "category": "large_machine_replication",
+      "purpose": "Second fixed seed for the core machine carrier.",
+      "prompt": "a large industrial diesel generator in a clean working maintenance bay, centered documentary photograph, complete machine visible, realistic metal housings, pipes, fasteners and controls",
+      "criteria": ["repair activation", "seed consistency", "functional plausibility", "identity and geometry preservation"],
+      "settings": {"seed": 117019}
+    },
+    {
+      "id": "vehicle_trawler_s117031",
+      "name": "Vehicle — working fishing trawler",
+      "category": "vehicle",
+      "purpose": "Test functional repair across painted metal, hull plates, railings, deck equipment and rigging.",
+      "prompt": "a working commercial fishing trawler tied at a harbor quay, complete vessel visible, documentary photograph, painted steel hull, railings, deck machinery and rigging",
+      "criteria": ["material-specific repair", "vessel identity", "seaworthiness", "environmental leakage"],
+      "settings": {"seed": 117031}
+    },
+    {
+      "id": "architecture_bridge_s117043",
+      "name": "Megastructure — suspension bridge",
+      "category": "megastructure",
+      "purpose": "Test structural sections, joints and maintenance without replacing the bridge.",
+      "prompt": "a massive steel suspension bridge spanning a broad river, complete main span visible, neutral overcast daylight, documentary architectural photograph",
+      "criteria": ["structural repair plausibility", "bridge geometry preservation", "scale", "background leakage"],
+      "settings": {"seed": 117043}
+    },
+    {
+      "id": "material_barn_s117057",
+      "name": "Material — wooden barn",
+      "category": "wood",
+      "purpose": "Test replacement boards, splices, braces and patched joints in wood.",
+      "prompt": "a plain wooden agricultural barn beside an open field, full exterior visible, neutral daylight, documentary architectural photograph, timber siding and simple doors",
+      "criteria": ["wood-specific repair", "barn identity", "repair versus weathering", "composition preservation"],
+      "settings": {"seed": 117057}
+    },
+    {
+      "id": "material_satchel_s117071",
+      "name": "Material — leather satchel",
+      "category": "leather_fabric",
+      "purpose": "Test stitching, patches, reinforced seams and replacement leather.",
+      "prompt": "a plain leather work satchel resting on a neutral workshop table, centered product photograph, entire satchel visible, realistic leather, straps, seams and buckles",
+      "criteria": ["leather-specific repair", "locality of intervention", "object identity", "metal-patch leakage"],
+      "settings": {"seed": 117071}
+    },
+    {
+      "id": "material_ceramic_s117083",
+      "name": "Material — ceramic vessel",
+      "category": "ceramic",
+      "purpose": "Test whether repair vocabulary adapts to ceramic rather than imposing generic metal plates.",
+      "prompt": "a large plain ceramic storage vessel on a neutral museum plinth, centered product photograph, complete vessel visible, matte fired clay surface",
+      "criteria": ["ceramic-specific repair", "vessel identity", "generic metal leakage", "repair versus breakage"],
+      "settings": {"seed": 117083}
+    },
+    {
+      "id": "small_toolbox_s117097",
+      "name": "Small object — metal toolbox",
+      "category": "small_mechanical",
+      "purpose": "Test coherent local repairs on a simple familiar object.",
+      "prompt": "a plain steel toolbox on a neutral workshop floor, closed lid, complete object visible, centered documentary product photograph",
+      "criteria": ["local repair", "toolbox identity", "dose response", "subject replacement"],
+      "settings": {"seed": 117097}
+    },
+    {
+      "id": "negative_mountain_s117109",
+      "name": "Negative control — natural mountain range",
+      "category": "negative_control",
+      "purpose": "Measure inappropriate repair or mechanical imagery on terrain with no constructed subject.",
+      "prompt": "an uninhabited natural mountain range, exposed rock, ridgelines and valleys, no roads, no buildings, no human structures, wide documentary landscape photograph",
+      "criteria": ["absence of repair motifs", "absence of mechanical leakage", "terrain and composition preservation"],
+      "settings": {"seed": 117109}
+    },
+    {
+      "id": "negative_flower_s117127",
+      "name": "Negative control — flower",
+      "category": "negative_control",
+      "purpose": "Measure inappropriate repair, patch, seam or mechanical imagery on an organic subject.",
+      "prompt": "a single fresh white flower growing in natural soil, close documentary photograph, soft overcast daylight, no vase, no tools, no human objects",
+      "criteria": ["absence of repair motifs", "absence of mechanical leakage", "flower identity and rendering preservation"],
+      "settings": {"seed": 117127}
+    },
+    {
+      "id": "activation_neutral_pump_s117139",
+      "name": "Prompt activation — neutral water pump",
+      "category": "prompt_activation",
+      "purpose": "Neutral half of matched prompt-activation control.",
+      "prompt": "a hand-operated cast iron water pump in a plain workshop, centered documentary photograph, complete object visible",
+      "criteria": ["slider-only repair activation", "pump identity", "functional plausibility", "composition preservation"],
+      "settings": {"seed": 117139}
+    },
+    {
+      "id": "activation_explicit_pump_s117139",
+      "name": "Prompt activation — explicitly repaired water pump",
+      "category": "prompt_activation",
+      "purpose": "Explicit-prompt half of matched prompt-activation control.",
+      "prompt": "a visibly repaired hand-operated cast iron water pump in a plain workshop, restored to working order with plausible local reinforcement and replacement parts, centered documentary photograph, complete object visible",
+      "criteria": ["native prompt repair knowledge", "adapter-plus-prompt interaction", "pump identity", "functional plausibility"],
+      "settings": {"seed": 117139}
+    }
+  ],
+  "metadata": {
+    "protocol": "CEF SDXL LoRA Evaluation Protocol v0.1",
+    "design": "Compact staged external-customer evaluation under disk constraint",
+    "planned_case_count": 96,
+    "automated_vlm": false,
+    "review_authority": "human",
+    "true_no_adapter_control": true,
+    "adapter_zero_is_separate": true
+  }
+}

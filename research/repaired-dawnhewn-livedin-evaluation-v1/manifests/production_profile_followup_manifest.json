@@ -1,0 +1,87 @@
+{
+  "suite_id": "repaired_production_profile_followup_v01",
+  "name": "CEF Follow-Up — Repaired Production Profile and Prompt Freedom",
+  "checkpoints": [
+    {
+      "id": "juggernaut_xl_ragnarok",
+      "title": "sd\\juggernautXL_ragnarokBy.safetensors",
+      "sha256": "dd08fa32f98d05a2443ca1419e46df1575a0811f6e3b246d9dd47ff20f5eb66a"
+    }
+  ],
+  "lora_profiles": [
+    {"id": "control", "loras": []},
+    {"id": "repaired_p2", "loras": [{"name": "Repaired_v1", "weight": 2.0, "sha256": "829f924aea08b8391db941a52f1da7a527952d98444170b647330657d516ea98"}]}
+  ],
+  "defaults": {
+    "negative_prompt": "text, watermark, logo, signature, duplicate subject, malformed geometry, deformed, destroyed, derelict, low quality",
+    "steps": 32,
+    "cfg_scale": 7.0,
+    "width": 1024,
+    "height": 1024,
+    "sampler_name": "DPM++ 2M SDE",
+    "scheduler": "Karras",
+    "seed": 117057,
+    "batch_size": 1,
+    "n_iter": 1,
+    "clip_skip": 1
+  },
+  "tests": [
+    {
+      "id": "barn_original_s117057",
+      "name": "Wooden barn — original CEF prompt — production profile",
+      "category": "settings_bridge",
+      "prompt": "a plain wooden agricultural barn beside an open field, full exterior visible, neutral daylight, documentary architectural photograph, timber siding and simple doors",
+      "criteria": ["direct comparison with CFG 5 control", "wood-specific intervention", "repair versus weathering", "geometry preservation"],
+      "settings": {"seed": 117057}
+    },
+    {
+      "id": "barn_sparse_s117057",
+      "name": "Wooden barn — sparse prompt — production profile",
+      "category": "prompt_freedom_bridge",
+      "prompt": "a working wooden farm barn in an open field, photorealistic",
+      "criteria": ["prompt-freedom effect", "wood-specific intervention", "repair versus weathering", "geometry preservation"],
+      "settings": {"seed": 117057}
+    },
+    {
+      "id": "satchel_original_s117071",
+      "name": "Leather satchel — original CEF prompt — production profile",
+      "category": "settings_bridge",
+      "prompt": "a plain leather work satchel resting on a neutral workshop table, centered product photograph, entire satchel visible, realistic leather, straps, seams and buckles",
+      "criteria": ["direct comparison with CFG 5 control", "leather-specific intervention", "repair versus redesign", "identity preservation"],
+      "settings": {"seed": 117071}
+    },
+    {
+      "id": "satchel_sparse_s117071",
+      "name": "Leather satchel — sparse prompt — production profile",
+      "category": "prompt_freedom_bridge",
+      "prompt": "an old working leather satchel on a workshop table, photorealistic",
+      "criteria": ["prompt-freedom effect", "leather-specific intervention", "repair versus wear", "identity preservation"],
+      "settings": {"seed": 117071}
+    },
+    {
+      "id": "toolbox_original_s117097",
+      "name": "Steel toolbox — original CEF prompt — production profile",
+      "category": "settings_bridge",
+      "prompt": "a plain steel toolbox on a neutral workshop floor, closed lid, complete object visible, centered documentary product photograph",
+      "criteria": ["direct comparison with CFG 5 control", "metal-specific intervention", "repair versus rust", "identity preservation"],
+      "settings": {"seed": 117097}
+    },
+    {
+      "id": "toolbox_sparse_s117097",
+      "name": "Steel toolbox — sparse prompt — production profile",
+      "category": "prompt_freedom_bridge",
+      "prompt": "an old working steel toolbox on a workshop floor, photorealistic",
+      "criteria": ["prompt-freedom effect", "metal-specific intervention", "repair versus wear", "identity preservation"],
+      "settings": {"seed": 117097}
+    }
+  ],
+  "metadata": {
+    "protocol": "CEF production-profile follow-up probe",
+    "generation_profile_id": "alex_sdxl_lora_production_v1",
+    "planned_case_count": 12,
+    "automated_vlm": false,
+    "review_authority": "human",
+    "comparison_run": "repaired_standalone_v01_live",
+    "design_note": "Original-prompt cells isolate the production settings from the earlier CFG 5 profile. Sparse-prompt cells additionally test prompt freedom and are not treated as single-variable settings comparisons."
+  }
+}

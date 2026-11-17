@@ -1,0 +1,91 @@
+{
+  "suite_id": "cabin_repair_activation_v01",
+  "name": "CEF Research Annex — Cabin Repair Activation 2x2",
+  "checkpoints": [
+    {
+      "id": "juggernaut_xl_ragnarok",
+      "title": "sd\\juggernautXL_ragnarokBy.safetensors",
+      "sha256": "dd08fa32f98d05a2443ca1419e46df1575a0811f6e3b246d9dd47ff20f5eb66a"
+    }
+  ],
+  "lora_profiles": [
+    {"id": "control", "loras": []},
+    {"id": "repaired_p3", "loras": [{"name": "Repaired_v1", "weight": 3.0, "sha256": "829f924aea08b8391db941a52f1da7a527952d98444170b647330657d516ea98"}]}
+  ],
+  "defaults": {
+    "negative_prompt": "text, watermark, logo, signature, people, pristine luxury interior, military command bridge, cyberpunk neon, vast open room, destroyed, derelict, nonfunctional machinery, malformed architecture, low quality",
+    "steps": 24,
+    "cfg_scale": 5.0,
+    "width": 1216,
+    "height": 832,
+    "sampler_name": "DPM++ 2M",
+    "scheduler": "Karras",
+    "seed": 317031,
+    "batch_size": 1,
+    "n_iter": 1,
+    "clip_skip": 1
+  },
+  "tests": [
+    {
+      "id": "neutral_s317031",
+      "name": "Neutral engineering compartment — seed 317031",
+      "category": "cabin_repair_activation",
+      "prompt": "a photorealistic interior photograph of a compact spacecraft engineering compartment, a narrow maintenance aisle between machinery cabinets, pressure pipes, electrical distribution panels, ventilation ducts, mechanical pumps, cable conduits and tool storage, curved pressure-hull construction, exposed structural ribs, metal access panels, practical overhead lighting, realistic industrial equipment, believable maintenance access, documentary photographic realism",
+      "criteria": ["slider-only repair activation", "composition preservation", "repair versus added complexity", "functional machinery"],
+      "settings": {"seed": 317031}
+    },
+    {
+      "id": "explicit_s317031",
+      "name": "Explicitly repaired engineering compartment — seed 317031",
+      "category": "cabin_repair_activation",
+      "prompt": "a photorealistic interior photograph of a compact spacecraft engineering compartment showing years of practical maintenance, a narrow maintenance aisle between machinery cabinets, replacement access panels in mismatched finishes, welded reinforcement brackets, patched conduit, spliced cable harnesses, handwritten maintenance labels, and visibly repaired machinery, curved pressure-hull construction, practical overhead lighting, everything operational and structurally sound, documentary photographic realism",
+      "criteria": ["native prompt repair knowledge", "prompt-plus-slider amplification", "material-specific intervention", "functional preservation"],
+      "settings": {"seed": 317031}
+    },
+    {
+      "id": "neutral_s317067",
+      "name": "Neutral engineering compartment — seed 317067",
+      "category": "cabin_repair_activation",
+      "prompt": "a photorealistic interior photograph of a compact spacecraft engineering compartment, a narrow maintenance aisle between machinery cabinets, pressure pipes, electrical distribution panels, ventilation ducts, mechanical pumps, cable conduits and tool storage, curved pressure-hull construction, exposed structural ribs, metal access panels, practical overhead lighting, realistic industrial equipment, believable maintenance access, documentary photographic realism",
+      "criteria": ["slider-only repair activation", "seed sensitivity", "repair versus added complexity", "functional machinery"],
+      "settings": {"seed": 317067}
+    },
+    {
+      "id": "explicit_s317067",
+      "name": "Explicitly repaired engineering compartment — seed 317067",
+      "category": "cabin_repair_activation",
+      "prompt": "a photorealistic interior photograph of a compact spacecraft engineering compartment showing years of practical maintenance, a narrow maintenance aisle between machinery cabinets, replacement access panels in mismatched finishes, welded reinforcement brackets, patched conduit, spliced cable harnesses, handwritten maintenance labels, and visibly repaired machinery, curved pressure-hull construction, practical overhead lighting, everything operational and structurally sound, documentary photographic realism",
+      "criteria": ["native prompt repair knowledge", "prompt-plus-slider amplification", "seed sensitivity", "functional preservation"],
+      "settings": {"seed": 317067}
+    },
+    {
+      "id": "neutral_s317099",
+      "name": "Neutral engineering compartment — seed 317099",
+      "category": "cabin_repair_activation",
+      "prompt": "a photorealistic interior photograph of a compact spacecraft engineering compartment, a narrow maintenance aisle between machinery cabinets, pressure pipes, electrical distribution panels, ventilation ducts, mechanical pumps, cable conduits and tool storage, curved pressure-hull construction, exposed structural ribs, metal access panels, practical overhead lighting, realistic industrial equipment, believable maintenance access, documentary photographic realism",
+      "criteria": ["slider-only repair activation", "seed sensitivity", "repair versus added complexity", "functional machinery"],
+      "settings": {"seed": 317099}
+    },
+    {
+      "id": "explicit_s317099",
+      "name": "Explicitly repaired engineering compartment — seed 317099",
+      "category": "cabin_repair_activation",
+      "prompt": "a photorealistic interior photograph of a compact spacecraft engineering compartment showing years of practical maintenance, a narrow maintenance aisle between machinery cabinets, replacement access panels in mismatched finishes, welded reinforcement brackets, patched conduit, spliced cable harnesses, handwritten maintenance labels, and visibly repaired machinery, curved pressure-hull construction, practical overhead lighting, everything operational and structurally sound, documentary photographic realism",
+      "criteria": ["native prompt repair knowledge", "prompt-plus-slider amplification", "seed sensitivity", "functional preservation"],
+      "settings": {"seed": 317099}
+    }
+  ],
+  "metadata": {
+    "protocol": "CEF private research annex",
+    "design": "Three-seed, two-prompt, two-adapter-condition activation study",
+    "planned_case_count": 12,
+    "automated_vlm": false,
+    "review_authority": "human",
+    "conditions": [
+      "neutral prompt / no slider",
+      "neutral prompt / Repaired +3",
+      "explicit repair prompt / no slider",
+      "explicit repair prompt / Repaired +3"
+    ]
+  }
+}
