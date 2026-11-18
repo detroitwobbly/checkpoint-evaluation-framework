@@ -2,8 +2,8 @@
   "schema_version": "cef.curated-evaluation-package.v1",
   "package_id": "repaired-dawnhewn-livedin-evaluation-v1",
   "created_at": "2026-11-17T18:26:58.1381146-05:00",
-  "updated_at": "2026-11-18T03:56:36.524380-05:00",
-  "publication_scope": "GitHub delivery with authorized Repaired and Lived-In slider weights via Git LFS; Dawnhewn and upstream checkpoint weights excluded",
+  "updated_at": "2026-11-18T04:36:48.7063174-05:00",
+  "publication_scope": "GitHub delivery with authorized Repaired and Lived-In slider weights via Git LFS plus standalone Character Foundry prompt tool; Dawnhewn and upstream checkpoint weights excluded",
   "automated_generation_count": 227,
   "manual_selected_cell_count": 4,
   "comparison_sheet_count": 37,
@@ -261,18 +261,34 @@
     },
     {
       "path": "PROVENANCE_AND_LICENSE.md",
-      "size_bytes": 2497,
-      "sha256": "d9af102559759129a529b6217836ce91162071bdc50cf253560ba920bdaea6e7"
+      "size_bytes": 3199,
+      "sha256": "404553a08e2f8ac3a4d87882c7818201edf64b660462efc601b54ae51ddde65e"
     },
     {
       "path": "README.md",
-      "size_bytes": 3994,
-      "sha256": "bfb5c3133b31e16622d4a168329760bbb5cffc08c4a3d682c370777c3f6d315d"
+      "size_bytes": 4499,
+      "sha256": "d0af14684f1ac854212e0444ad17c85b94f5cddda8ded3d6c872153db25ab8c4"
     },
     {
       "path": "REPRODUCIBILITY.md",
       "size_bytes": 2645,
       "sha256": "fd7a81ba00e50abf2271396f17bb83cd6a66a9b3f793344a9276b603759fbaca"
+    },
+    {
+      "path": "tools/character-foundry/Character_Foundry_Standalone_v0.1.0.zip",
+      "size_bytes": 52140,
+      "sha256": "55cd5d34e2056e603322ed7495bacf3630a5ae2d69bcc57aa81ab3aeb4c3ac06"
+    },
+    {
+      "path": "tools/character-foundry/Character_Foundry_Standalone_v0.1.0.zip.sha256",
+      "size_bytes": 107,
+      "sha256": "3468d7b05114a806da46f5b7ceef74fe02b0a2a0a952ea03ca4033b177437a57"
+    },
+    {
+      "path": "tools/character-foundry/README.md",
+      "size_bytes": 1319,
+      "sha256": "dfc23695ba391dbdddf2de829845aa8ffb24c9c1c212593632438a28e9168208"
     }
-  ]
+  ],
+  "standalone_tool_count": 1
 }

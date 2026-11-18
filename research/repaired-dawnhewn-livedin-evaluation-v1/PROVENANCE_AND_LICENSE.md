@@ -27,6 +27,12 @@ The package now includes the following authorized files through Git LFS:
 
 This authorization applies to these supplied slider weights and does not grant redistribution rights for Dawnhewn, Juggernaut XL Ragnarok, or any other excluded model or customer asset.
 
+## Character Foundry tool
+
+`tools/character-foundry/Character_Foundry_Standalone_v0.1.0.zip` is an independently usable extraction of the Character Foundry prompt-generation surface. Its complete included source is distributed under the GNU Affero General Public License v3.0, reproduced inside the ZIP. The tool contains no checkpoint, LoRA, customer image, private character draft, or generation backend.
+
+Its slider registry records prompt tags, ranges, warnings, and expected asset hashes as configuration metadata. That metadata does not redistribute or grant rights to the referenced external LoRAs. Users must obtain and install any selected slider separately under its applicable terms.
+
 ## Publication sanitation
 
 This curated package excludes private filesystem paths, credentials, raw service logs, private intake history, broad local inventories, Forge response dumps, Dawnhewn weights, and upstream checkpoint weights. The only `.safetensors` files included are the two explicitly authorized sliders listed above. Package checksums cover the files actually published.

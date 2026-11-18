@@ -21,6 +21,7 @@ For cabins, the clearest factor separation came from a sparse carrier prompt at 
 - [`manifests/`](manifests/) — frozen evaluation manifests for every published experiment.
 - [`evidence/`](evidence/) — all curated comparison sheets, including the two production-profile refinements.
 - [`models/`](models/) — authorized copies of `Repaired_v1` and `LivedIn_v1`, distributed through Git LFS for Jason's evaluation and creative use.
+- [`tools/character-foundry/`](tools/character-foundry/) — lightweight standalone Character Foundry browser app for reproducible portrait and full-body prompt generation.
 - [`package_manifest.json`](package_manifest.json) and [`checksums.sha256`](checksums.sha256) — package inventory and integrity hashes.
 
 ## Scope and exclusions
@@ -33,6 +34,8 @@ This is a research/evaluation package with a limited, authorized slider handoff.
 - redundant raw generations already represented by the comparison sheets and frozen manifests.
 
 The slider files are large Git LFS objects. A ZIP downloaded from GitHub includes them; command-line users should install Git LFS and run `git lfs pull` after checking out this branch.
+
+Character Foundry is supplied as a separate ZIP so it can be downloaded without the evaluation evidence or model weights. It contains no checkpoint or LoRA files and does not call Forge or ComfyUI directly. Optional slider selections emit LoRA tags; the corresponding LoRAs must be installed in the user's generation interface.
 
 The included images are generated evaluation evidence. No VLM or automated semantic judge was used for the published conclusions; the findings are human/assistant visual observations and operator-supplied manual evidence.
 
