@@ -20,17 +20,19 @@ For cabins, the clearest factor separation came from a sparse carrier prompt at 
 - [`PROVENANCE_AND_LICENSE.md`](PROVENANCE_AND_LICENSE.md) — provenance, ownership, and redistribution limits.
 - [`manifests/`](manifests/) — frozen evaluation manifests for every published experiment.
 - [`evidence/`](evidence/) — all curated comparison sheets, including the two production-profile refinements.
+- [`models/`](models/) — authorized copies of `Repaired_v1` and `LivedIn_v1`, distributed through Git LFS for Jason's evaluation and creative use.
 - [`package_manifest.json`](package_manifest.json) and [`checksums.sha256`](checksums.sha256) — package inventory and integrity hashes.
 
 ## Scope and exclusions
 
-This is a research/evaluation package, not a model-weight release. It does **not** redistribute:
+This is a research/evaluation package with a limited, authorized slider handoff. It includes `Repaired_v1` and `LivedIn_v1` for Jason's use, but it does **not** redistribute:
 
 - Dawnhewn weights or Jason’s source assets;
-- Repaired or Lived-In weights;
 - Juggernaut XL Ragnarok;
 - private service-job intake, logs, broad local inventories, or raw Forge responses;
 - redundant raw generations already represented by the comparison sheets and frozen manifests.
+
+The slider files are large Git LFS objects. A ZIP downloaded from GitHub includes them; command-line users should install Git LFS and run `git lfs pull` after checking out this branch.
 
 The included images are generated evaluation evidence. No VLM or automated semantic judge was used for the published conclusions; the findings are human/assistant visual observations and operator-supplied manual evidence.
 

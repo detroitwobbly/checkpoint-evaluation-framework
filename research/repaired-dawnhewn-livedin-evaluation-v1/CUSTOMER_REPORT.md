@@ -207,4 +207,4 @@ Evidence: `dawnhewn_production_profile_followup_v01_live` contains six verified 
 
 ## Publication gate
 
-This assistant review is evidence for the human evaluator. It is not a signed CEF human review and does not authorize model-weight redistribution or public GitHub publication. Dawnhewn weights must remain excluded from every package unless Jason explicitly authorizes redistribution.
+This assistant review is evidence for the human evaluator and did not itself authorize model-weight redistribution. The package's later, limited authorization for Jason to receive Repaired and Lived-In is documented in `PROVENANCE_AND_LICENSE.md`. Dawnhewn weights remain excluded from every package unless Jason explicitly authorizes redistribution.

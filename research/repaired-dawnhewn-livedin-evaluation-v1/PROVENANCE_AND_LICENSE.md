@@ -16,8 +16,17 @@ The presence of Dawnhewn in generated comparison sheets is evaluation evidence, 
 
 The Checkpoint Evaluation Framework source repository has its own repository license. Generated evidence, customer material, model weights, and upstream checkpoints may have separate rights and obligations. Do not assume that the repository license grants rights to redistribute excluded model assets.
 
-The creator of Repaired and Lived-In intends to permit Jason to use supplied slider weights and authorized custom merges without royalties or ownership claims on resulting creative works, subject to applicable upstream licenses. A credit mention is appreciated but no ownership interest in Jason’s resulting work is sought.
+The creator of Repaired and Lived-In authorizes Jason / SignalofSolarum to download and use the supplied slider weights, including in authorized custom merges, without royalties or ownership claims on resulting creative works, subject to applicable upstream licenses. A credit mention is appreciated but no ownership interest in Jason’s resulting work is sought.
+
+## Included slider weights
+
+The package now includes the following authorized files through Git LFS:
+
+- `models/Repaired_v1.safetensors` — SHA-256 `829f924aea08b8391db941a52f1da7a527952d98444170b647330657d516ea98`
+- `models/LivedIn_v1.safetensors` — SHA-256 `e2d8804d6ce4bb9c8a9beebee24b3e4eee73433d40bb7bc927a50f30ee18b391`
+
+This authorization applies to these supplied slider weights and does not grant redistribution rights for Dawnhewn, Juggernaut XL Ragnarok, or any other excluded model or customer asset.
 
 ## Publication sanitation
 
-This curated package excludes private filesystem paths, credentials, raw service logs, private intake history, broad local inventories, Forge response dumps, and all `.safetensors` files. Package checksums cover the files actually published.
+This curated package excludes private filesystem paths, credentials, raw service logs, private intake history, broad local inventories, Forge response dumps, Dawnhewn weights, and upstream checkpoint weights. The only `.safetensors` files included are the two explicitly authorized sliders listed above. Package checksums cover the files actually published.

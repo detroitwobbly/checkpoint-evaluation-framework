@@ -8,7 +8,7 @@
 - LivedIn_v1 SHA-256: `e2d8804d6ce4bb9c8a9beebee24b3e4eee73433d40bb7bc927a50f30ee18b391`
 - Dawnhewn SHA-256: `6e1d76dd2b2fed5ee4abe26c7dc3c79e3383f3241eb92b89049b4d762c0e6642`
 
-Hashes identify the tested assets; the assets themselves are intentionally excluded.
+Hashes identify the tested assets. Authorized copies of Repaired and Lived-In are included under `models/` through Git LFS. The base checkpoint and Dawnhewn weights remain intentionally excluded.
 
 ## Generation profiles
 
